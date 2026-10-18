@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Esta línea hace que la página se vea bien en el móvil -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Celador Sergas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main>
+    <h1>Test Celador Sergas</h1>
+
+    <!-- Mensaje de error (solo aparece si algo falla en preguntas.js) -->
+    <div id="error" class="error oculto"></div>
+
+    <!-- PANTALLA 1: inicio -->
+    <section id="pantalla-inicio">
+      <label for="selector-tema">Elige un tema:</label>
+      <select id="selector-tema"></select>
+      <button id="boton-empezar">Empezar test</button>
+      <button id="boton-fallos" class="secundario">Test de fallos</button>
+      <button id="boton-estadisticas" class="secundario">Mis estadísticas</button>
+    </section>
+
+    <!-- PANTALLA 2: pregunta -->
+    <section id="pantalla-pregunta" class="oculto">
+      <p id="contador" class="pequeno"></p>
+      <p id="tema-pregunta" class="pequeno"></p>
+      <h2 id="enunciado"></h2>
+      <div id="opciones"></div>
+      <div id="feedback" class="oculto"></div>
+      <button id="boton-siguiente" class="oculto">Siguiente</button>
+    </section>
+
+    <!-- PANTALLA 3: resultado final del test -->
+    <section id="pantalla-resultado" class="oculto">
+      <h2>Test terminado</h2>
+      <p id="texto-resultado" class="resultado"></p>
+      <button class="boton-volver">Volver al inicio</button>
+    </section>
+
+    <!-- PANTALLA 4: estadísticas -->
+    <section id="pantalla-estadisticas" class="oculto">
+      <h2>Mis estadísticas</h2>
+      <div id="tabla-estadisticas"></div>
+      <button class="boton-volver">Volver al inicio</button>
+      <button id="boton-borrar" class="peligro">Borrar mi progreso</button>
+    </section>
+  </main>
+
+  <!-- Primero se cargan las preguntas y luego la lógica de la app -->
+  <script src="preguntas.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

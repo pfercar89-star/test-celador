@@ -120,7 +120,8 @@ function empezarTest(preguntas) {
 function mostrarPregunta() {
   const p = preguntasDelTest[posicion];
   $("contador").textContent = "Pregunta " + (posicion + 1) + " de " + preguntasDelTest.length;
-  $("tema-pregunta").textContent = p.tema;
+  // Si la pregunta tiene origen (por ejemplo, de un examen oficial), se muestra junto al tema
+  $("tema-pregunta").textContent = p.origen ? p.tema + " · " + p.origen : p.tema;
   $("enunciado").textContent = p.enunciado;
   $("feedback").classList.add("oculto");
   $("boton-siguiente").classList.add("oculto");

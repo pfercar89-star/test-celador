@@ -48,16 +48,54 @@ button:disabled { opacity: 0.5; cursor: default; }
   color: #1d2733;
   border: 2px solid #b8c4d2;
 }
-.opcion.acierto { background: #e3f4e6; border-color: #2e7d32; }
-.opcion.error-opcion { background: #fbe4e2; border-color: #b3261e; }
+.opcion.acierto { background: #d4f0d9; border-color: #2e7d32; color: #1b4d20; font-weight: 600; }
+.opcion.error-opcion { background: #fbd9d6; border-color: #b3261e; color: #7a1a14; font-weight: 600; }
+.opcion.elegida { background: #dce9f9; border-color: #0b5cab; font-weight: 600; } /* modo examen: marcada, sin corregir */
 .opcion:disabled { opacity: 1; }
 
-#feedback { padding: 12px; border-radius: 10px; margin-bottom: 12px; background: #fff; }
-#feedback.bien { border-left: 6px solid #2e7d32; }
-#feedback.mal  { border-left: 6px solid #b3261e; }
+/* Mensaje de acierto o fallo */
+.veredicto { font-weight: 700; font-size: 1.1rem; margin: 4px 0 8px; }
+.veredicto.bien { color: #2e7d32; }
+.veredicto.mal  { color: #b3261e; }
+
+/* Cuadro de la explicación: beige con borde naranja */
+.explicacion {
+  background: #fdf3e1;
+  border: 1px solid #f0d3a0;
+  border-left: 6px solid #e8912d;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  color: #4a3410;
+}
+.explicacion p { margin: 0; }
+
+/* Bloques de la pantalla de inicio */
+.tarjeta {
+  background: #fff;
+  border-radius: 12px;
+  padding: 4px 16px 4px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.tarjeta h2 { margin-bottom: 4px; }
+.tarjeta .pequeno { margin-bottom: 12px; }
+
+/* Resultado del examen */
+.resumen { background: #fff; border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+.resumen p { margin: 4px 0; }
+.nota { font-size: 1.6rem; font-weight: 700; color: #0b5cab; }
+
+/* Revisión de preguntas falladas o en blanco al final del examen */
+.revision-item { background: #fff; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+.revision-item h3 { font-size: 1rem; margin: 4px 0 8px; }
+.respuesta { border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; }
+.respuesta.mal { background: #fbd9d6; color: #7a1a14; }
+.respuesta.bien { background: #d4f0d9; color: #1b4d20; }
+.respuesta.blanco { background: #eceff3; color: #3c4855; }
 
 .pequeno { font-size: 0.9rem; color: #5a6878; margin: 0; }
-.resultado { font-size: 1.3rem; }
+.resultado { font-size: 1.1rem; }
 
 .error { background: #fbe4e2; color: #b3261e; padding: 12px; border-radius: 10px; margin-bottom: 12px; }
 

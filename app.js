@@ -3,17 +3,26 @@
 //  No hace falta tocar este archivo para añadir preguntas (eso va en preguntas.js).
 // =====================================================================
 
-const PREGUNTAS_POR_TEST = 10;
+const PREGUNTAS_POR_TEST = 10;   // modo estudio
 const LETRAS = ["A", "B", "C", "D"];
+
+// Puntuación del examen del Sergas
+const PUNTOS_ACIERTO = 0.5;
+const PUNTOS_FALLO = -0.125;
+const MINUTOS_POR_PREGUNTA_REAL = 150 / 110;   // el examen real: 150 minutos para 110 preguntas
 
 // Tu progreso se guarda en el navegador (localStorage) con estos nombres.
 const CLAVE_FALLOS = "celador_fallos";           // lista de preguntas falladas (ver claveDe)
 const CLAVE_ESTADISTICAS = "celador_estadisticas"; // { tema: { aciertos, total } }
 
 // Estado del test que se está haciendo ahora mismo
+let modo = "estudio";        // "estudio" (corrige al momento) o "examen" (corrige al final)
 let preguntasDelTest = [];
 let posicion = 0;
-let aciertosDelTest = 0;
+let aciertosDelTest = 0;     // modo estudio
+let respuestasExamen = [];   // modo examen: la letra elegida en cada pregunta, o null si está en blanco
+let inicioExamen = 0;        // modo examen: hora a la que empezó (para el cronómetro)
+let cronometro = null;
 
 // Atajo para buscar un elemento de la página por su id
 function $(id) {
@@ -108,18 +117,35 @@ function preguntasFalladas() {
   return PREGUNTAS.filter(function (p) { return fallos.has(claveDe(p)) || fallos.has(p.enunciado); });
 }
 
+// Preguntas del tema elegido en el selector (o todas)
+function preguntasDelTema() {
+  const tema = $("selector-tema").value;
+  return tema ? PREGUNTAS.filter(function (p) { return p.tema === tema; }) : PREGUNTAS;
+}
+
 function actualizarBotonFallos() {
   const cuantos = preguntasFalladas().length;
-  $("boton-fallos").textContent = "Test de fallos (" + cuantos + ")";
+  $("boton-fallos").textContent = "Estudiar mis fallos (" + cuantos + ")";
   $("boton-fallos").disabled = cuantos === 0;
 }
 
-// ---------- El test ----------
+// ---------- El test (los dos modos) ----------
 
-function empezarTest(preguntas) {
-  preguntasDelTest = barajar(preguntas).slice(0, PREGUNTAS_POR_TEST);
+function empezarTest(preguntas, modoElegido, cantidad) {
+  modo = modoElegido;
+  preguntasDelTest = barajar(preguntas).slice(0, cantidad);
   posicion = 0;
   aciertosDelTest = 0;
+  respuestasExamen = preguntasDelTest.map(function () { return null; });
+
+  const esExamen = modo === "examen";
+  $("cronometro").classList.toggle("oculto", !esExamen);
+  $("boton-terminar").classList.toggle("oculto", !esExamen);
+  if (esExamen) {
+    inicioExamen = Date.now();
+    actualizarCronometro();
+    cronometro = setInterval(actualizarCronometro, 1000);
+  }
   mostrarPregunta();
   mostrarPantalla("pantalla-pregunta");
 }
@@ -131,7 +157,6 @@ function mostrarPregunta() {
   $("tema-pregunta").textContent = p.origen ? p.tema + " · " + p.origen : p.tema;
   $("enunciado").textContent = p.enunciado;
   $("feedback").classList.add("oculto");
-  $("boton-siguiente").classList.add("oculto");
 
   const contenedor = $("opciones");
   contenedor.innerHTML = "";
@@ -139,32 +164,49 @@ function mostrarPregunta() {
     const boton = document.createElement("button");
     boton.className = "opcion";
     boton.textContent = LETRAS[i] + ") " + texto;
-    boton.addEventListener("click", function () { responder(LETRAS[i]); });
+    boton.addEventListener("click", function () {
+      if (modo === "examen") elegirEnExamen(LETRAS[i]);
+      else responder(LETRAS[i]);
+    });
     contenedor.appendChild(boton);
   });
+
+  if (modo === "examen") {
+    marcarElegida();
+    $("boton-anterior").classList.toggle("oculto", posicion === 0);
+  } else {
+    $("boton-siguiente").classList.add("oculto");
+    $("boton-anterior").classList.add("oculto");
+  }
 }
+
+// ----- Modo estudio: corrige en cuanto respondes -----
 
 function responder(letraElegida) {
   const p = preguntasDelTest[posicion];
   const acertada = letraElegida === p.correcta;
 
-  // Colorear las opciones y bloquearlas para no responder dos veces
+  // Colorear las opciones (verde la buena, rojo la tuya si fallas) y bloquearlas
   const botones = $("opciones").querySelectorAll("button");
   botones.forEach(function (boton, i) {
     boton.disabled = true;
-    if (LETRAS[i] === p.correcta) boton.classList.add("acierto");
-    else if (LETRAS[i] === letraElegida) boton.classList.add("error-opcion");
+    if (LETRAS[i] === p.correcta) {
+      boton.classList.add("acierto");
+      boton.textContent += "  ✓";
+    } else if (LETRAS[i] === letraElegida) {
+      boton.classList.add("error-opcion");
+      boton.textContent += "  ✗";
+    }
   });
 
-  // Mostrar si has acertado y la explicación
+  // Mostrar si has acertado y, debajo, la explicación en el cuadro beige
   const feedback = $("feedback");
-  feedback.className = acertada ? "bien" : "mal";
   feedback.innerHTML = "";
-  const titulo = document.createElement("strong");
-  titulo.textContent = acertada ? "¡Correcto!" : "Incorrecto. La respuesta buena es la " + p.correcta + ".";
-  const explicacion = document.createElement("p");
-  explicacion.textContent = p.explicacion;
-  feedback.append(titulo, explicacion);
+  const veredicto = document.createElement("p");
+  veredicto.className = "veredicto " + (acertada ? "bien" : "mal");
+  veredicto.textContent = acertada ? "✓ ¡Correcto!" : "✗ Incorrecto. La respuesta buena es la " + p.correcta + ".";
+  feedback.append(veredicto, cuadroExplicacion(p));
+  feedback.classList.remove("oculto");
 
   registrarRespuesta(p, acertada);
   if (acertada) aciertosDelTest++;
@@ -173,6 +215,151 @@ function responder(letraElegida) {
   $("boton-siguiente").textContent = esLaUltima ? "Ver resultado" : "Siguiente";
   $("boton-siguiente").classList.remove("oculto");
 }
+
+function cuadroExplicacion(p) {
+  const cuadro = document.createElement("div");
+  cuadro.className = "explicacion";
+  const texto = document.createElement("p");
+  texto.textContent = p.explicacion;
+  cuadro.appendChild(texto);
+  return cuadro;
+}
+
+// ----- Modo examen: solo marca tu respuesta; se corrige al final -----
+
+function elegirEnExamen(letra) {
+  // Pulsar otra vez la misma opción la desmarca (vuelve a quedar en blanco)
+  respuestasExamen[posicion] = respuestasExamen[posicion] === letra ? null : letra;
+  marcarElegida();
+}
+
+function marcarElegida() {
+  const elegida = respuestasExamen[posicion];
+  $("opciones").querySelectorAll("button").forEach(function (boton, i) {
+    boton.classList.toggle("elegida", LETRAS[i] === elegida);
+  });
+  const esLaUltima = posicion === preguntasDelTest.length - 1;
+  let texto;
+  if (elegida) texto = esLaUltima ? "Terminar y corregir" : "Siguiente";
+  else texto = esLaUltima ? "Dejar en blanco y corregir" : "Dejar en blanco y seguir";
+  $("boton-siguiente").textContent = texto;
+  $("boton-siguiente").classList.remove("oculto");
+}
+
+function anterior() {
+  if (posicion > 0) {
+    posicion--;
+    mostrarPregunta();
+    window.scrollTo(0, 0);
+  }
+}
+
+function terminarAntes() {
+  const sinResponder = respuestasExamen.filter(function (r) { return r === null; }).length;
+  if (!confirm("¿Terminar el examen ahora? Las " + sinResponder + " preguntas sin responder contarán en blanco.")) return;
+  corregirExamen();
+}
+
+function formatoTiempo(milisegundos) {
+  const segundos = Math.floor(milisegundos / 1000);
+  const mm = String(Math.floor(segundos / 60)).padStart(2, "0");
+  const ss = String(segundos % 60).padStart(2, "0");
+  return mm + ":" + ss;
+}
+
+function actualizarCronometro() {
+  $("cronometro").textContent = "⏱ " + formatoTiempo(Date.now() - inicioExamen);
+}
+
+function pararCronometro() {
+  clearInterval(cronometro);
+  cronometro = null;
+}
+
+// Escribe un número con coma decimal, como en España (2,375)
+function numero(n) {
+  return n.toLocaleString("es-ES", { maximumFractionDigits: 3 });
+}
+
+function corregirExamen() {
+  pararCronometro();
+  const tiempo = Date.now() - inicioExamen;
+  let aciertos = 0, fallos = 0, enBlanco = 0;
+  const revision = $("revision");
+  revision.innerHTML = "";
+
+  preguntasDelTest.forEach(function (p, i) {
+    const elegida = respuestasExamen[i];
+    if (elegida === null) {
+      enBlanco++;
+      anadirAFallos(p);   // en blanco: no cuenta en estadísticas, pero va a tus fallos para repasarla
+    } else {
+      const acertada = elegida === p.correcta;
+      if (acertada) aciertos++; else fallos++;
+      registrarRespuesta(p, acertada);
+    }
+    if (elegida !== p.correcta) revision.appendChild(tarjetaRevision(p, i, elegida));
+  });
+
+  const total = preguntasDelTest.length;
+  const puntos = aciertos * PUNTOS_ACIERTO + fallos * PUNTOS_FALLO;
+  const notaSobre10 = (puntos / (total * PUNTOS_ACIERTO)) * 10;
+  const minutosReales = Math.round(total * MINUTOS_POR_PREGUNTA_REAL);
+
+  $("titulo-resultado").textContent = "Examen corregido";
+  const resumen = document.createElement("div");
+  resumen.className = "resumen";
+  [
+    ["nota", "Nota: " + numero(Math.round(notaSobre10 * 100) / 100) + " sobre 10"],
+    ["", "Puntos: " + numero(puntos) + " de " + numero(total * PUNTOS_ACIERTO)],
+    ["", "✓ Aciertos: " + aciertos],
+    ["", "✗ Fallos: " + fallos],
+    ["", "○ En blanco: " + enBlanco],
+    ["pequeno", "Tiempo: " + formatoTiempo(tiempo) + " (en el examen real tendrías unos " + minutosReales + " minutos para " + total + " preguntas)"]
+  ].forEach(function (linea) {
+    const p = document.createElement("p");
+    p.className = linea[0];
+    p.textContent = linea[1];
+    resumen.appendChild(p);
+  });
+  $("texto-resultado").innerHTML = "";
+  $("texto-resultado").appendChild(resumen);
+
+  const tituloRevision = document.createElement("h2");
+  tituloRevision.textContent = revision.children.length ? "Repasa estas preguntas" : "¡Todas correctas!";
+  revision.prepend(tituloRevision);
+
+  mostrarPantalla("pantalla-resultado");
+}
+
+// Tarjeta con una pregunta fallada o en blanco: tu respuesta, la buena y la explicación
+function tarjetaRevision(p, indice, elegida) {
+  const tarjeta = document.createElement("div");
+  tarjeta.className = "revision-item";
+
+  const cabecera = document.createElement("p");
+  cabecera.className = "pequeno";
+  cabecera.textContent = "Pregunta " + (indice + 1) + " · " + p.tema + (p.origen ? " · " + p.origen : "");
+  const enunciado = document.createElement("h3");
+  enunciado.textContent = p.enunciado;
+  tarjeta.append(cabecera, enunciado);
+
+  const tuya = document.createElement("div");
+  if (elegida === null) {
+    tuya.className = "respuesta blanco";
+    tuya.textContent = "○ La dejaste en blanco";
+  } else {
+    tuya.className = "respuesta mal";
+    tuya.textContent = "✗ Tu respuesta: " + elegida + ") " + p.opciones[LETRAS.indexOf(elegida)];
+  }
+  const buena = document.createElement("div");
+  buena.className = "respuesta bien";
+  buena.textContent = "✓ Correcta: " + p.correcta + ") " + p.opciones[LETRAS.indexOf(p.correcta)];
+  tarjeta.append(tuya, buena, cuadroExplicacion(p));
+  return tarjeta;
+}
+
+// ----- Común a los dos modos -----
 
 // Apunta el acierto/fallo en las estadísticas y en la lista de fallos
 function registrarRespuesta(p, acertada) {
@@ -183,13 +370,27 @@ function registrarRespuesta(p, acertada) {
   guardar(CLAVE_ESTADISTICAS, estadisticas);
 
   // Si la fallas, entra en la lista de fallos. Si la aciertas, sale de ella.
-  let fallos = leer(CLAVE_FALLOS, []);
-  fallos = fallos.filter(function (e) { return e !== claveDe(p) && e !== p.enunciado; });
-  if (!acertada) fallos.push(claveDe(p));
+  if (acertada) quitarDeFallos(p);
+  else anadirAFallos(p);
+}
+
+function quitarDeFallos(p) {
+  const fallos = leer(CLAVE_FALLOS, []).filter(function (e) { return e !== claveDe(p) && e !== p.enunciado; });
+  guardar(CLAVE_FALLOS, fallos);
+}
+
+function anadirAFallos(p) {
+  quitarDeFallos(p);
+  const fallos = leer(CLAVE_FALLOS, []);
+  fallos.push(claveDe(p));
   guardar(CLAVE_FALLOS, fallos);
 }
 
 function siguiente() {
+  if (modo === "examen" && posicion === preguntasDelTest.length - 1) {
+    corregirExamen();
+    return;
+  }
   posicion++;
   if (posicion < preguntasDelTest.length) {
     mostrarPregunta();
@@ -197,7 +398,9 @@ function siguiente() {
   } else {
     const total = preguntasDelTest.length;
     const porcentaje = Math.round((aciertosDelTest / total) * 100);
+    $("titulo-resultado").textContent = "Test terminado";
     $("texto-resultado").textContent = "Has acertado " + aciertosDelTest + " de " + total + " (" + porcentaje + "%).";
+    $("revision").innerHTML = "";
     mostrarPantalla("pantalla-resultado");
   }
 }
@@ -255,6 +458,8 @@ function borrarProgreso() {
 // ---------- Arranque: conectar los botones ----------
 
 function volverAlInicio() {
+  if (cronometro && !confirm("¿Salir del examen? No se guardará nada de este examen.")) return;
+  pararCronometro();
   actualizarBotonFallos();
   mostrarPantalla("pantalla-inicio");
 }
@@ -275,11 +480,16 @@ if (problemas.length > 0) {
   prepararInicio();
 
   $("boton-empezar").addEventListener("click", function () {
-    const tema = $("selector-tema").value;
-    const elegidas = tema ? PREGUNTAS.filter(function (p) { return p.tema === tema; }) : PREGUNTAS;
-    empezarTest(elegidas);
+    empezarTest(preguntasDelTema(), "estudio", PREGUNTAS_POR_TEST);
   });
-  $("boton-fallos").addEventListener("click", function () { empezarTest(preguntasFalladas()); });
+  $("boton-examen").addEventListener("click", function () {
+    empezarTest(preguntasDelTema(), "examen", Number($("selector-cantidad").value));
+  });
+  $("boton-fallos").addEventListener("click", function () {
+    empezarTest(preguntasFalladas(), "estudio", PREGUNTAS_POR_TEST);
+  });
+  $("boton-anterior").addEventListener("click", anterior);
+  $("boton-terminar").addEventListener("click", terminarAntes);
   $("boton-estadisticas").addEventListener("click", mostrarEstadisticas);
   $("boton-siguiente").addEventListener("click", siguiente);
   $("boton-borrar").addEventListener("click", borrarProgreso);

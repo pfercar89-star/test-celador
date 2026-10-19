@@ -20,6 +20,11 @@ App web sencilla para practicar tests de la oposición de celador del Sergas.
 
 En `preguntas.js` cada tema empieza con una cabecera en mayúsculas. Para añadir una pregunta a un tema, pégala dentro de su bloque. El selector de la app muestra automáticamente cualquier tema nuevo que escribas.
 
+## Modos de práctica
+
+- **Modo estudio**: 10 preguntas al azar del tema elegido. Te corrige cada respuesta al momento: verde si aciertas, rojo si fallas, y la explicación en un cuadro beige. "Estudiar mis fallos" usa este modo con las preguntas que has fallado o dejado en blanco.
+- **Modo examen**: eliges 10, 25, 50 o 100 preguntas. No corrige hasta el final. Puedes dejar preguntas en blanco, volver atrás y cambiar la respuesta. Al terminar te da la nota con la puntuación del Sergas (+0,50 por acierto, −0,125 por fallo, 0 en blanco), el tiempo que has tardado y la lista de preguntas falladas o en blanco con su explicación.
+
 ## Cómo abrirla
 
 Descarga la carpeta y haz doble clic en `index.html`. Se abre en el navegador; no hace falta instalar nada ni tener internet.

@@ -18,25 +18,50 @@
     <section id="pantalla-inicio">
       <label for="selector-tema">Elige un tema:</label>
       <select id="selector-tema"></select>
-      <button id="boton-empezar">Empezar test</button>
-      <button id="boton-fallos" class="secundario">Test de fallos</button>
+
+      <div class="tarjeta">
+        <h2>Modo estudio</h2>
+        <p class="pequeno">10 preguntas. Te corrige cada respuesta al momento y te enseña la explicación.</p>
+        <button id="boton-empezar">Empezar a estudiar</button>
+        <button id="boton-fallos" class="secundario">Estudiar mis fallos</button>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Modo examen</h2>
+        <p class="pequeno">Corrige al final y puntúa como el Sergas: +0,50 por acierto, −0,125 por fallo y 0 en blanco.</p>
+        <label for="selector-cantidad">Número de preguntas:</label>
+        <select id="selector-cantidad">
+          <option value="10">10 preguntas</option>
+          <option value="25" selected>25 preguntas</option>
+          <option value="50">50 preguntas</option>
+          <option value="100">100 preguntas</option>
+        </select>
+        <button id="boton-examen">Empezar examen</button>
+      </div>
+
       <button id="boton-estadisticas" class="secundario">Mis estadísticas</button>
     </section>
 
     <!-- PANTALLA 2: pregunta -->
     <section id="pantalla-pregunta" class="oculto">
       <p id="contador" class="pequeno"></p>
+      <p id="cronometro" class="pequeno oculto"></p>
       <p id="tema-pregunta" class="pequeno"></p>
       <h2 id="enunciado"></h2>
       <div id="opciones"></div>
       <div id="feedback" class="oculto"></div>
       <button id="boton-siguiente" class="oculto">Siguiente</button>
+      <!-- Estos dos botones solo se ven en el modo examen -->
+      <button id="boton-anterior" class="secundario oculto">Anterior</button>
+      <button id="boton-terminar" class="peligro oculto">Terminar examen ahora</button>
     </section>
 
     <!-- PANTALLA 3: resultado final del test -->
     <section id="pantalla-resultado" class="oculto">
-      <h2>Test terminado</h2>
-      <p id="texto-resultado" class="resultado"></p>
+      <h2 id="titulo-resultado">Test terminado</h2>
+      <div id="texto-resultado" class="resultado"></div>
+      <!-- En el modo examen, aquí aparecen las preguntas falladas y en blanco -->
+      <div id="revision"></div>
       <button class="boton-volver">Volver al inicio</button>
     </section>
 

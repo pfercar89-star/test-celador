@@ -14,7 +14,7 @@ App web sencilla para practicar tests de la oposición de celador del Sergas.
 ## Preguntas incluidas
 
 - 5 preguntas de ejemplo.
-- 120 preguntas del examen oficial de celador/a del Sergas (OPE 2022, examen de 2024), en gallego como en el original: 11 de la parte común y 109 de la específica. Las respuestas son las de la plantilla definitiva. No están las anuladas (C9 y E53). Los PDF originales están en la carpeta `examenes/`.
+- 120 preguntas del examen oficial de celador/a del Sergas (OPE 2022, examen de 2024), traducidas al castellano desde el original en gallego: 11 de la parte común y 109 de la específica. Las respuestas son las de la plantilla definitiva. No están las anuladas (C9 y E53). Los PDF originales están en la carpeta `examenes/`.
 
 ## Cómo abrirla
 

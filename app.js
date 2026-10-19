@@ -7,7 +7,7 @@ const PREGUNTAS_POR_TEST = 10;
 const LETRAS = ["A", "B", "C", "D"];
 
 // Tu progreso se guarda en el navegador (localStorage) con estos nombres.
-const CLAVE_FALLOS = "celador_fallos";           // lista de enunciados fallados
+const CLAVE_FALLOS = "celador_fallos";           // lista de preguntas falladas (ver claveDe)
 const CLAVE_ESTADISTICAS = "celador_estadisticas"; // { tema: { aciertos, total } }
 
 // Estado del test que se está haciendo ahora mismo
@@ -77,10 +77,16 @@ function barajar(lista) {
   return copia;
 }
 
-// Lista de temas sin repetir, en orden alfabético
+// Lista de temas sin repetir, en el mismo orden en que aparecen en preguntas.js (el del temario)
 function listaDeTemas() {
   const temas = PREGUNTAS.map(function (p) { return p.tema; });
-  return Array.from(new Set(temas)).sort();
+  return Array.from(new Set(temas));
+}
+
+// Identificador de una pregunta para la lista de fallos.
+// Usa enunciado y opciones porque hay preguntas distintas con el mismo enunciado.
+function claveDe(p) {
+  return p.enunciado + " | " + p.opciones.join(" | ");
 }
 
 // ---------- Pantalla de inicio ----------
@@ -97,8 +103,9 @@ function prepararInicio() {
 }
 
 function preguntasFalladas() {
-  const fallos = leer(CLAVE_FALLOS, []);
-  return PREGUNTAS.filter(function (p) { return fallos.includes(p.enunciado); });
+  const fallos = new Set(leer(CLAVE_FALLOS, []));
+  // Las versiones anteriores guardaban solo el enunciado; también se reconocen
+  return PREGUNTAS.filter(function (p) { return fallos.has(claveDe(p)) || fallos.has(p.enunciado); });
 }
 
 function actualizarBotonFallos() {
@@ -177,8 +184,8 @@ function registrarRespuesta(p, acertada) {
 
   // Si la fallas, entra en la lista de fallos. Si la aciertas, sale de ella.
   let fallos = leer(CLAVE_FALLOS, []);
-  fallos = fallos.filter(function (e) { return e !== p.enunciado; });
-  if (!acertada) fallos.push(p.enunciado);
+  fallos = fallos.filter(function (e) { return e !== claveDe(p) && e !== p.enunciado; });
+  if (!acertada) fallos.push(claveDe(p));
   guardar(CLAVE_FALLOS, fallos);
 }
 
@@ -199,7 +206,10 @@ function siguiente() {
 
 function mostrarEstadisticas() {
   const estadisticas = leer(CLAVE_ESTADISTICAS, {});
-  const temas = Object.keys(estadisticas).sort();
+  // Primero los temas actuales en orden del temario; después, los que ya no existen (de versiones anteriores)
+  const actuales = listaDeTemas().filter(function (t) { return estadisticas[t]; });
+  const antiguos = Object.keys(estadisticas).filter(function (t) { return !actuales.includes(t); }).sort();
+  const temas = actuales.concat(antiguos);
   const zona = $("tabla-estadisticas");
   zona.innerHTML = "";
 

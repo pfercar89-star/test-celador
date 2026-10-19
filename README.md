@@ -13,8 +13,12 @@ App web sencilla para practicar tests de la oposición de celador del Sergas.
 
 ## Preguntas incluidas
 
-- 5 preguntas de ejemplo.
-- 120 preguntas del examen oficial de celador/a del Sergas (OPE 2022, examen de 2024), traducidas al castellano desde el original en gallego: 11 de la parte común y 109 de la específica. Las respuestas son las de la plantilla definitiva. No están las anuladas (C9 y E53). Los PDF originales están en la carpeta `examenes/`.
+1.624 preguntas repartidas en 19 temas, en el orden del temario:
+
+- 1.504 preguntas de práctica.
+- 120 preguntas del examen oficial de celador/a del Sergas (OPE 2022, examen de 2024), traducidas al castellano desde el original en gallego: 11 de la parte común y 109 de la específica. Llevan el campo `origen` y van al final de su tema. Las respuestas son las de la plantilla definitiva. No están las anuladas (C9 y E53). Los PDF originales están en la carpeta `examenes/`.
+
+En `preguntas.js` cada tema empieza con una cabecera en mayúsculas. Para añadir una pregunta a un tema, pégala dentro de su bloque. El selector de la app muestra automáticamente cualquier tema nuevo que escribas.
 
 ## Cómo abrirla
 
@@ -22,7 +26,7 @@ Descarga la carpeta y haz doble clic en `index.html`. Se abre en el navegador; n
 
 ## Cómo añadir una pregunta
 
-Abre `preguntas.js` con un editor de texto, copia un bloque `{ ... },` entero, pégalo antes del `];` final y cambia los textos:
+Abre `preguntas.js` con un editor de texto, copia un bloque `{ ... },` entero, pégalo junto a las demás preguntas de su tema y cambia los textos:
 
 ```js
   {

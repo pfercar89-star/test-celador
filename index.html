@@ -16,6 +16,12 @@
 
     <!-- PANTALLA 1: inicio -->
     <section id="pantalla-inicio">
+      <!-- Aviso que aparece si hace tiempo que no guardas una copia de tu progreso -->
+      <div id="aviso-copia" class="tarjeta aviso oculto">
+        <p id="texto-aviso-copia"></p>
+        <button id="boton-copia-aviso">Guardar copia ahora</button>
+      </div>
+
       <div class="tarjeta">
         <h2>Temario</h2>
         <p class="pequeno">Lee los temas resumidos uno a uno y, al terminar cada uno, haz su test.</p>
@@ -33,9 +39,10 @@
 
       <div class="tarjeta">
         <h2>Modo estudio</h2>
-        <p class="pequeno">10 preguntas. Te corrige cada respuesta al momento y te enseña la explicación.</p>
+        <p class="pequeno">10 preguntas, primero las que aún no has visto. Te corrige cada respuesta al momento y te enseña la explicación.</p>
         <button id="boton-empezar">Empezar a estudiar</button>
-        <button id="boton-fallos" class="secundario">Estudiar mis fallos</button>
+        <button id="boton-fallos" class="secundario">Repaso de hoy</button>
+        <p id="info-repaso" class="pequeno"></p>
       </div>
 
       <div class="tarjeta">
@@ -51,7 +58,7 @@
         <button id="boton-examen">Empezar examen</button>
       </div>
 
-      <button id="boton-estadisticas" class="secundario">Mis estadísticas</button>
+      <button id="boton-estadisticas" class="secundario">📊 Mi progreso y copia de seguridad</button>
     </section>
 
     <!-- PANTALLA 2: pregunta -->
@@ -81,10 +88,25 @@
 
     <!-- PANTALLA 4: estadísticas -->
     <section id="pantalla-estadisticas" class="oculto">
-      <h2>Mis estadísticas</h2>
+      <button class="boton-volver enlace">← Inicio</button>
+      <h2>Mi progreso</h2>
+      <div id="resumen-progreso" class="resumen"></div>
+      <!-- Los temas con peor porcentaje, para saber qué estudiar -->
+      <div id="temas-flojos"></div>
+      <h3 class="bloque-titulo">Por tema</h3>
       <div id="tabla-estadisticas"></div>
-      <button class="boton-volver">Volver al inicio</button>
-      <button id="boton-borrar" class="peligro">Borrar mi progreso</button>
+
+      <h3 class="bloque-titulo">Copia de seguridad</h3>
+      <div class="tarjeta">
+        <p class="pequeno">Tu progreso solo se guarda en este navegador. Guarda una copia de vez en cuando: se descarga un archivo que puedes recuperar en otro móvil o si se borran los datos.</p>
+        <p id="info-copia" class="pequeno"></p>
+        <button id="boton-copia">💾 Guardar copia de mi progreso</button>
+        <button id="boton-recuperar" class="secundario">Recuperar una copia</button>
+        <input id="archivo-copia" type="file" accept="application/json,.json" class="oculto">
+      </div>
+
+      <button class="boton-volver secundario">Volver al inicio</button>
+      <button id="boton-borrar" class="peligro">Borrar todo mi progreso</button>
     </section>
 
     <!-- PANTALLA 5: lista de temas del temario -->
@@ -102,6 +124,7 @@
       <h2 id="lectura-titulo"></h2>
       <p id="lectura-tiempo" class="pequeno"></p>
       <article id="lectura-contenido" class="lectura"></article>
+      <button id="boton-leido" class="secundario">Marcar como leído</button>
       <button id="boton-test-tema">Hacer el test de este tema</button>
       <button id="boton-tema-siguiente" class="secundario">Siguiente tema →</button>
       <button class="boton-ir-temario secundario">Volver al temario</button>

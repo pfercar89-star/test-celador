@@ -17,6 +17,8 @@
 //
 //  Las preguntas están agrupadas por tema, en el orden del temario.
 //  Las que vienen del examen oficial de 2024 llevan "origen" y van al final de su tema.
+//  Las que dependen de la convocatoria 2025 (plazas, fechas, formato) llevan
+//  origen "Convocatoria 2025 (dato que cambiará)": revísalas con cada convocatoria nueva.
 // =====================================================================
 
 const PREGUNTAS = [
@@ -2989,28 +2991,32 @@ const PREGUNTAS = [
     enunciado: "En la última convocatoria de celador del Sergas, los turnos de acceso fueron:",
     opciones: ["Solo libre", "Libre, promoción interna, discapacidad general y discapacidad intelectual", "Libre y concurso de traslados", "Libre e interino"],
     correcta: "B",
-    explicacion: "348 plazas en total. (Convocatoria Sergas (DOG 4/9/2025))"
+    explicacion: "348 plazas en total. (Convocatoria Sergas (DOG 4/9/2025)) Ojo: dato de la convocatoria 2025; compruébalo cuando salga la tuya.",
+    origen: "Convocatoria 2025 (dato que cambiará)"
   },
   {
     tema: "Selección y provisión de plazas",
     enunciado: "¿Cuántas plazas de celador se convocaron en la convocatoria del Sergas publicada en el DOG del 4 de septiembre de 2025?",
     opciones: ["620", "1.980", "135", "348"],
     correcta: "D",
-    explicacion: "135 libre, 174 promoción interna, 10 discapacidad general y 29 discapacidad intelectual. (DOG núm. 170, 4/9/2025)"
+    explicacion: "135 libre, 174 promoción interna, 10 discapacidad general y 29 discapacidad intelectual. (DOG núm. 170, 4/9/2025) Ojo: dato de la convocatoria 2025; compruébalo cuando salga la tuya.",
+    origen: "Convocatoria 2025 (dato que cambiará)"
   },
   {
     tema: "Selección y provisión de plazas",
     enunciado: "En el concurso-oposición del Sergas para celador, la fase de oposición incluye un ejercicio sobre la parte específica con:",
     opciones: ["100 preguntas tipo test (50 teóricas y 50 de supuestos prácticos), en 150 minutos", "Un examen oral", "10 preguntas en 15 minutos", "Una entrevista"],
     correcta: "A",
-    explicacion: "Primer ejercicio, eliminatorio. (Convocatoria Sergas)"
+    explicacion: "Primer ejercicio, eliminatorio. (Convocatoria Sergas) Ojo: dato de la convocatoria 2025; compruébalo cuando salga la tuya.",
+    origen: "Convocatoria 2025 (dato que cambiará)"
   },
   {
     tema: "Selección y provisión de plazas",
     enunciado: "El ejercicio de la parte común en el concurso-oposición de celador del Sergas consiste en:",
     opciones: ["100 preguntas", "Un caso práctico", "10 preguntas tipo test sobre los temas 1 a 8 de la parte común, en 15 minutos", "Una redacción"],
     correcta: "C",
-    explicacion: "Obligatorio pero no eliminatorio. (Convocatoria Sergas)"
+    explicacion: "Obligatorio pero no eliminatorio. (Convocatoria Sergas) Ojo: dato de la convocatoria 2025; compruébalo cuando salga la tuya.",
+    origen: "Convocatoria 2025 (dato que cambiará)"
   },
   {
     tema: "Selección y provisión de plazas",
@@ -3241,7 +3247,8 @@ const PREGUNTAS = [
     enunciado: "En la convocatoria de celador del Sergas de 2025, el examen está convocado en:",
     opciones: ["Santiago, en el Parlamento", "Silleda (Pontevedra), en el recinto de la Feira Internacional de Galicia ABANCA", "Cada hospital", "Online"],
     correcta: "B",
-    explicacion: "El 14 de noviembre de 2026. (DOG núm. 197, 16/10/2026)"
+    explicacion: "El 14 de noviembre de 2026. (DOG núm. 197, 16/10/2026) Ojo: dato de la convocatoria 2025; compruébalo cuando salga la tuya.",
+    origen: "Convocatoria 2025 (dato que cambiará)"
   },
   {
     tema: "Selección y provisión de plazas",

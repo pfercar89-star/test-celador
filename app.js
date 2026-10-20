@@ -12,8 +12,18 @@ const PUNTOS_FALLO = -0.125;
 const MINUTOS_POR_PREGUNTA_REAL = 150 / 110;   // el examen real: 150 minutos para 110 preguntas
 
 // Tu progreso se guarda en el navegador (localStorage) con estos nombres.
-const CLAVE_FALLOS = "celador_fallos";           // lista de preguntas falladas (ver claveDe)
 const CLAVE_ESTADISTICAS = "celador_estadisticas"; // { tema: { aciertos, total } }
+const CLAVE_REPASO = "celador_repaso";             // preguntas que repasar: { clave: { caja, proxima: "AAAA-MM-DD" } }
+const CLAVE_VISTAS = "celador_vistas";             // preguntas respondidas al menos una vez (ver claveDe)
+const CLAVE_LEIDOS = "celador_leidos";             // ids de los temas del temario marcados como leídos
+const CLAVE_ULTIMA_COPIA = "celador_ultima_copia"; // fecha de la última copia de seguridad
+const CLAVE_FALLOS = "celador_fallos";             // versión anterior de la lista de fallos (solo para pasarla al repaso)
+
+// Repaso espaciado: días que pasan hasta volver a preguntar una pregunta según su "caja".
+// Al fallarla vuelve a la caja 0 (repasar hoy). Cada acierto la pasa a la siguiente caja;
+// si se acierta en la última (a los 30 días), se da por dominada y sale del repaso.
+const DIAS_REPASO = [0, 1, 3, 7, 15, 30];
+const DIAS_AVISO_COPIA = 14;   // días sin copia de seguridad a partir de los que se avisa en el inicio
 
 // Estado del test que se está haciendo ahora mismo
 let modo = "estudio";        // "estudio" (corrige al momento) o "examen" (corrige al final)
@@ -114,10 +124,36 @@ function prepararInicio() {
   actualizarBotonFallos();
 }
 
-function preguntasFalladas() {
-  const fallos = new Set(leer(CLAVE_FALLOS, []));
-  // Las versiones anteriores guardaban solo el enunciado; también se reconocen
-  return PREGUNTAS.filter(function (p) { return fallos.has(claveDe(p)) || fallos.has(p.enunciado); });
+// ----- Repaso espaciado de fallos -----
+
+// Fecha de hoy (o dentro de unos días) como texto "AAAA-MM-DD", que se puede comparar directamente
+function fecha(diasDesdeHoy) {
+  const d = new Date();
+  d.setDate(d.getDate() + (diasDesdeHoy || 0));
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+function leerRepaso() {
+  const repaso = leer(CLAVE_REPASO, null);
+  if (repaso) return repaso;
+  // Primera vez con esta versión: la lista de fallos antigua pasa al repaso, para repasar hoy
+  const antiguos = new Set(leer(CLAVE_FALLOS, []));
+  const nuevo = {};
+  PREGUNTAS.forEach(function (p) {
+    if (antiguos.has(claveDe(p)) || antiguos.has(p.enunciado)) nuevo[claveDe(p)] = { caja: 0, proxima: fecha() };
+  });
+  guardar(CLAVE_REPASO, nuevo);
+  return nuevo;
+}
+
+// Preguntas en repaso; con soloHoy, solo las que toca repasar hoy (o que se quedaron atrasadas)
+function preguntasEnRepaso(soloHoy) {
+  const repaso = leerRepaso();
+  const hoy = fecha();
+  return PREGUNTAS.filter(function (p) {
+    const r = repaso[claveDe(p)];
+    return r && (!soloHoy || r.proxima <= hoy);
+  });
 }
 
 // Preguntas del tema elegido en el selector (o todas)
@@ -127,9 +163,21 @@ function preguntasDelTema() {
 }
 
 function actualizarBotonFallos() {
-  const cuantos = preguntasFalladas().length;
-  $("boton-fallos").textContent = "Estudiar mis fallos (" + cuantos + ")";
-  $("boton-fallos").disabled = cuantos === 0;
+  const paraHoy = preguntasEnRepaso(true).length;
+  const total = preguntasEnRepaso(false).length;
+  $("boton-fallos").textContent = paraHoy ? "Repaso de hoy (" + paraHoy + " preguntas)" : "Repaso de hoy: nada pendiente ✓";
+  $("boton-fallos").disabled = paraHoy === 0;
+  $("info-repaso").textContent = total
+    ? total + " preguntas falladas en seguimiento. Cada vez que aciertas una, vuelve a salir más tarde: a los 1, 3, 7, 15 y 30 días."
+    : "Las preguntas que falles aparecerán aquí para repasarlas los días siguientes.";
+}
+
+// Para estudiar: primero las preguntas que aún no has respondido nunca, al azar
+function priorizarNoVistas(preguntas, cantidad) {
+  const vistas = new Set(leer(CLAVE_VISTAS, []));
+  const nuevas = preguntas.filter(function (p) { return !vistas.has(claveDe(p)); });
+  const yaVistas = preguntas.filter(function (p) { return vistas.has(claveDe(p)); });
+  return barajar(nuevas).concat(barajar(yaVistas)).slice(0, cantidad);
 }
 
 // ---------- El test (los dos modos) ----------
@@ -298,7 +346,8 @@ function corregirExamen() {
     const elegida = respuestasExamen[i];
     if (elegida === null) {
       enBlanco++;
-      anadirAFallos(p);   // en blanco: no cuenta en estadísticas, pero va a tus fallos para repasarla
+      marcarVista(p);
+      anadirAFallos(p);   // en blanco: no cuenta en estadísticas, pero va al repaso
     } else {
       const acertada = elegida === p.correcta;
       if (acertada) aciertos++; else fallos++;
@@ -375,21 +424,37 @@ function registrarRespuesta(p, acertada) {
   if (acertada) estadisticas[p.tema].aciertos++;
   guardar(CLAVE_ESTADISTICAS, estadisticas);
 
-  // Si la fallas, entra en la lista de fallos. Si la aciertas, sale de ella.
-  if (acertada) quitarDeFallos(p);
+  marcarVista(p);
+  // Si la fallas, entra en el repaso. Si la aciertas y estaba en repaso, avanza de caja.
+  if (acertada) acertadaEnRepaso(p);
   else anadirAFallos(p);
 }
 
-function quitarDeFallos(p) {
-  const fallos = leer(CLAVE_FALLOS, []).filter(function (e) { return e !== claveDe(p) && e !== p.enunciado; });
-  guardar(CLAVE_FALLOS, fallos);
+function marcarVista(p) {
+  const vistas = leer(CLAVE_VISTAS, []);
+  const clave = claveDe(p);
+  if (!vistas.includes(clave)) {
+    vistas.push(clave);
+    guardar(CLAVE_VISTAS, vistas);
+  }
 }
 
+// Fallada o en blanco: vuelve a la primera caja y toca repasarla hoy mismo
 function anadirAFallos(p) {
-  quitarDeFallos(p);
-  const fallos = leer(CLAVE_FALLOS, []);
-  fallos.push(claveDe(p));
-  guardar(CLAVE_FALLOS, fallos);
+  const repaso = leerRepaso();
+  repaso[claveDe(p)] = { caja: 0, proxima: fecha() };
+  guardar(CLAVE_REPASO, repaso);
+}
+
+// Acertada: si estaba en repaso y le tocaba, pasa a la siguiente caja (o se da por dominada)
+function acertadaEnRepaso(p) {
+  const repaso = leerRepaso();
+  const actual = repaso[claveDe(p)];
+  if (!actual || actual.proxima > fecha()) return;   // si aún no le tocaba, no adelanta el calendario
+  const caja = actual.caja + 1;
+  if (caja >= DIAS_REPASO.length) delete repaso[claveDe(p)];
+  else repaso[claveDe(p)] = { caja: caja, proxima: fecha(DIAS_REPASO[caja]) };
+  guardar(CLAVE_REPASO, repaso);
 }
 
 function siguiente() {
@@ -411,54 +476,183 @@ function siguiente() {
   }
 }
 
-// ---------- Estadísticas ----------
+// ---------- Mi progreso ----------
 
 function mostrarEstadisticas() {
   const estadisticas = leer(CLAVE_ESTADISTICAS, {});
-  // Primero los temas actuales en orden del temario; después, los que ya no existen (de versiones anteriores)
-  const actuales = listaDeTemas().filter(function (t) { return estadisticas[t]; });
-  const antiguos = Object.keys(estadisticas).filter(function (t) { return !actuales.includes(t); }).sort();
-  const temas = actuales.concat(antiguos);
+  const vistas = new Set(leer(CLAVE_VISTAS, []));
+  const leidos = leer(CLAVE_LEIDOS, []);
+
+  // Resumen general
+  let aciertosTotales = 0, respuestasTotales = 0;
+  Object.keys(estadisticas).forEach(function (t) {
+    aciertosTotales += estadisticas[t].aciertos;
+    respuestasTotales += estadisticas[t].total;
+  });
+  const vistasActuales = PREGUNTAS.filter(function (p) { return vistas.has(claveDe(p)); }).length;
+  const resumen = $("resumen-progreso");
+  resumen.innerHTML = "";
+  lineaConBarra(resumen, "Preguntas vistas: " + vistasActuales + " de " + PREGUNTAS.length, vistasActuales / PREGUNTAS.length);
+  if (hayTemario()) lineaConBarra(resumen, "Temas del temario leídos: " + leidos.length + " de " + TEMARIO.length, leidos.length / TEMARIO.length);
+  parrafo(resumen, "Aciertos: " + (respuestasTotales ? Math.round((aciertosTotales / respuestasTotales) * 100) : 0) + " % (" + aciertosTotales + " de " + respuestasTotales + " respuestas)");
+  parrafo(resumen, "En repaso: " + preguntasEnRepaso(false).length + " preguntas (" + preguntasEnRepaso(true).length + " para hoy)");
+
+  // Temas más flojos: los de peor porcentaje, con al menos 10 respuestas
+  const flojos = $("temas-flojos");
+  flojos.innerHTML = "";
+  const candidatos = listaDeTemas().filter(function (t) { return estadisticas[t] && estadisticas[t].total >= 10; })
+    .map(function (t) { return { tema: t, porcentaje: Math.round((estadisticas[t].aciertos / estadisticas[t].total) * 100) }; })
+    .sort(function (a, b) { return a.porcentaje - b.porcentaje; })
+    .slice(0, 3);
+  if (candidatos.length) {
+    const titulo = document.createElement("h3");
+    titulo.className = "bloque-titulo";
+    titulo.textContent = "Tus temas más flojos";
+    flojos.appendChild(titulo);
+    candidatos.forEach(function (c) {
+      const boton = document.createElement("button");
+      boton.className = "tema-flojo";
+      [["", c.tema + " · " + c.porcentaje + " % de aciertos"], ["info-tema", "Tocar para practicar 10 preguntas de este tema"]].forEach(function (parte) {
+        const span = document.createElement("span");
+        span.className = parte[0];
+        span.textContent = parte[1];
+        boton.appendChild(span);
+      });
+      boton.addEventListener("click", function () {
+        const delTema = PREGUNTAS.filter(function (p) { return p.tema === c.tema; });
+        empezarTest(priorizarNoVistas(delTema, PREGUNTAS_POR_TEST), "estudio", PREGUNTAS_POR_TEST, {
+          texto: "Volver a mi progreso",
+          accion: mostrarEstadisticas
+        });
+      });
+      flojos.appendChild(boton);
+    });
+  }
+
+  // Tabla por tema: preguntas vistas y porcentaje de aciertos.
+  // Al final, los temas que ya no existen (de versiones anteriores), si los hay.
+  const antiguos = Object.keys(estadisticas).filter(function (t) { return !listaDeTemas().includes(t); }).sort();
   const zona = $("tabla-estadisticas");
   zona.innerHTML = "";
-
-  if (temas.length === 0) {
-    zona.textContent = "Todavía no has respondido ninguna pregunta.";
-  } else {
-    const tabla = document.createElement("table");
-    tabla.innerHTML = '<tr><th>Tema</th><th class="numero">Aciertos</th><th class="numero">%</th></tr>';
-    let aciertosTotales = 0, respuestasTotales = 0;
-    temas.forEach(function (tema) {
-      const d = estadisticas[tema];
-      aciertosTotales += d.aciertos;
-      respuestasTotales += d.total;
-      tabla.appendChild(filaEstadistica(tema, d.aciertos, d.total));
+  const tabla = document.createElement("table");
+  tabla.innerHTML = '<tr><th>Tema</th><th class="numero">Vistas</th><th class="numero">Aciertos</th></tr>';
+  listaDeTemas().concat(antiguos).forEach(function (tema) {
+    const delTema = PREGUNTAS.filter(function (p) { return p.tema === tema; });
+    const vistasTema = delTema.filter(function (p) { return vistas.has(claveDe(p)); }).length;
+    const d = estadisticas[tema];
+    const fila = document.createElement("tr");
+    [
+      tema + (temaLeido(tema) ? " ✓" : ""),
+      delTema.length ? vistasTema + "/" + delTema.length : "–",
+      d && d.total ? Math.round((d.aciertos / d.total) * 100) + " %" : "–"
+    ].forEach(function (texto, i) {
+      const celda = document.createElement("td");
+      celda.textContent = texto;
+      if (i > 0) celda.className = "numero";
+      fila.appendChild(celda);
     });
-    const filaTotal = filaEstadistica("TOTAL", aciertosTotales, respuestasTotales);
-    filaTotal.style.fontWeight = "bold";
-    tabla.appendChild(filaTotal);
-    zona.appendChild(tabla);
-  }
+    tabla.appendChild(fila);
+  });
+  zona.appendChild(tabla);
+  parrafo(zona, "✓ = has marcado como leído el tema del temario correspondiente.").className = "pequeno";
+
+  const ultima = leer(CLAVE_ULTIMA_COPIA, null);
+  $("info-copia").textContent = ultima ? "Última copia guardada: " + fechaLegible(ultima) + "." : "Todavía no has guardado ninguna copia.";
   mostrarPantalla("pantalla-estadisticas");
 }
 
-function filaEstadistica(nombre, aciertos, total) {
-  const fila = document.createElement("tr");
-  const porcentaje = total ? Math.round((aciertos / total) * 100) : 0;
-  [nombre, aciertos + " / " + total, porcentaje + "%"].forEach(function (texto, i) {
-    const celda = document.createElement("td");
-    celda.textContent = texto;
-    if (i > 0) celda.className = "numero";
-    fila.appendChild(celda);
-  });
-  return fila;
+function parrafo(contenedor, texto) {
+  const p = document.createElement("p");
+  p.textContent = texto;
+  contenedor.appendChild(p);
+  return p;
+}
+
+function lineaConBarra(contenedor, texto, proporcion) {
+  parrafo(contenedor, texto);
+  const barra = document.createElement("div");
+  barra.className = "barra";
+  const relleno = document.createElement("span");
+  relleno.style.width = Math.round(Math.min(1, proporcion) * 100) + "%";
+  barra.appendChild(relleno);
+  contenedor.appendChild(barra);
+}
+
+// "2026-10-20" → "20/10/2026"
+function fechaLegible(texto) {
+  const partes = texto.split("-");
+  return partes[2] + "/" + partes[1] + "/" + partes[0];
+}
+
+// ¿Está marcado como leído el tema del temario que usa este tema de preguntas?
+function temaLeido(temaPreguntas) {
+  if (!hayTemario()) return false;
+  const leidos = leer(CLAVE_LEIDOS, []);
+  return TEMARIO.some(function (t) { return t.temaTest === temaPreguntas && leidos.includes(t.id); });
 }
 
 function borrarProgreso() {
-  if (!confirm("¿Seguro que quieres borrar tus estadísticas y tu lista de fallos?")) return;
-  guardar(CLAVE_ESTADISTICAS, {});
-  guardar(CLAVE_FALLOS, []);
+  if (!confirm("¿Seguro que quieres borrar TODO tu progreso: estadísticas, repaso, preguntas vistas y temas leídos? Si no tienes una copia guardada, no se podrá recuperar.")) return;
+  [CLAVE_ESTADISTICAS, CLAVE_REPASO, CLAVE_VISTAS, CLAVE_LEIDOS, CLAVE_FALLOS].forEach(function (clave) {
+    try { localStorage.removeItem(clave); } catch (e) { /* sin almacenamiento: nada que borrar */ }
+  });
+  guardar(CLAVE_REPASO, {});
   mostrarEstadisticas();
+}
+
+// ---------- Copia de seguridad ----------
+
+const CLAVES_COPIA = [CLAVE_ESTADISTICAS, CLAVE_REPASO, CLAVE_VISTAS, CLAVE_LEIDOS];
+
+// Descarga un archivo con todo el progreso
+function guardarCopia() {
+  const copia = { app: "test-celador", version: 1, fecha: fecha(), datos: {} };
+  CLAVES_COPIA.forEach(function (clave) { copia.datos[clave] = leer(clave, null); });
+  const archivo = new Blob([JSON.stringify(copia)], { type: "application/json" });
+  const enlace = document.createElement("a");
+  enlace.href = URL.createObjectURL(archivo);
+  enlace.download = "progreso-celador-" + fecha() + ".json";
+  document.body.appendChild(enlace);
+  enlace.click();
+  enlace.remove();
+  setTimeout(function () { URL.revokeObjectURL(enlace.href); }, 2000);
+  guardar(CLAVE_ULTIMA_COPIA, fecha());
+  actualizarAvisoCopia();
+  if (!$("pantalla-estadisticas").classList.contains("oculto")) mostrarEstadisticas();
+}
+
+// Lee un archivo de copia elegido por el usuario y recupera el progreso
+function recuperarCopia(archivo) {
+  const lector = new FileReader();
+  lector.onload = function () {
+    let copia;
+    try { copia = JSON.parse(lector.result); } catch (e) { copia = null; }
+    if (!copia || copia.app !== "test-celador" || !copia.datos) {
+      alert("Ese archivo no es una copia de esta app. Elige el archivo progreso-celador-….json que descargaste.");
+      return;
+    }
+    if (!confirm("¿Recuperar la copia del " + fechaLegible(copia.fecha) + "? Sustituirá el progreso que tienes ahora en este navegador.")) return;
+    CLAVES_COPIA.forEach(function (clave) {
+      if (copia.datos[clave] !== null && copia.datos[clave] !== undefined) guardar(clave, copia.datos[clave]);
+    });
+    guardar(CLAVE_ULTIMA_COPIA, copia.fecha);
+    alert("Copia recuperada.");
+    actualizarBotonFallos();
+    actualizarAvisoCopia();
+    mostrarEstadisticas();
+  };
+  lector.readAsText(archivo);
+}
+
+// En el inicio, avisa si hay progreso y hace más de DIAS_AVISO_COPIA días que no se guarda una copia
+function actualizarAvisoCopia() {
+  const ultima = leer(CLAVE_ULTIMA_COPIA, null);
+  const hayProgreso = leer(CLAVE_VISTAS, []).length > 0;
+  const atrasada = !ultima || ultima <= fecha(-DIAS_AVISO_COPIA);
+  $("aviso-copia").classList.toggle("oculto", !(hayProgreso && atrasada));
+  $("texto-aviso-copia").textContent = ultima
+    ? "💾 Tu última copia de seguridad es del " + fechaLegible(ultima) + ". Guarda otra para no perder tu progreso."
+    : "💾 Aún no has guardado ninguna copia de tu progreso. Si cambias de móvil o se borran los datos del navegador, lo perderías.";
 }
 
 // ---------- Temario ----------
@@ -485,7 +679,7 @@ function mostrarListaTemario() {
       [
         ["numero-tema", "Tema " + t.numero],
         ["titulo-tema", t.titulo],
-        ["info-tema", minutosDeLectura(t) + " min de lectura · " + preguntasDeTemaTest(t).length + " preguntas de test"]
+        ["info-tema", (leer(CLAVE_LEIDOS, []).includes(t.id) ? "✓ Leído · " : "") + minutosDeLectura(t) + " min de lectura · " + preguntasDeTemaTest(t).length + " preguntas de test"]
       ].forEach(function (parte) {
         const span = document.createElement("span");
         span.className = parte[0];
@@ -519,7 +713,22 @@ function abrirTema(i) {
   $("boton-test-tema").textContent = "Hacer el test de este tema (" + Math.min(cuantas, PREGUNTAS_POR_TEST) + " preguntas)";
   $("boton-test-tema").classList.toggle("oculto", cuantas === 0);
   $("boton-tema-siguiente").classList.toggle("oculto", i === TEMARIO.length - 1);
+  pintarBotonLeido();
   mostrarPantalla("pantalla-lectura");
+}
+
+function pintarBotonLeido() {
+  const leido = leer(CLAVE_LEIDOS, []).includes(TEMARIO[temaAbierto].id);
+  $("boton-leido").textContent = leido ? "✓ Leído (tocar para desmarcar)" : "Marcar como leído";
+  $("boton-leido").classList.toggle("leido", leido);
+}
+
+function cambiarLeido() {
+  const id = TEMARIO[temaAbierto].id;
+  let leidos = leer(CLAVE_LEIDOS, []);
+  leidos = leidos.includes(id) ? leidos.filter(function (x) { return x !== id; }) : leidos.concat(id);
+  guardar(CLAVE_LEIDOS, leidos);
+  pintarBotonLeido();
 }
 
 // ----- Convertir el texto Markdown del temario en HTML -----
@@ -716,6 +925,7 @@ function volverAlInicio() {
   if (cronometro && !confirm("¿Salir del examen? No se guardará nada de este examen.")) return;
   pararCronometro();
   actualizarBotonFallos();
+  actualizarAvisoCopia();
   mostrarPantalla("pantalla-inicio");
 }
 
@@ -733,15 +943,24 @@ if (problemas.length > 0) {
   $("pantalla-inicio").classList.add("oculto");
 } else {
   prepararInicio();
+  actualizarAvisoCopia();
 
   $("boton-empezar").addEventListener("click", function () {
-    empezarTest(preguntasDelTema(), "estudio", PREGUNTAS_POR_TEST);
+    empezarTest(priorizarNoVistas(preguntasDelTema(), PREGUNTAS_POR_TEST), "estudio", PREGUNTAS_POR_TEST);
   });
   $("boton-examen").addEventListener("click", function () {
     empezarTest(preguntasDelTema(), "examen", Number($("selector-cantidad").value));
   });
   $("boton-fallos").addEventListener("click", function () {
-    empezarTest(preguntasFalladas(), "estudio", PREGUNTAS_POR_TEST);
+    empezarTest(preguntasEnRepaso(true), "estudio", PREGUNTAS_POR_TEST);
+  });
+  $("boton-leido").addEventListener("click", cambiarLeido);
+  $("boton-copia").addEventListener("click", guardarCopia);
+  $("boton-copia-aviso").addEventListener("click", guardarCopia);
+  $("boton-recuperar").addEventListener("click", function () { $("archivo-copia").click(); });
+  $("archivo-copia").addEventListener("change", function () {
+    if (this.files[0]) recuperarCopia(this.files[0]);
+    this.value = "";   // permite volver a elegir el mismo archivo
   });
   $("boton-anterior").addEventListener("click", anterior);
   if (hayTemario()) {

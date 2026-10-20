@@ -5242,16 +5242,16 @@ const PREGUNTAS = [
     origen: "Examen 2024 · Específico E31",
     enunciado: "¿Cuál de las siguientes es una función del celador?",
     opciones: ["Movilizar al paciente dentro de su medio teniendo en cuenta su estado y la posición anatómica recomendada.", "Acompañar a las madres y recién nacidos a los servicios y plantas que les sean asignados.", "Aplicar técnicas de oxigenoterapia.", "Ayudarán a las enfermeras y ayudantes de planta al movimiento y traslado de los enfermos encamados que requieran un trato especial en razón de sus dolencias para hacerles la cama."],
-    correcta: "A",
-    explicacion: "Según la plantilla oficial, la respuesta es la A: movilizar al paciente según su estado y la posición anatómica recomendada."
+    correcta: "D",
+    explicacion: "Es literal del art. 14.2.13.ª del Estatuto de Personal No Sanitario de 1971: los celadores ayudan a enfermeras y ayudantes de planta a mover y trasladar a los encamados que necesitan un trato especial para hacerles las camas. Aplicar oxigenoterapia o valorar el estado y la posición del paciente es tarea sanitaria."
   },
   {
     tema: "Funciones del celador",
     origen: "Examen 2024 · Específico E32",
     enunciado: "Según el Estatuto de Personal Sanitario no Facultativo de 26 de abril de 1973, ¿a quién corresponde atender a la higiene de los enfermos graves y hacer sus camas con la ayuda de las auxiliares?",
     opciones: ["A los enfermeros y ayudantes técnicos sanitarios.", "A las auxiliares con ayuda del celador.", "A las enfermeras con ayuda de las auxiliares, cuando se trate de pacientes femeninas.", "Al celador en caso de pacientes masculinos, siguiendo las instrucciones de la supervisora."],
-    correcta: "B",
-    explicacion: "Según la plantilla oficial, corresponde a las auxiliares con la ayuda del celador."
+    correcta: "A",
+    explicacion: "Art. 59.7 del Estatuto de 1973: atender a la higiene de los enfermos graves y hacer sus camas con la ayuda de las Auxiliares de Clínica es función de las Enfermeras y ATS. El celador solo asea excepcionalmente a enfermos masculinos, por indicación de la supervisora."
   },
   {
     tema: "Funciones del celador",
@@ -5315,7 +5315,7 @@ const PREGUNTAS = [
     enunciado: "Antonio es un celador que trabaja de forma eventual desde el año 2022. Con su primer contrato le entregaron sus uniformes; pasado el tiempo, Antonio duda de cuánto tiempo tiene que transcurrir, de forma ordinaria, para que le entreguen un uniforme nuevo. ¿Cuál sería este plazo?",
     opciones: ["365 días de trabajo efectivo.", "464 jornadas de trabajo efectivo.", "720 días de trabajo efectivo.", "486 días de trabajo efectivo."],
     correcta: "B",
-    explicacion: "Según la respuesta oficial, el uniforme se renueva cada 464 jornadas de trabajo efectivo."
+    explicacion: "Según la respuesta oficial, el uniforme se renueva cada 464 jornadas de trabajo efectivo. El Estatuto de 1971 (art. 62) solo dice que la duración de las prendas la fija la Delegación General; la cifra no aparece en él."
   },
   {
     tema: "Funciones del celador",
@@ -5362,8 +5362,8 @@ const PREGUNTAS = [
     origen: "Examen 2024 · Específico E102",
     enunciado: "Terminado el horario de visitas, aparece una persona que le enseña la tarjeta identificativa de personal de una institución sanitaria dependiente del SERGAS. Le dice que quiere entrar a ver a un amigo que está ingresado. ¿Qué tendría que hacer usted?",
     opciones: ["Dejarlo pasar porque es compañero.", "Dejarlo pasar porque la tarjeta identificativa de personal del SERGAS es válida como pase de visita.", "Explicarle que esa tarjeta no es válida como pase de visita.", "Informarle educadamente del horario de visitas, instándole a venir otro día."],
-    correcta: "C",
-    explicacion: "La tarjeta de empleado del Sergas no sirve como pase de visita."
+    correcta: "D",
+    explicacion: "La tarjeta de empleado del Sergas no sirve como pase de visita. Fuera del horario, lo correcto es informarle con educación del horario de visitas e invitarle a volver otro día."
   },
   {
     tema: "Funciones del celador",
@@ -7752,14 +7752,14 @@ const PREGUNTAS = [
     enunciado: "Los restos humanos procedentes de una amputación se trasladan:",
     opciones: ["A la familia en una bolsa", "Con la basura común", "Identificados y según el protocolo del centro y la normativa de policía sanitaria mortuoria", "Al mortuorio sin identificar"],
     correcta: "C",
-    explicacion: "Requieren tratamiento específico. (Policía sanitaria mortuoria (Galicia: Decreto 151/2014))"
+    explicacion: "Requieren tratamiento específico. (Sanidad mortuoria (Galicia: Decreto 129/2023))"
   },
   {
     tema: "Fallecidos y autopsias",
     enunciado: "En Galicia, la norma que regula la policía sanitaria mortuoria es:",
-    opciones: ["La Ley 3/2001", "La Ley 8/2008", "El Decreto 151/2014", "El Decreto 206/2005"],
+    opciones: ["La Ley 3/2001", "La Ley 8/2008", "El Decreto 129/2023", "El Decreto 206/2005"],
     correcta: "C",
-    explicacion: "Regula el tratamiento de cadáveres, traslados, tanatorios y restos humanos. (Decreto 151/2014 (Galicia))"
+    explicacion: "Decreto 129/2023, de 31 de agosto, de sanidad mortuoria de Galicia, en vigor desde el 18/10/2023. Sustituye al Decreto 151/2014. Regula cadáveres, traslados, tanatorios y restos humanos."
   },
   {
     tema: "Fallecidos y autopsias",
@@ -7795,7 +7795,7 @@ const PREGUNTAS = [
     enunciado: "Señale la temperatura a la que tiene que estar la cámara de refrigeración para la conservación de un cadáver:",
     opciones: ["Entre -3 °C y 5 °C.", "Entre -2 °C y 6 °C.", "Entre -2 °C y 5 °C.", "Entre -2 °C y 4 °C."],
     correcta: "C",
-    explicacion: "Según la respuesta oficial, la cámara de refrigeración de cadáveres debe estar entre -2 °C y 5 °C."
+    explicacion: "Art. 3.y del Decreto 129/2023 de sanidad mortuoria de Galicia: la refrigeración se hace a una temperatura entre -2 °C y 5 °C. La congelación, a -18 °C o menos."
   },
   {
     tema: "Fallecidos y autopsias",
@@ -7843,7 +7843,7 @@ const PREGUNTAS = [
     enunciado: "La celadora de la unidad de cuidados paliativos está ayudando a preparar un cadáver para llevarlo al mortuorio. Un familiar comenta que le van a realizar una conservación química. Indique la respuesta incorrecta:",
     opciones: ["Será obligatoria cuando el cadáver vaya a ser expuesto en un lugar público hasta un máximo de 72 horas.", "Puede realizarla un profesional graduado en Medicina.", "Se realiza en salas de tanatopraxia.", "Se puede efectuar una vez transcurridas 8 horas desde el fallecimiento."],
     correcta: "A",
-    explicacion: "Según la respuesta oficial, es incorrecta la A, la que hace obligatoria la conservación para exponer el cadáver hasta 72 horas."
+    explicacion: "Art. 10.c del Decreto 129/2023: la conservación transitoria es obligatoria cuando el cadáver se expone en un lugar público hasta un máximo de 48 horas, no 72. Lo de las 8 horas es correcto (art. 8.1)."
   },
   {
     tema: "Fallecidos y autopsias",
@@ -8263,16 +8263,16 @@ const PREGUNTAS = [
     origen: "Examen 2024 · Específico E34",
     enunciado: "Señale la opción correcta respecto al inventario permanente:",
     opciones: ["El inventario permanente se hace una vez al año.", "El recuento del inventario permanente lo hace el celador de suministros.", "El inventario permanente se hace mediante una aplicación informática.", "El inventario permanente se realiza sobre pequeñas cantidades de producto."],
-    correcta: "B",
-    explicacion: "Según la plantilla oficial, el recuento del inventario permanente lo hace el celador de suministros."
+    correcta: "C",
+    explicacion: "El inventario permanente registra cada entrada y salida en el momento en que se produce, con una aplicación informática; así se conocen las existencias en todo momento. El que se hace una vez al año es el inventario periódico."
   },
   {
     tema: "Suministros y almacén",
     origen: "Examen 2024 · Específico E49",
     enunciado: "Señale la opción correcta en relación con el uso de la transpaleta:",
     opciones: ["Si se encuentra en un pasillo con gente caminando, usted tiene preferencia por llevar la transpaleta.", "Entra en el ascensor tirando de la transpaleta.", "Al bajar una rampa bastante empinada, se colocará detrás de la transpaleta.", "Solo cuando la carga descanse sobre el chasis se puede conducir la transpaleta."],
-    correcta: "B",
-    explicacion: "En el ascensor se entra tirando de la transpaleta. Los peatones tienen preferencia y en las rampas de bajada se va por delante."
+    correcta: "D",
+    explicacion: "La transpaleta solo se conduce con la carga bien asentada sobre el chasis (las horquillas). Según la plantilla oficial, las demás opciones no son correctas: tampoco la de entrar en el ascensor tirando de ella."
   },
   {
     tema: "Suministros y almacén",

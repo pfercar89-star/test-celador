@@ -26,12 +26,12 @@ const CONFLICTIVOS = [
     titulo: "¿Quién amortaja? Planta frente a sala de autopsias",
     tema: "Fallecidos y autopsias",
     preguntas: ["E105"],
-    contenido: "- **En la planta:** amortaja **enfermería** y el celador **ayuda**; el **traslado al mortuorio** es del celador (art. 14.2 del Estatuto de 1971). Es lo que dicen tu temario y tus preguntas.\n- **En la sala de autopsias:** al **terminar la autopsia**, el celador **recompone el cadáver y lo vuelve a amortajar**. Por eso en la E105 la respuesta oficial es *Todas son incorrectas*.\n- **Para el examen:** fíjate en **dónde** sitúa la pregunta la escena. La opción que aplica la regla de la planta a la sala de autopsias es la trampa.",
+    contenido: "- **En la planta (art. 14.2.19.ª del Estatuto de 1971, literal):** *Ayudarán a las Enfermeras o personas encargadas a amortajar a los enfermos fallecidos, corriendo a su cargo el traslado de los cadáveres al mortuorio.* Es lo que dicen tu temario y tus preguntas.\n- **En la sala de autopsias (art. 14.2.20.ª):** el celador ayuda en las funciones auxiliares *que no requieran por su parte hacer uso de instrumental alguno sobre el cadáver*, y limpia la mesa y la sala. Volver a amortajar el cadáver al **terminar la autopsia** es una de esas tareas sin instrumental, como recogen los manuales. Por eso en la E105 la respuesta oficial es *Todas son incorrectas*.\n- **Para el examen:** fíjate en **dónde** sitúa la pregunta la escena. La opción que aplica la regla de la planta a la sala de autopsias es la trampa.",
     fuentes: [
+      { titulo: "BOE 22/7/1971: Estatuto de Personal No Sanitario (art. 14.2, funciones del celador)", url: "https://www.boe.es/boe/dias/1971/07/22/pdfs/A12015-12024.pdf" },
       { titulo: "Ocronos: Funciones del celador ante un éxitus, en el mortuorio y en la sala de autopsias", url: "https://revistamedica.com/funciones-celador-exitus-mortuorio-autopsias/" },
       { titulo: "Ocronos: El celador en la sala de autopsias: actuación y prevención", url: "https://revistamedica.com/celador-autopsias-actuacion-prevencion/" },
-      { titulo: "Congreso SICEPA: Funciones del celador en sala de autopsias", url: "https://congresosicepa.com/funciones-celador-sala-de-autopsias/" },
-      { titulo: "CGT Sanidad: Funciones del celador (art. 14.2 del Estatuto de 1971)", url: "https://www.cgtsanidadlpa.org/f/opes/celador/temas/tema_2.pdf" }
+      { titulo: "Congreso SICEPA: Funciones del celador en sala de autopsias", url: "https://congresosicepa.com/funciones-celador-sala-de-autopsias/" }
     ]
   },
   {
@@ -40,9 +40,9 @@ const CONFLICTIVOS = [
     titulo: "¿El celador instrumenta en las autopsias?",
     tema: "Fallecidos y autopsias",
     preguntas: ["E71"],
-    contenido: "- **Norma:** el celador ayuda en las autopsias en lo que **no requiera usar instrumental sobre el cadáver** (art. 14.2). Tu temario lo resalta como trampa típica.\n- **Examen 2024 (E71):** la plantilla da por bueno que la celadora de autopsias realiza **todas** las tareas, incluida *instrumentar al médico*.\n- **Cómo encajarlo:** pasarle el instrumental al médico no es usarlo uno mismo sobre el cadáver. Es una interpretación; la pregunta es **discutible**.\n- **Para el examen:** si una opción dice *hacer incisiones* o *extraer órganos*, es falsa. *Pasar el instrumental* puede darse por buena.",
+    contenido: "- **Norma (art. 14.2.20.ª, literal):** *Ayudarán a la práctica de autopsias en aquellas funciones auxiliares que no requieran por su parte hacer uso de instrumental alguno sobre el cadáver. Limpiarán la mesa de autopsias y la propia sala.* Tu temario lo resalta como trampa típica.\n- **Examen 2024 (E71):** la plantilla da por bueno que la celadora de autopsias realiza **todas** las tareas, incluida *instrumentar al médico*.\n- **Cómo encajarlo:** pasarle el instrumental al médico no es usarlo uno mismo sobre el cadáver. Es una interpretación; la pregunta es **discutible**.\n- **Para el examen:** si una opción dice *hacer incisiones* o *extraer órganos*, es falsa. *Pasar el instrumental* puede darse por buena.",
     fuentes: [
-      { titulo: "CGT Sanidad: Funciones del celador (art. 14.2 del Estatuto de 1971)", url: "https://www.cgtsanidadlpa.org/f/opes/celador/temas/tema_2.pdf" },
+      { titulo: "BOE 22/7/1971: Estatuto de Personal No Sanitario (art. 14.2, funciones del celador)", url: "https://www.boe.es/boe/dias/1971/07/22/pdfs/A12015-12024.pdf" },
       { titulo: "Congreso SICEPA: Funciones del celador en sala de autopsias", url: "https://congresosicepa.com/funciones-celador-sala-de-autopsias/" }
     ]
   },
@@ -104,10 +104,10 @@ const CONFLICTIVOS = [
     titulo: "Sanidad mortuoria en Galicia: el Decreto 151/2014 está derogado",
     tema: "Fallecidos y autopsias",
     preguntas: [],
-    contenido: "- **Ahora rige el Decreto 129/2023**, de 31 de agosto, de sanidad mortuoria de Galicia (DOG del 18/9/2023, en vigor desde el 18/10/2023).\n- **Tu material aún cita el 151/2014:** el temario en los temas 5 específico y 6 común, y **dos preguntas de tu banco**. Una de ellas, *¿qué norma regula la policía sanitaria mortuoria en Galicia?*, tiene como respuesta el 151/2014, que **hoy es incorrecta**.\n- **Cambios útiles del nuevo decreto:**\n  - el plazo mínimo para enterrar baja de **24 a 12 horas**;\n  - refrigeración entre **−2 °C y 5 °C**; congelación a **−18 °C** o menos;\n  - refrigeración, congelación y conservación, solo pasadas **8 horas** desde el fallecimiento.\n- **Ojo:** el examen de 2024 se basó en la convocatoria de 2022. Si sale una pregunta con la norma antigua, puede haber diferencias.",
+    contenido: "- **Ahora rige el Decreto 129/2023**, de 31 de agosto, de sanidad mortuoria de Galicia (DOG del 18/9/2023, en vigor desde el 18/10/2023).\n- **Ya corregido en la app:** el temario (temas 5 específico y 6 común) y dos preguntas del banco citaban el 151/2014. Ahora citan el 129/2023.\n- **Cambios útiles del nuevo decreto:**\n  - el plazo mínimo para enterrar baja de **24 a 12 horas**;\n  - refrigeración entre **−2 °C y 5 °C**; congelación a **−18 °C** o menos;\n  - refrigeración, congelación y conservación, solo pasadas **8 horas** desde el fallecimiento.\n- **Ojo:** el examen de 2024 se basó en la convocatoria de 2022. Si sale una pregunta con la norma antigua, puede haber diferencias.",
     fuentes: [
+      { titulo: "Sergas: texto del Decreto 129/2023 (PDF)", url: "https://extranet.sergas.es/nrmtv/docs/cas/NormativaConvenios/NormativaSanitaria/archivos/DECRETO%20129-2023,%20do%2031%20de%20agosto,%20de%20sanidade%20mortuoria%20de%20Galicia.pdf" },
       { titulo: "DOG 18/9/2023: Decreto 129/2023, de sanidad mortuoria de Galicia", url: "https://www.xunta.gal/dog/Publicados/2023/20230918/AnuncioC3K1-080923-0002_es.html" },
-      { titulo: "Lex.gal: Decreto 129/2023 (texto consolidado)", url: "https://www.lex.gal/es/normativa/detalle/9313" },
       { titulo: "Derecho Local: Nueva regulación de la sanidad mortuoria en Galicia", url: "https://derecholocal.es/novedad-legislativa/nueva-regulacion-de-la-sanidad-mortuoria-en-galicia" }
     ]
   },
@@ -129,10 +129,10 @@ const CONFLICTIVOS = [
     titulo: "Temperatura de la cámara de cadáveres: entre −2 °C y 5 °C",
     tema: "Fallecidos y autopsias",
     preguntas: ["E17"],
-    contenido: "- El Decreto 129/2023 define la **refrigeración** como un descenso de temperatura **entre −2 °C y 5 °C**. La congelación es a **−18 °C** o menos.\n- Un cadáver refrigerado puede estar así un máximo de **72 horas**.\n- **Trampa:** no confundir con los medicamentos termolábiles, que van **entre 2 °C y 8 °C**.",
+    contenido: "- **Art. 3.y del Decreto 129/2023 (literal):** la refrigeración se hace *a una temperatura comprendida entre -2º y 5ºC*. La congelación (art. 3.l), *a una temperatura de por lo menos -18ºC*.\n- Un cadáver refrigerado puede estar así un máximo de **72 horas** desde el fallecimiento (art. 8.8).\n- **Trampa:** no confundir con los medicamentos termolábiles, que van **entre 2 °C y 8 °C**.",
     fuentes: [
-      { titulo: "DOG 18/9/2023: Decreto 129/2023, de sanidad mortuoria de Galicia", url: "https://www.xunta.gal/dog/Publicados/2023/20230918/AnuncioC3K1-080923-0002_es.html" },
-      { titulo: "Lex.gal: Decreto 129/2023 (texto consolidado)", url: "https://www.lex.gal/es/normativa/detalle/9313" }
+      { titulo: "Sergas: texto del Decreto 129/2023 (PDF)", url: "https://extranet.sergas.es/nrmtv/docs/cas/NormativaConvenios/NormativaSanitaria/archivos/DECRETO%20129-2023,%20do%2031%20de%20agosto,%20de%20sanidade%20mortuoria%20de%20Galicia.pdf" },
+      { titulo: "DOG 18/9/2023: Decreto 129/2023, de sanidad mortuoria de Galicia", url: "https://www.xunta.gal/dog/Publicados/2023/20230918/AnuncioC3K1-080923-0002_es.html" }
     ]
   },
   {
@@ -173,14 +173,14 @@ const CONFLICTIVOS = [
   },
   {
     grupo: "Respuestas oficiales raras que sí se pueden explicar",
-    estado: "Probable",
-    titulo: "Conservación química del cadáver",
+    estado: "Comprobado",
+    titulo: "Conservación química del cadáver: 48 horas, no 72",
     tema: "Fallecidos y autopsias",
     preguntas: ["E103"],
-    contenido: "- **Confirmado:** la conservación y la refrigeración solo se pueden hacer pasadas **8 horas** desde el fallecimiento (Decreto 129/2023). Esa opción era **correcta**.\n- **La incorrecta** decía que la conservación es **obligatoria** para exponer el cadáver **hasta 72 horas**. Las 72 horas son el máximo que un cadáver puede estar refrigerado, no un supuesto de conservación obligatoria.\n- No he podido leer el artículo exacto; confírmalo con el texto del decreto.",
+    contenido: "- **Art. 10.c del Decreto 129/2023 (literal):** la conservación transitoria es obligatoria *cuando el cadáver vaya a ser expuesto en un lugar público hasta un máximo de **48 horas** desde la hora del fallecimiento*. La opción del examen decía **72** horas: por eso era la **incorrecta**.\n- **Art. 8.1:** las técnicas de conservación solo se aplican *transcurridas 8 horas desde el fallecimiento*. Esa opción era **correcta**.\n- **También es obligatoria (art. 10)** si la inhumación o incineración es entre las 48 y las 96 horas, o en traslados a comunidades que lo exijan.",
     fuentes: [
-      { titulo: "DOG 18/9/2023: Decreto 129/2023, de sanidad mortuoria de Galicia", url: "https://www.xunta.gal/dog/Publicados/2023/20230918/AnuncioC3K1-080923-0002_es.html" },
-      { titulo: "Lex.gal: Decreto 129/2023 (texto consolidado)", url: "https://www.lex.gal/es/normativa/detalle/9313" }
+      { titulo: "Sergas: texto del Decreto 129/2023 (PDF)", url: "https://extranet.sergas.es/nrmtv/docs/cas/NormativaConvenios/NormativaSanitaria/archivos/DECRETO%20129-2023,%20do%2031%20de%20agosto,%20de%20sanidade%20mortuoria%20de%20Galicia.pdf" },
+      { titulo: "DOG 18/9/2023: Decreto 129/2023, de sanidad mortuoria de Galicia", url: "https://www.xunta.gal/dog/Publicados/2023/20230918/AnuncioC3K1-080923-0002_es.html" }
     ]
   },
   {
@@ -208,32 +208,10 @@ const CONFLICTIVOS = [
   {
     grupo: "Dudosas: sin explicación ni fuente clara",
     estado: "Dudoso",
-    titulo: "¿Cuál es una función del celador? (la opción literal del Estatuto no es la buena)",
-    tema: "Funciones del celador",
-    preguntas: ["E31"],
-    contenido: "- **Respuesta oficial:** *movilizar al paciente dentro de su medio teniendo en cuenta su estado y la posición anatómica recomendada*.\n- **Lo raro:** la opción D copia casi literalmente el **art. 14.2 del Estatuto de 1971**: *ayudarán a las enfermeras y ayudantes de planta al movimiento y traslado de los enfermos encamados…*. Aun así, la plantilla no la da por buena y tampoco la anuló.\n- **Posible explicación:** algún matiz de la redacción, como *para hacerles la cama*. No he encontrado ninguna fuente que lo aclare.\n- **Pregunta con mucho riesgo de impugnación.** Consúltala con tu academia.",
-    fuentes: [
-      { titulo: "CGT Sanidad: Funciones del celador (art. 14.2 del Estatuto de 1971)", url: "https://www.cgtsanidadlpa.org/f/opes/celador/temas/tema_2.pdf" }
-    ]
-  },
-  {
-    grupo: "Dudosas: sin explicación ni fuente clara",
-    estado: "Dudoso",
-    titulo: "Higiene de enfermos graves (Estatuto de 1973)",
-    tema: "Funciones del celador",
-    preguntas: ["E32"],
-    contenido: "- **Respuesta oficial:** corresponde a las **auxiliares con ayuda del celador**.\n- No he podido leer los artículos 74 a 85 de la Orden de 26 de abril de 1973, donde están las funciones de las auxiliares de enfermería.\n- **Encaja** con la regla del celador: el aseo es excepcional y siempre **ayudando**.",
-    fuentes: [
-      { titulo: "Temario de auxiliar de enfermería (INGESA)", url: "https://catalogobibliotecaingesa.sanidad.gob.es/rrhh/OPE2016/docs/TEMARIO_AUXILIAR_ENFERMERIA.pdf" }
-    ]
-  },
-  {
-    grupo: "Dudosas: sin explicación ni fuente clara",
-    estado: "Dudoso",
     titulo: "Renovación del uniforme: cada 464 jornadas",
     tema: "Funciones del celador",
     preguntas: ["E81"],
-    contenido: "- **Respuesta oficial:** el uniforme se renueva de forma ordinaria cada **464 jornadas de trabajo efectivo**.\n- No he encontrado la norma ni el acuerdo del Sergas que lo fija. **Apréndete la cifra tal cual**, porque es la que ha dado el tribunal.",
+    contenido: "- **Respuesta oficial:** el uniforme se renueva de forma ordinaria cada **464 jornadas de trabajo efectivo**.\n- El **Estatuto de 1971 (art. 62)** solo dice que las características y la **duración** de las prendas las determina la Delegación General. La cifra no aparece en él y no he encontrado el acuerdo del Sergas que la fija.\n- **Apréndete la cifra tal cual**, porque es la que ha dado el tribunal.",
     fuentes: []
   },
   {
@@ -243,15 +221,6 @@ const CONFLICTIVOS = [
     tema: "Fallecidos y autopsias",
     preguntas: ["E84"],
     contenido: "- **Respuesta oficial:** *tener refrigeradores con capacidad para dos cadáveres por cada cien camas* **no** es una característica de la **sala de autopsias**.\n- **Posible explicación:** esa proporción se refiere al **mortuorio** (las cámaras), no a la sala de autopsias. No he encontrado la norma que la fija.",
-    fuentes: []
-  },
-  {
-    grupo: "Dudosas: sin explicación ni fuente clara",
-    estado: "Dudoso",
-    titulo: "Inventario permanente: ¿lo cuenta el celador?",
-    tema: "Suministros y almacén",
-    preguntas: ["E34"],
-    contenido: "- **Respuesta oficial:** el recuento del inventario permanente lo hace el **celador de suministros**.\n- **Tu temario (tema 6):** el celador **colabora en los inventarios**, y no negocia precios ni decide compras. Encaja, aunque el examen lo dice de forma más rotunda.",
     fuentes: []
   },
   {
@@ -280,7 +249,7 @@ const CONFLICTIVOS = [
     titulo: "Jaulas y transpaletas: ¿empujar o tirar?",
     tema: "Suministros y almacén",
     preguntas: ["E49", "E50", "E61"],
-    contenido: "Tres preguntas del mismo examen que conviene estudiar juntas:\n- **Transpaleta (E49):** en el ascensor se entra **tirando** de ella (el celador primero).\n- **Jaula (E61):** en el ascensor entra **primero la jaula**.\n- **Jaula (E50):** como norma general, las jaulas **se empujan**; para subir una rampa, el celador va **detrás empujando**; del ascensor **sale primero el celador**. La opción **incorrecta** era *para cruzar una puerta de vaivén abierta hay que tirar de la jaula*.\n- No he encontrado un protocolo que lo explique. Memoriza la regla: **la jaula se empuja; la transpaleta se tira.**",
+    contenido: "Tres preguntas del mismo examen que conviene estudiar juntas:\n- **Transpaleta (E49):** la correcta es que *solo se conduce cuando la carga descansa sobre el chasis*. La opción de entrar en el ascensor tirando de ella **no** se dio por buena.\n- **Jaula (E61):** en el ascensor entra **primero la jaula**.\n- **Jaula (E50):** como norma general, las jaulas **se empujan**; para subir una rampa, el celador va **detrás empujando**; del ascensor **sale primero el celador**. La opción **incorrecta** era *para cruzar una puerta de vaivén abierta hay que tirar de la jaula*.\n- No he encontrado un protocolo que lo explique. Memoriza las respuestas oficiales: **la jaula se empuja y entra primero en el ascensor**; **la transpaleta, solo con la carga asentada**.",
     fuentes: []
   }
 ];

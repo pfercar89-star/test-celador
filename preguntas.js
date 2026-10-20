@@ -16,14 +16,16 @@
 //  Ojo: si un texto lleva comillas dobles dentro, usa comillas simples ' '.
 //
 //  Las preguntas están agrupadas por tema, en el orden del temario.
-//  Las que vienen del examen oficial de 2024 llevan "origen" y van al final de su tema.
+//  Las que vienen de exámenes oficiales (Sergas 2024, SAS 2025) llevan "origen"
+//  y van al final de su tema. De los exámenes de otras comunidades solo se han
+//  copiado las preguntas que valen en toda España.
 //  Las que dependen de la convocatoria 2025 (plazas, fechas, formato) llevan
 //  origen "Convocatoria 2025 (dato que cambiará)": revísalas con cada convocatoria nueva.
 // =====================================================================
 
 const PREGUNTAS = [
   // ===================================================================
-  //  CONSTITUCIÓN ESPAÑOLA (93 preguntas)
+  //  CONSTITUCIÓN ESPAÑOLA (95 preguntas)
   // ===================================================================
   {
     tema: "Constitución Española",
@@ -675,6 +677,22 @@ const PREGUNTAS = [
     opciones: ["44", "47", "46", "45"],
     correcta: "C",
     explicacion: "Patrimonio histórico. (Art. 46 CE)"
+  },
+  {
+    tema: "Constitución Española",
+    origen: "Examen SAS 2025 · P1",
+    enunciado: "La Jefatura del Estado viene recogida en la Constitución Española en:",
+    opciones: ["El Título V.", "El Título VI.", "El Título VII.", "El Título II."],
+    correcta: "D",
+    explicacion: "El Título II de la Constitución (arts. 56 a 65) se llama «De la Corona»: ahí está el Rey como Jefe del Estado."
+  },
+  {
+    tema: "Constitución Española",
+    origen: "Examen SAS 2025 aplazado · P1",
+    enunciado: "¿En qué artículo de la Constitución se reconoce el derecho a la protección de la salud?",
+    opciones: ["Art. 51.", "Art. 14.", "Art. 43.", "Art. 50."],
+    correcta: "C",
+    explicacion: "Art. 43 de la Constitución: se reconoce el derecho a la protección de la salud."
   },
   // ===================================================================
   //  ESTATUTO DE AUTONOMÍA DE GALICIA (68 preguntas)
@@ -2124,7 +2142,7 @@ const PREGUNTAS = [
     explicacion: "La Ley de Salud de Galicia da condición de autoridad sanitaria al Consello da Xunta, a la persona titular de la consellería y a alcaldes y alcaldesas, pero no al gerente de un hospital."
   },
   // ===================================================================
-  //  ESTATUTO MARCO (111 preguntas)
+  //  ESTATUTO MARCO (113 preguntas)
   // ===================================================================
   {
     tema: "Estatuto Marco",
@@ -2906,8 +2924,24 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Son dos pagas al año (junio y diciembre), y a cada una se le suma la catorceava parte del complemento de destino anual."
   },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SAS 2025 aplazado · P11",
+    enunciado: "Señale cuál de las siguientes opciones es un derecho individual que ostenta el personal estatutario de los Servicios de Salud:",
+    opciones: ["Libre sindicación.", "Formación continuada.", "Actividad sindical.", "Negociación colectiva."],
+    correcta: "B",
+    explicacion: "Estatuto Marco, art. 17: la formación continuada es un derecho individual. La libre sindicación, la actividad sindical y la negociación colectiva son derechos colectivos (art. 18)."
+  },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SAS 2025 aplazado · P46",
+    enunciado: "Según Ley 55/2003, de 16 de diciembre, del Estatuto Marco del personal estatutario de los servicios de salud, las retribuciones básicas son:",
+    opciones: ["El sueldo, los trienios, el complemento de destino y las pagas extraordinarias.", "El sueldo, los trienios, el complemento de carrera profesional y las pagas extraordinarias.", "El sueldo, los trienios, el complemento específico y las pagas extraordinarias.", "El sueldo, los trienios y las pagas extraordinarias."],
+    correcta: "D",
+    explicacion: "Estatuto Marco, art. 42: retribuciones básicas = sueldo, trienios y pagas extraordinarias. Los complementos son retribuciones complementarias."
+  },
   // ===================================================================
-  //  SELECCIÓN Y PROVISIÓN DE PLAZAS (56 preguntas)
+  //  SELECCIÓN Y PROVISIÓN DE PLAZAS (57 preguntas)
   // ===================================================================
   {
     tema: "Selección y provisión de plazas",
@@ -3308,8 +3342,16 @@ const PREGUNTAS = [
     correcta: "A",
     explicacion: "Los dos años se exigen en la categoría de procedencia (opción D), no en la categoría a la que se quiere promocionar."
   },
+  {
+    tema: "Selección y provisión de plazas",
+    origen: "Examen SAS 2025 · P8",
+    enunciado: "La provisión de plazas del personal estatutario se regirá, entre otros, por los principios básicos de:",
+    opciones: ["Igualdad, mérito, capacidad y publicidad en la selección, promoción y movilidad del personal de los servicios de salud.", "Igualdad, eficacia, mérito y capacidad.", "Igualdad, mérito, publicidad, promoción e inamovilidad.", "Todas las respuestas son falsas."],
+    correcta: "A",
+    explicacion: "Estatuto Marco (Ley 55/2003), art. 29: igualdad, mérito, capacidad y publicidad en la selección, promoción y movilidad."
+  },
   // ===================================================================
-  //  PROTECCIÓN DE DATOS E HISTORIA CLÍNICA (71 preguntas)
+  //  PROTECCIÓN DE DATOS E HISTORIA CLÍNICA (77 preguntas)
   // ===================================================================
   {
     tema: "Protección de datos e historia clínica",
@@ -3810,8 +3852,56 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "Es falsa: los familiares no tienen acceso libre a la historia clínica completa solo por ser familiares."
   },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2025 · P5",
+    enunciado: "Los responsables y encargados del tratamiento de datos, así como todas las personas que intervengan en cualquier fase de éste, estarán sujetas al deber de:",
+    opciones: ["Sigilo.", "Custodia.", "Confidencialidad.", "Cuidado."],
+    correcta: "C",
+    explicacion: "La LO 3/2018 (art. 5) impone a todos los que tratan datos el deber de confidencialidad, y sigue aunque termine la relación."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2025 · P11",
+    enunciado: "La información previa al consentimiento por escrito deberá incluir:",
+    opciones: ["Las consecuencias relevantes o de importancia que la intervención origina con seguridad.", "Los riesgos relacionados con las circunstancias personales o profesionales del paciente.", "Los riesgos probables en condiciones normales, conforme a la experiencia y al estado de la ciencia o directamente relacionados con el tipo de intervención.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "Ley 41/2002, art. 10: la información previa al consentimiento escrito incluye las consecuencias seguras, los riesgos personales y los riesgos probables. Por eso son todas."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2025 · P35",
+    enunciado: "Para preservar la intimidad a lo largo de todo acto clínico, indique la respuesta correcta:",
+    opciones: ["En la historia clínica no se incluirán datos que reflejen aspectos íntimos del paciente y no tengan relación con la naturaleza clínica del resto de la historia.", "No se realizarán de manera conjunta consultas con distintos pacientes.", "La presencia de profesionales en formación, se valorará en casos particulares.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "Para proteger la intimidad: nada de datos íntimos que no tengan que ver con la clínica, nada de consultas conjuntas y la presencia de alumnos se valora caso a caso. Por eso son todas."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2025 aplazado · P6",
+    enunciado: "Según el Art. 7 de la Ley Orgánica 3/2018, de Protección de Datos personales y garantía de los derechos digitales, el tratamiento de los datos personales de un menor de edad únicamente podrá fundarse en su consentimiento:",
+    opciones: ["Cuando sea mayor de quince años.", "Cuando sea mayor de veinte años.", "Cuando sea mayor de dieciocho años.", "Cuando sea mayor de catorce años."],
+    correcta: "D",
+    explicacion: "LO 3/2018, art. 7: un menor puede consentir el tratamiento de sus datos si es mayor de 14 años."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2025 aplazado · P12",
+    enunciado: "Según la Ley 41/2002, de 14 de noviembre, una de las medidas que deben tomar los Centros Sanitarios para proteger el derecho a la intimidad de los datos de salud del usuario es:",
+    opciones: ["Se publicarán sus datos en internet para mayor trasparencia.", "Se adaptarán las medidas para garantizar los derechos de confidencialidad.", "Se permitirá el acceso libre a los datos para agilizar los procesos.", "No se registrará ningún dato de salud."],
+    correcta: "B",
+    explicacion: "Ley 41/2002, art. 7: los centros deben adoptar medidas para garantizar la confidencialidad de los datos de salud."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2025 aplazado · P13",
+    enunciado: "La regulación de los derechos y obligaciones de los pacientes, usuarios y profesionales, así como de los centros y servicios sanitarios, públicos y privados, en materia de autonomía del paciente y de información y documentación clínica, es objeto recogido en:",
+    opciones: ["El Real Decreto Legislativo 5/2015, de 30 de octubre.", "La Ley 41/2002, de 14 de noviembre.", "La Ley 55/2003, de 16 de diciembre.", "La Ley 12/2007, de 26 de noviembre."],
+    correcta: "B",
+    explicacion: "La Ley 41/2002 es la ley de autonomía del paciente y de información y documentación clínica."
+  },
   // ===================================================================
-  //  PREVENCIÓN DE RIESGOS, VIOLENCIA DE GÉNERO E IGUALDAD (97 preguntas)
+  //  PREVENCIÓN DE RIESGOS, VIOLENCIA DE GÉNERO E IGUALDAD (113 preguntas)
   // ===================================================================
   {
     tema: "Prevención de riesgos, violencia de género e igualdad",
@@ -4493,8 +4583,136 @@ const PREGUNTAS = [
     correcta: "A",
     explicacion: "El artículo 9 de la Ley 31/1995 atribuye la vigilancia y control de la normativa a la Inspección de Trabajo y Seguridad Social."
   },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P6",
+    enunciado: "Se constituirá un Comité de Seguridad y Salud en todas las empresas o centros de trabajo que:",
+    opciones: ["Cuenten con 25 trabajadores.", "Cuenten con al menos 10 trabajadores.", "Cuenten con 50 o más trabajadores.", "Cuenten con al menos más de 100 trabajadores."],
+    correcta: "C",
+    explicacion: "Ley 31/1995, art. 38: el Comité de Seguridad y Salud se constituye en empresas o centros con 50 o más trabajadores."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P37",
+    enunciado: "El síndrome de mobbing puede presentar una serie de trastornos en la salud. Señale la respuesta correcta:",
+    opciones: ["Esquizofrenia.", "Ansiedad y/o depresión.", "Epilepsia.", "Alzheimer."],
+    correcta: "B",
+    explicacion: "El mobbing (acoso laboral) suele provocar ansiedad y depresión."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P39",
+    enunciado: "Entre las patologías más frecuentes en el puesto de trabajo, debido a la manipulación de cargas, está:",
+    opciones: ["La osteoporosis.", "La infección.", "La lumbalgia.", "La quemadura."],
+    correcta: "C",
+    explicacion: "Manipular cargas mal es la causa típica de lumbalgia (dolor en la zona baja de la espalda)."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P41",
+    enunciado: "Ante una situación de emergencia producida por un incendio debemos usar un extintor portátil y, ¿qué es lo primero que debemos hacer?",
+    opciones: ["Realizar una pequeña descarga (corto disparo) del extintor para comprobar su funcionamiento.", "Comprobar que el extintor está en el lugar adecuado.", "Comprobar las fechas de las inspecciones.", "Ninguna de las respuestas anteriores es correcta."],
+    correcta: "A",
+    explicacion: "Lo primero con un extintor es hacer un disparo corto de prueba para comprobar que funciona."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P42",
+    enunciado: "¿Qué tipo de fuego es el que, dada la situación de poca gravedad, puede ser neutralizado con los medios materiales y humanos disponibles en el lugar de trabajo y próximos al lugar del accidente?",
+    opciones: ["Emergencia final.", "Emergencia parcial.", "Emergencia general.", "Conato de emergencia."],
+    correcta: "D",
+    explicacion: "Conato de emergencia: un incidente pequeño que se controla con los medios y el personal del propio lugar."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P43",
+    enunciado: "Ante un incendio usamos el extintor para intentar sofocar el mismo. ¿Hacia dónde debe dirigir la boquilla del extintor?",
+    opciones: ["A la parte superior de las llamas.", "A la base del incendio, moviendo la boquilla en zig-zag.", "A cualquier parte del incendio, es indiferente el lugar donde dirigiremos la boquilla.", "Ninguna de las respuestas anteriores es correcta."],
+    correcta: "B",
+    explicacion: "El extintor se dirige a la base de las llamas, moviendo la boquilla en zigzag."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 · P44",
+    enunciado: "El Plan de Emergencias ante un posible incendio, tiene como finalidad:",
+    opciones: ["Que no se materialice la situación que da origen al siniestro.", "Si se origina el siniestro, organizar los recursos tanto humanos como técnicos, necesarios para la prevención y lucha contra el riesgo.", "Garantizar la evacuación de forma coordinada, así como evitar pérdidas o daños a personas y/o bienes.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "El Plan de Emergencias sirve para todo: evitar el siniestro, organizar los recursos y evacuar de forma coordinada."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P8",
+    enunciado: "El derecho a la protección frente a los riesgos laborales, recogido en la Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos Laborales, establece que:",
+    opciones: ["El empresario, a veces, deberá cumplir las obligaciones establecidas en la normativa sobre prevención de riesgos laborales.", "Los trabajadores tienen derecho a una protección eficaz en materia de seguridad y salud en el trabajo.", "Los derechos de información, consulta y participación, formación en materia preventiva, paralización de la actividad en caso de riesgo grave e inminente y vigilancia de su estado de salud, forman parte del derecho de los trabajadores a una protección eficaz en materia de seguridad y salud en el trabajo.", "Las respuestas B) y C) son correctas."],
+    correcta: "D",
+    explicacion: "Ley 31/1995, art. 14: los trabajadores tienen derecho a una protección eficaz, y ese derecho incluye información, consulta, formación, paralizar la actividad y vigilancia de la salud. B y C son correctas."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P38",
+    enunciado: "Como Celador/a de un centro sanitario, son necesarias unas condiciones de higiene en su puesto de trabajo. Señale una de las medidas de precaución de higiene que debe aplicar:",
+    opciones: ["Lavar las manos con jabón, únicamente al entrar y salir del trabajo.", "Debe usar siempre el uniforme reglamentario, así como los equipos de protección individual.", "Ignorar los protocolos a seguir en caso de pinchazo.", "No usar los equipos de protección individual."],
+    correcta: "B",
+    explicacion: "Higiene del celador: uniforme reglamentario y equipos de protección individual siempre."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P39",
+    enunciado: "¿Qué es un “conato de emergencia”?",
+    opciones: ["Una situación que puede ser controlada y solucionada de forma sencilla y rápida por el personal y medios de protección del local, dependencia o sector.", "Una situación que, para ser dominada, requiere la actuación de equipos especiales del sector. No es previsible que afecte a sectores colindantes.", "Una situación para cuyo control se precisa de todos los equipos y medios de protección propios y de la ayuda de medios de socorro y salvamento externos. Generalmente comportará evacuaciones totales o parciales.", "Se refiere al documento que compila el conjunto de medidas de prevención-protección previstas e implantadas, así como la secuencia de actuaciones a realizar ante la aparición de un siniestro, que deben estar normalizadas por escrito y ser conocidas."],
+    correcta: "A",
+    explicacion: "Conato de emergencia: se controla de forma sencilla y rápida con el personal y los medios del lugar. La B es la emergencia parcial y la C, la general."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P40",
+    enunciado: "¿Cuál de las siguientes afirmaciones sobre el Plan de Autoprotección es la correcta?",
+    opciones: ["En el Plan de Autoprotección se detallan las actuaciones pertinentes a realizar por los trabajadores de una empresa en caso de que ocurriera una emergencia.", "El Plan de Autoprotección tiene como objetivo la protección de todas las personas del centro, tanto usuarios como trabajadores.", "El Plan de Autoprotección se confecciona para la prevención y reducción de las consecuencias de posibles emergencias, tales como incendios, amenazas de bombas, amenazas ambientales, etc.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "El Plan de Autoprotección detalla qué hacer en una emergencia, protege a usuarios y trabajadores y prevé incendios, amenazas de bomba, etc. Por eso son todas."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P41",
+    enunciado: "En el Plan de Emergencias ante un posible incendio, se indican los distintos equipos que actuarán en caso de producirse la emergencia. Alguno de estos equipos es:",
+    opciones: ["Equipo de alarma y evacuación o equipos de primeros auxilios.", "Equipo de primera intervención.", "Equipo de segunda intervención.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "Equipos del Plan de Emergencias: alarma y evacuación, primeros auxilios, primera intervención y segunda intervención. Por eso son todas."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P44",
+    enunciado: "Las señales relativas a la lucha contra incendios deben mantener el siguiente formato:",
+    opciones: ["Forma rectangular. Pictograma blanco sobre fondo azul.", "Forma cuadrada. Pictograma blanco sobre fondo verde.", "Forma cuadrada o rectangular. Pictograma blanco sobre fondo rojo.", "Ninguna es correcta."],
+    correcta: "C",
+    explicacion: "Señales contra incendios: forma cuadrada o rectangular, pictograma blanco sobre fondo rojo."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P47",
+    enunciado: "Los Delegados de Prevención son los representantes de los trabajadores con funciones específicas en materia de prevención de riesgos en el trabajo, y serán designados por y entre los representantes del personal. ¿Cuántos Delegados de Prevención corresponde a una empresa que tiene de 2.001 a 3.000 trabajadores?",
+    opciones: ["Ninguno.", "6 Delegados de Prevención.", "3 Delegados de Prevención.", "8 Delegados de Prevención."],
+    correcta: "B",
+    explicacion: "Ley 31/1995, art. 35: de 2.001 a 3.000 trabajadores corresponden 6 delegados de prevención."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P48",
+    enunciado: "El documento que establece las medidas y procedimientos para prevenir y controlar situaciones de emergencia, con el objetivo de proteger a las personas y los bienes, se denomina:",
+    opciones: ["Normativa básica contra incendios.", "Plan de autoprotección.", "Manual del Servicio Andaluz de Salud.", "Todas son correctas."],
+    correcta: "B",
+    explicacion: "El Plan de Autoprotección es el documento que fija las medidas para prevenir y controlar emergencias."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2025 aplazado · P50",
+    enunciado: "Señale cuál de las siguientes afirmaciones sobre lo dispuesto en el articulado de la Ley de Prevención de Riesgos Laborales (LPRL) es INCORRECTA:",
+    opciones: ["La LPRL no es de aplicación en el ámbito de la Policía.", "El principal derecho que poseen los trabajadores en materia de prevención de riesgos laborales es una protección eficaz en materia de seguridad y salud en el trabajo.", "La LPRL no es de aplicación en el ámbito de resguardo aduanero.", "Los trabajadores no tienen la obligación de velar por su propia seguridad y salud en el trabajo, ni tampoco por la de sus compañeros."],
+    correcta: "D",
+    explicacion: "Es incorrecta la D: la Ley 31/1995 (art. 29) obliga a cada trabajador a velar por su seguridad y por la de los demás afectados por su trabajo."
+  },
   // ===================================================================
-  //  FUNCIONES DEL CELADOR (123 preguntas)
+  //  FUNCIONES DEL CELADOR (139 preguntas)
   // ===================================================================
   {
     tema: "Funciones del celador",
@@ -5380,8 +5598,136 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "Una muestra que hay que manipular durante el trayecto (mover el imán) la tiene que trasladar el TCAE, no el celador."
   },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P12",
+    enunciado: "En el trabajo en equipo podemos diferenciar entre grupos y equipos. Señale la función propia de un equipo de trabajo:",
+    opciones: ["La toma de decisiones a través de órdenes.", "El conjunto de personas relacionadas entre sí, que trabajan para conseguir objetivos comunes.", "Que las personas de una unidad se lleven bien entre ellas.", "El conjunto de personas que desarrolla su labor, respondiendo individualmente de su trabajo."],
+    correcta: "B",
+    explicacion: "Un equipo es más que un grupo: personas relacionadas que trabajan juntas para conseguir objetivos comunes."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P14",
+    enunciado: "En los centros sanitarios, un aspecto que condiciona negativamente el trabajo en equipo, es:",
+    opciones: ["Comunicación.", "Confianza.", "Motivación.", "Irresponsabilidad."],
+    correcta: "D",
+    explicacion: "Comunicación, confianza y motivación ayudan al equipo. La irresponsabilidad lo perjudica."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P15",
+    enunciado: "¿Cuál es la actitud correcta cuando nos encontramos con un usuario prepotente?",
+    opciones: ["No discutir, mostrar interés, pedir consejo y su opinión.", "Discutir, tomar la decisión por el usuario.", "Argumentar en su contra.", "No mostrar interés."],
+    correcta: "A",
+    explicacion: "Con un usuario prepotente: no discutir, mostrar interés y tener en cuenta su opinión."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P16",
+    enunciado: "En relación a la información durante la estancia del usuario en un centro sanitario, el/la celador/a NO puede asumir la tarea de informar sobre:",
+    opciones: ["Ubicación de los servicios y unidades del centro.", "Horarios de visita.", "Horario de información médica.", "Diagnósticos y/o tratamientos que se le estén realizando a los pacientes."],
+    correcta: "D",
+    explicacion: "El celador puede orientar sobre ubicación y horarios, pero NUNCA informa de diagnósticos ni tratamientos: eso es del personal sanitario."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P17",
+    enunciado: "Señale los factores de la comunicación interpersonal que facilitan la relación entre el/la celador/a con pacientes y familiares:",
+    opciones: ["Hablar demasiado deprisa.", "Usar terminología científica.", "Las frases han de ser cortas, precisas, claras.", "Hablar al paciente en momentos inoportunos."],
+    correcta: "C",
+    explicacion: "Ayudan a comunicarse las frases cortas, precisas y claras. Hablar deprisa o con términos científicos lo dificulta."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P151",
+    enunciado: "Indique los factores que obstaculizan la comunicación interpersonal entre el/la celador/a con pacientes y familiares:",
+    opciones: ["Saber escuchar para después hablar.", "Evitar comentarios improcedentes o innecesarios.", "Hablar demasiado deprisa o lentamente.", "Mostrar interés."],
+    correcta: "C",
+    explicacion: "Hablar demasiado deprisa o demasiado despacio dificulta la comunicación. Escuchar, evitar comentarios innecesarios y mostrar interés la facilitan."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 · P153",
+    enunciado: "Para que un equipo pueda ser efectivo, aprovechando al máximo los beneficios del trabajo en equipo, tiene que cumplir unas determinadas características:",
+    opciones: ["El individualismo, egoísmo, desacuerdo.", "La imprudencia, apatía, diversidad.", "La cohesión, compromiso, comunicación.", "La soberbia, mentira, incertidumbre."],
+    correcta: "C",
+    explicacion: "Un equipo eficaz necesita cohesión, compromiso y comunicación."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P17",
+    enunciado: "Señale las características que tiene el “Rol del Empatizador” en un equipo de trabajo:",
+    opciones: ["Es una persona destructiva, que no aporta soluciones.", "Es una persona con visión negativa.", "Es una persona creativa y siempre está dispuesta a innovar.", "Es una persona que sabe ponerse en el lugar de los demás y facilita las relaciones humanas."],
+    correcta: "D",
+    explicacion: "El empatizador sabe ponerse en el lugar de los demás y facilita las relaciones en el equipo."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P18",
+    enunciado: "¿Cuál NO es una función a realizar por los/las Celadores/as en su puesto base en la Unidad o Servicio de Urgencias?",
+    opciones: ["Cuidarán de la compostura y aseo del personal a sus órdenes, revisando y exigiendo que vistan el uniforme reglamentario.", "Tendrán a su cargo la vigilancia nocturna, tanto del interior como del exterior del edificio, del que cuidarán estén cerradas las puertas de servicios complementarios.", "Velarán continuamente por conseguir el mayor orden y silencio posible en todas las dependencias de la Institución.", "Tendrán a su cargo el traslado de los enfermos, tanto dentro de la institución como en el servicio de ambulancias."],
+    correcta: "A",
+    explicacion: "Cuidar de la compostura y aseo del personal a sus órdenes es función del jefe de personal subalterno, no del celador. Las demás sí son funciones del celador (Estatuto de 1971, art. 14.2)."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P19",
+    enunciado: "¿Cuál de las siguientes funciones es propia del/de la Celador/a?",
+    opciones: ["Hará los servicios de guardia que correspondan dentro de los turnos que se establezcan.", "Vigilará las entradas de la institución, sin permitir el acceso a sus dependencias más que a las personas no autorizadas para ello.", "Ayudará a los facultativos a amortajar a los enfermos fallecidos, corriendo a su cargo el traslado de los cadáveres al mortuorio.", "Todas las respuestas anteriores son correctas."],
+    correcta: "A",
+    explicacion: "Solo la A es literal. La B tiene trampa (dice «no autorizadas») y la C también: el celador ayuda a las enfermeras, no a los facultativos, a amortajar."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P20",
+    enunciado: "Según el Estatuto de Personal no Sanitario al Servicio de las Instituciones Sanitarias de la Seguridad Social, NO es una función del/de la Celador/a:",
+    opciones: ["Hacer los servicios de guardia que correspondan dentro de los turnos que se establezca.", "Vigilar el comportamiento de los enfermos y visitantes, evitando que éstos últimos fumen en las habitaciones.", "Velar continuamente por conseguir el mayor orden y silencio posible en todas las dependencias de la institución.", "Recepción, puesta en batería y sustitución de las botellas de oxígeno en el lugar que sea preciso."],
+    correcta: "D",
+    explicacion: "Las botellas de oxígeno no aparecen entre las funciones del celador del art. 14.2 del Estatuto de 1971. Las otras tres sí."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P21",
+    enunciado: "¿Cuáles son las cualidades, en el estilo de comunicación oral, recomendado en la atención con los usuarios en Centros Sanitarios?",
+    opciones: ["Autoritario y técnico, para mostrar conocimiento.", "Distante y formal, sin implicarse.", "Claro y coherente, siendo sencillo.", "Rápido y contradictorio, sin dejar tiempo para contestar preguntas."],
+    correcta: "C",
+    explicacion: "Con los usuarios: comunicación clara, coherente y sencilla."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P22",
+    enunciado: "En la comunicación interpersonal, se recomienda:",
+    opciones: ["No aceptar quejas si las considera injustas.", "No importa el tono de voz.", "Sólo interviene el contacto visual.", "No interrumpir al que habla."],
+    correcta: "D",
+    explicacion: "Escuchar bien empieza por no interrumpir al que habla."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P23",
+    enunciado: "En el proceso de la comunicación del/la Celador/a con el usuario, el conjunto de signos que le permite al emisor trasmitir el mensaje, se denomina:",
+    opciones: ["Emisor.", "Mensaje.", "Receptor.", "Código."],
+    correcta: "D",
+    explicacion: "El código es el conjunto de signos (por ejemplo, el idioma) con el que el emisor construye el mensaje."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P151",
+    enunciado: "El/la Celador/a, con respecto al usuario durante su estancia en el Centro Sanitario, NO puede:",
+    opciones: ["Informar sobre horarios de visita.", "Informar sobre las pruebas o tratamientos que se le están realizando al paciente.", "Informar sobre la ubicación de los servicios y unidades del centro.", "Informar sobre los horarios de información médica."],
+    correcta: "B",
+    explicacion: "El celador no informa sobre pruebas ni tratamientos: eso es del personal sanitario."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2025 aplazado · P153",
+    enunciado: "¿Cuál de las siguientes respuestas se considera una barrera para la comunicación?",
+    opciones: ["Evitar términos clínicos.", "Mirar a la cara.", "Hablar deprisa.", "Ser empático."],
+    correcta: "C",
+    explicacion: "Hablar deprisa es una barrera para la comunicación. Las otras opciones la facilitan."
+  },
   // ===================================================================
-  //  MOBILIARIO Y UTENSILIOS (67 preguntas)
+  //  MOBILIARIO Y UTENSILIOS (70 preguntas)
   // ===================================================================
   {
     tema: "Mobiliario y utensilios",
@@ -5859,8 +6205,32 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "La sentinela es una almohada que se usa para prevenir lesiones y caídas."
   },
+  {
+    tema: "Mobiliario y utensilios",
+    origen: "Examen SAS 2025 · P18",
+    enunciado: "La cama articulada eléctrica, que permite la incorporación del paciente de decúbito supino a posición de sentado (y son muy utilizadas en UCI), ¿cómo se denomina?",
+    opciones: ["Cama roto-rest.", "Cama de Gatch.", "Cama rígida.", "Cama de exploración ginecológica."],
+    correcta: "B",
+    explicacion: "La cama de Gatch es articulada (en 3 planos) y permite incorporar al paciente hasta sentarlo."
+  },
+  {
+    tema: "Mobiliario y utensilios",
+    origen: "Examen SAS 2025 aplazado · P28",
+    enunciado: "¿Qué dispositivo se usa generalmente, en las camas hospitalarias, para que el paciente pueda ayudarse a cambiar de posición?",
+    opciones: ["Aspirador.", "Desfibrilador.", "Triángulo de suspensión o trapecio.", "Nebulizador."],
+    correcta: "C",
+    explicacion: "El triángulo de suspensión (trapecio) cuelga sobre la cama para que el paciente se agarre y se mueva."
+  },
+  {
+    tema: "Mobiliario y utensilios",
+    origen: "Examen SAS 2025 aplazado · P35",
+    enunciado: "La cama de levitación:",
+    opciones: ["Está indicada para pacientes con fracturas.", "Mantiene al paciente en giro continuo.", "Utiliza un flujo de aire que permite que el paciente permanezca en suspensión.", "Ninguna de las anteriores respuestas es correcta."],
+    correcta: "C",
+    explicacion: "La cama de levitación mantiene al paciente suspendido sobre un flujo de aire. Se usa en grandes quemados."
+  },
   // ===================================================================
-  //  MOVILIZACIÓN Y TRASLADO DE PACIENTES (124 preguntas)
+  //  MOVILIZACIÓN Y TRASLADO DE PACIENTES (132 preguntas)
   // ===================================================================
   {
     tema: "Movilización y traslado de pacientes",
@@ -6746,8 +7116,72 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "Para pasar al paciente al sillón, las dos personas se colocan en el mismo lado de la cama, no en lados opuestos."
   },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 · P29",
+    enunciado: "Uno de los principios de la mecánica corporal para la correcta manipulación de personas inmovilizadas, es proteger la espalda. ¿Cómo debemos protegerla?",
+    opciones: ["No doblarla incorrectamente.", "Hacer uso de los músculos de las piernas para moverse y levantarse.", "Considerando exclusivamente la fuerza, el ángulo de tracción óptimo para cualquier músculo es de 90 grados.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "Para proteger la espalda: no doblarla mal, hacer la fuerza con las piernas y aprovechar bien el ángulo de tracción. Por eso son todas."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 · P30",
+    enunciado: "¿Cuál es el dispositivo mecánico más importante para la movilización de pacientes encamados, que presentan un grado de movilización escaso o nulo, debido a su estado de salud?",
+    opciones: ["Arnés.", "Eslinga.", "Grúa.", "Cojines antiescaras."],
+    correcta: "C",
+    explicacion: "La grúa es el dispositivo principal para mover pacientes con movilidad escasa o nula. La eslinga y el arnés son piezas de la grúa."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 · P31",
+    enunciado: "¿Qué evitamos con una sistemática de cambios posturales frecuentes y buenas posiciones del paciente imposibilitado en la cama?",
+    opciones: ["Frenar la cama.", "Las úlceras por presión.", "Alinear al paciente.", "Incidencias con el gotero."],
+    correcta: "B",
+    explicacion: "Los cambios posturales frecuentes evitan las úlceras por presión."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 · P33",
+    enunciado: "¿Cómo se llama la posición en la cual el paciente se halla en decúbito supino con la cabeza colgando, con el objetivo de mantener el cuello en hiperextensión?",
+    opciones: ["Posición de Morestin.", "Posición de Sims.", "Posición de Fowler.", "Posición de Roser."],
+    correcta: "D",
+    explicacion: "Posición de Roser (o de Proetz): boca arriba con la cabeza colgando, para hiperextender el cuello."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 aplazado · P32",
+    enunciado: "¿Cómo se denomina la posición, en la que el plano del cuerpo está inclinado 45 grados respecto al plano del suelo, pero la cabeza está más elevada que los pies?",
+    opciones: ["Posición de decúbito prono.", "Posición de Sims.", "Posición de Morestin.", "Posición de Fowler."],
+    correcta: "C",
+    explicacion: "Posición de Morestin (antitrendelenburg): inclinada unos 45° con la cabeza más alta que los pies."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 aplazado · P33",
+    enunciado: "¿Dónde debe colocarse el/la Celador/a, cuando se cambia de posición a un paciente con hemiplejía?",
+    opciones: ["Del lado del paciente que conserva la movilidad.", "Del lado del paciente que no tiene movilidad.", "A los pies de la cama.", "En el cabecero de la cama."],
+    correcta: "A",
+    explicacion: "La respuesta oficial es el lado que conserva la movilidad (el sano). Es el mismo criterio que dio el Sergas en el examen de 2024 (E76). Mira «Puntos conflictivos»."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 aplazado · P34",
+    enunciado: "En el traslado de un paciente en camilla a un servicio cuyo acceso tiene una pendiente que debe de subir, el/la Celador/a debe:",
+    opciones: ["Tirar de la cabecera.", "Empujar la camilla desde la cabecera para que el paciente suba en el sentido de la marcha.", "Tirar de la camilla por los pies.", "Empujar la camilla por los pies."],
+    correcta: "D",
+    explicacion: "Al subir una rampa, la cabecera va delante y el celador empuja desde los pies. Así la cabeza del paciente queda más alta."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2025 aplazado · P45",
+    enunciado: "Señale una de las indicaciones por la que se usa la posición de Trendelenburg, en una cama hospitalaria:",
+    opciones: ["Facilitar la digestión.", "Favorecer el retorno venoso.", "Favorecer la oxigenación pulmonar.", "Todas las respuestas son correctas."],
+    correcta: "B",
+    explicacion: "Trendelenburg (cabeza más baja que los pies) favorece el retorno de la sangre venosa hacia el corazón."
+  },
   // ===================================================================
-  //  QUIRÓFANO, HOSPITALIZACIÓN Y SALUD MENTAL (102 preguntas)
+  //  QUIRÓFANO, HOSPITALIZACIÓN Y SALUD MENTAL (111 preguntas)
   // ===================================================================
   {
     tema: "Quirófano, hospitalización y salud mental",
@@ -7478,8 +7912,80 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Al colocar al paciente en la mesa hay que cuidar su intimidad, que no vea el instrumental y que los accesorios estén bien sujetos."
   },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 · P13",
+    enunciado: "Señale quién NO forma parte del equipo de trabajo en el área de quirófano:",
+    opciones: ["El personal de enfermería.", "El personal de mantenimiento.", "El personal de celadores.", "El personal médico de Cirugía."],
+    correcta: "B",
+    explicacion: "El equipo de quirófano lo forman médicos, enfermería, auxiliares y celadores. Mantenimiento acude cuando se le avisa, pero no forma parte del equipo."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 · P19",
+    enunciado: "¿Qué nombre reciben las áreas de internamiento que están en las unidades especializadas identificadas según las patologías que presentan los pacientes en la UCI?",
+    opciones: ["Habitación.", "Módulo.", "Sala.", "Box o boxes."],
+    correcta: "D",
+    explicacion: "En la UCI los pacientes están en boxes: espacios individuales que permiten vigilarlos de cerca."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 · P21",
+    enunciado: "El periodo de tiempo que transcurre desde que un paciente va a ser intervenido, se prepara la intervención, se realiza la misma y hasta que es dado de alta en el hospital, se le conoce con el nombre de:",
+    opciones: ["Preoperatorio.", "Transoperatorio.", "Perioperatorio.", "Postoperatorio."],
+    correcta: "C",
+    explicacion: "Perioperatorio = todo el proceso: antes (preoperatorio), durante (intraoperatorio) y después (postoperatorio)."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 · P22",
+    enunciado: "¿Cómo se llama el accesorio metálico, que se fija a la mesa quirúrgica encima del paciente, y permite separar la zona de anestesia de la zona de intervención o campo quirúrgico?",
+    opciones: ["Aparato de anestesia.", "Lámpara quirúrgica.", "Carro de parada.", "Arco de anestesia."],
+    correcta: "D",
+    explicacion: "El arco de anestesia se fija a la mesa y separa con un paño la zona del anestesista del campo quirúrgico."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 · P28",
+    enunciado: "En la Unidad de Agudos de Salud Mental de un hospital, ¿cuál de las siguientes funciones NO corresponde al/la celador/a?",
+    opciones: ["Cuidar del entorno ambiental de los pacientes.", "Prevenir agresiones o autolesiones.", "Administrar medicamentos orales.", "Ayudar al aseo personal de los pacientes que lo precisen."],
+    correcta: "C",
+    explicacion: "Los medicamentos los administra el personal de enfermería, nunca el celador. El celador sí vigila, ayuda en el aseo y previene agresiones."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 aplazado · P24",
+    enunciado: "¿Cuál de las siguientes tareas es propia de el/la Celador/a en el Bloque Quirúrgico?",
+    opciones: ["Realización de las pruebas diagnósticas provisionales.", "Traslado y preparación de pacientes en la mesa de quirófano.", "Esterilización de los instrumentos quirúrgicos.", "Limpieza y desinfección de las áreas comunes en quirófano."],
+    correcta: "B",
+    explicacion: "En quirófano el celador traslada al paciente y le ayuda a pasar a la mesa. Esterilizar y hacer pruebas no son tareas suyas."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 aplazado · P26",
+    enunciado: "Durante el turno de trabajo en UCI, el/la Celador/a, ¿qué debe de tener controlado para realizar su trabajo?",
+    opciones: ["La configuración de las bombas de infusión.", "El material de sondaje vesical.", "El respirador en caso de fallo.", "Las camas, que estén en buen estado, para transportar pacientes."],
+    correcta: "D",
+    explicacion: "Lo que el celador controla en la UCI son las camas, para que estén en buen estado para los traslados. Bombas, sondas y respiradores son cosa del personal sanitario."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 aplazado · P27",
+    enunciado: "Un/a Celador/a de UCI deberá saber:",
+    opciones: ["Administrar sedantes a un paciente en caso de necesidad urgente.", "Intubar a los pacientes en caso de necesidad urgente.", "Hacer la reparación de las camas o camillas del servicio.", "Ayudar en los cambios posturales de las pacientes."],
+    correcta: "D",
+    explicacion: "El celador de UCI ayuda en los cambios posturales. Sedar e intubar es del personal sanitario y reparar camas, de mantenimiento."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2025 aplazado · P30",
+    enunciado: "¿A quién corresponde realizar las maniobras de contención mecánica a un paciente que actúa de forma violenta en la Unidad de Salud Mental?",
+    opciones: ["Al Personal de Seguridad.", "Exclusivamente al Celador de la Unidad.", "Al Personal Sanitario.", "A todo el personal de la Unidad, independientemente de la categoría."],
+    correcta: "D",
+    explicacion: "Según la plantilla oficial, la contención mecánica es tarea de todo el personal de la unidad, sea cual sea su categoría, siguiendo el protocolo."
+  },
   // ===================================================================
-  //  FALLECIDOS Y AUTOPSIAS (54 preguntas)
+  //  FALLECIDOS Y AUTOPSIAS (56 preguntas)
   // ===================================================================
   {
     tema: "Fallecidos y autopsias",
@@ -7868,8 +8374,24 @@ const PREGUNTAS = [
     correcta: "A",
     explicacion: "Son las livideces (livor mortis): aparecen pronto y en las zonas más bajas según la posición del cadáver. El algor mortis es el enfriamiento y la mancha verde es de la putrefacción."
   },
+  {
+    tema: "Fallecidos y autopsias",
+    origen: "Examen SAS 2025 · P32",
+    enunciado: "Cuando un paciente fallece en el hospital, ¿cómo se denomina al conjunto de atenciones que se presta a la persona fallecida para su posterior traslado al mortuorio o al tanatorio?",
+    opciones: ["Rigor mortis.", "Tanatopsia.", "Tanatología.", "Cuidados post mortem."],
+    correcta: "D",
+    explicacion: "Los cuidados post mortem son las atenciones al fallecido antes de llevarlo al mortuorio. Rigor mortis es la rigidez del cadáver."
+  },
+  {
+    tema: "Fallecidos y autopsias",
+    origen: "Examen SAS 2025 aplazado · P31",
+    enunciado: "La limpieza de la mesa y de la Sala de Autopsia corresponde a:",
+    opciones: ["Los Celadores/as.", "El Personal de Limpieza.", "La mesa al Celador/a, y la Sala al Personal de Limpieza.", "La Sala al Celador/a, y la mesa al Personal de Limpieza."],
+    correcta: "A",
+    explicacion: "Según la plantilla oficial, la limpieza de la mesa y de la sala de autopsias corresponde a los celadores."
+  },
   // ===================================================================
-  //  SUMINISTROS Y ALMACÉN (63 preguntas)
+  //  SUMINISTROS Y ALMACÉN (68 preguntas)
   // ===================================================================
   {
     tema: "Suministros y almacén",
@@ -8321,8 +8843,48 @@ const PREGUNTAS = [
     correcta: "A",
     explicacion: "Según la respuesta oficial, los pedidos urgentes los sube el celador de la estafeta."
   },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SAS 2025 · P25",
+    enunciado: "¿Cuál de las siguientes tareas en el almacén de fungible, no corresponden al/la celador/a?",
+    opciones: ["Recepcionar el suministro mediante cotejo del albarán de entrega.", "Cargar y descargar los productos del almacén.", "Distribuir los productos en las estanterías.", "Hacer los pedidos del material al proveedor."],
+    correcta: "D",
+    explicacion: "Los pedidos al proveedor los hace el personal de gestión de suministros. El celador recibe, carga, descarga y coloca."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SAS 2025 · P26",
+    enunciado: "¿Cómo se denomina al conjunto de operaciones que se llevan a cabo para conocer las cantidades existentes en el almacén de cada producto en un momento determinado?",
+    opciones: ["Principio de Pareto.", "FIFO.", "LIFO.", "Inventario."],
+    correcta: "D",
+    explicacion: "El inventario es el recuento de las existencias de cada producto en un momento dado."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SAS 2025 · P27",
+    enunciado: "¿Cuáles son las fases de la recepción de la mercancía en el almacén por el/la celador/a?",
+    opciones: ["Etiquetado y guardado.", "Dictamen, devolución y entrada a rotos.", "Control de unidades, control de lotes y devoluciones al proveedor.", "Control de pedido, control de bultos y transportista."],
+    correcta: "D",
+    explicacion: "Según la plantilla oficial, las fases de recepción son: control del pedido, control de bultos y control del transportista."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SAS 2025 · P49",
+    enunciado: "La Clasificación de Pareto, ordena los artículos en las estanterías en clase \"A\",\"B\" y \"C\". Si decimos que los artículos que más se consumen, se guardarán de forma más próximos y de fácil acceso, ¿de qué clase serían estos artículos?",
+    opciones: ["Clase \"A\".", "Clase \"B\".", "Clase \"C\".", "Los artículos no tienen clasificación Pareto."],
+    correcta: "A",
+    explicacion: "Clasificación de Pareto (ABC): los artículos A son los que más se mueven y se colocan en el sitio más cercano y accesible."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SAS 2025 aplazado · P29",
+    enunciado: "Señale, cuál de los siguientes artículos de almacén, NO es considerado material no sanitario:",
+    opciones: ["Mobiliario y enseres de oficina.", "Material de papelería.", "Material de informática.", "Material fungible."],
+    correcta: "D",
+    explicacion: "El material fungible (gasas, jeringas…) es material sanitario. Mobiliario, papelería e informática son material no sanitario."
+  },
   // ===================================================================
-  //  FARMACIA, ESTERILIZACIÓN Y REPROGRAFÍA (93 preguntas)
+  //  FARMACIA, ESTERILIZACIÓN Y REPROGRAFÍA (97 preguntas)
   // ===================================================================
   {
     tema: "Farmacia, esterilización y reprografía",
@@ -8989,8 +9551,40 @@ const PREGUNTAS = [
     correcta: "B",
     explicacion: "Ese icono (los rodillos con el papel en zigzag) avisa de un atasco de papel."
   },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SAS 2025 · P23",
+    enunciado: "¿Cómo se denomina al conjunto de técnicas que garantizan la ausencia de materia séptica o microorganismos infecciosos, tanto en superficie como en profundidad, de los materiales expuestos o de los seres vivos?",
+    opciones: ["Asepsia.", "Infección.", "Agentes infecciosos.", "Infestación."],
+    correcta: "A",
+    explicacion: "Asepsia = ausencia de gérmenes. Es el conjunto de técnicas que la consiguen y la mantienen."
+  },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SAS 2025 · P47",
+    enunciado: "¿Cuál es la norma reconocida internacionalmente para los sistemas de gestión ambiental?",
+    opciones: ["ISO 14001:2015.", "ISO 5001.", "ISO 9000.", "ISO 14001:2020."],
+    correcta: "A",
+    explicacion: "La ISO 14001 es la norma internacional de gestión ambiental; la versión vigente es la de 2015. (La ISO 9000 es de calidad)."
+  },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SAS 2025 · P48",
+    enunciado: "¿Qué se entiende por \"valorización de un residuo\"?",
+    opciones: ["Todo procedimiento que permita el aprovechamiento de los recursos contenidos en los residuos sin poner en peligro la salud humana y sin utilizar métodos que puedan causar perjuicios al medio ambiente.", "Toda operación consistente en recoger, clasificar, agrupar o preparar residuos para su transporte.", "La transformación de los residuos dentro de un proceso de producción para el compostaje y biometanización.", "Ninguna de las respuestas anteriores es correcta."],
+    correcta: "A",
+    explicacion: "Valorizar un residuo es aprovechar sus recursos sin dañar la salud ni el medio ambiente (por ejemplo, reciclarlo)."
+  },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SAS 2025 aplazado · P49",
+    enunciado: "En relación con la gestión de los residuos sanitarios, señale de las siguientes respuestas cuál es la correcta:",
+    opciones: ["Tiene como fin garantizar la protección de la salud pública.", "Tiene como fin la defensa del medio ambiente.", "Garantizar y proteger a los trabajadores del sector sanitario.", "Todas las respuestas anteriores son correctas."],
+    correcta: "D",
+    explicacion: "La gestión de residuos sanitarios protege la salud pública, el medio ambiente y a los trabajadores. Por eso son todas."
+  },
   // ===================================================================
-  //  URGENCIAS Y AMBULANCIAS (76 preguntas)
+  //  URGENCIAS Y AMBULANCIAS (78 preguntas)
   // ===================================================================
   {
     tema: "Urgencias y ambulancias",
@@ -9535,6 +10129,22 @@ const PREGUNTAS = [
     opciones: ["Avisará al personal sanitario.", "Retirará el cabecero de la cama, en caso de que se lo pidan.", "Ayudará en el masaje cardíaco si fuese necesario.", "Ayudará en la RCP avanzada."],
     correcta: "D",
     explicacion: "La RCP avanzada la hace el personal sanitario; el celador puede avisar, retirar el cabecero y ayudar en el masaje cardíaco."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SAS 2025 · P20",
+    enunciado: "Las compresiones torácicas realizadas por un reanimador, o mediante dispositivos mecánicos, durante la RCP para intentar restablecer la circulación espontánea, se denomina:",
+    opciones: ["Parada cardíaca.", "Soporte vital.", "Masaje cardíaco.", "Ritmo desfibrilable."],
+    correcta: "C",
+    explicacion: "Las compresiones torácicas de la RCP se llaman masaje cardíaco (externo)."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SAS 2025 aplazado · P25",
+    enunciado: "Si un/a Celador/a tiene encomendada la tarea de traslado de pacientes a la Sala de Triaje, ¿dónde presta servicio?",
+    opciones: ["En quirófano.", "En consultas externas.", "En urgencias.", "En unidades de hospitalización."],
+    correcta: "C",
+    explicacion: "La sala de triaje está en Urgencias: allí se clasifica a los pacientes según su gravedad."
   },
   // ===================================================================
   //  INFORMÁTICA (94 preguntas)

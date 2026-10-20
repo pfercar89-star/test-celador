@@ -7,6 +7,7 @@ App web sencilla para practicar tests de la oposición de celador del Sergas.
 | Archivo | Para qué sirve | ¿Lo toco? |
 |---|---|---|
 | `preguntas.js` | Las preguntas | **Sí, aquí añades las tuyas** |
+| `temario.js` | El texto de los temas (en Markdown) | Sí, si quieres corregir o ampliar un tema |
 | `index.html` | La estructura de la página | No hace falta |
 | `estilos.css` | Colores y tamaños | No hace falta |
 | `app.js` | La lógica (test, fallos, estadísticas) | No hace falta |
@@ -22,6 +23,7 @@ En `preguntas.js` cada tema empieza con una cabecera en mayúsculas. Para añadi
 
 ## Modos de práctica
 
+- **Temario**: los 18 temas resumidos (10 de la parte específica y 8 de la común), agrupados por bloque. Al tocar un tema se abre para leerlo, con el apartado "Trampas típicas" destacado en rojo. Al final hay un botón para hacer el test de ese tema en modo estudio. El campo `temaTest` de cada tema en `temario.js` dice qué preguntas usa ese test.
 - **Modo estudio**: 10 preguntas al azar del tema elegido. Te corrige cada respuesta al momento: verde si aciertas, rojo si fallas, y la explicación en un cuadro beige. "Estudiar mis fallos" usa este modo con las preguntas que has fallado o dejado en blanco.
 - **Modo examen**: eliges 10, 25, 50 o 100 preguntas. No corrige hasta el final. Puedes dejar preguntas en blanco, volver atrás y cambiar la respuesta. Al terminar te da la nota con la puntuación del Sergas (+0,50 por acierto, −0,125 por fallo, 0 en blanco), el tiempo que has tardado y la lista de preguntas falladas o en blanco con su explicación.
 

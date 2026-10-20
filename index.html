@@ -16,7 +16,13 @@
 
     <!-- PANTALLA 1: inicio -->
     <section id="pantalla-inicio">
-      <label for="selector-tema">Elige un tema:</label>
+      <div class="tarjeta">
+        <h2>Temario</h2>
+        <p class="pequeno">Lee los temas resumidos uno a uno y, al terminar cada uno, haz su test.</p>
+        <button id="boton-temario">Leer el temario</button>
+      </div>
+
+      <label for="selector-tema">Elige un tema para los tests:</label>
       <select id="selector-tema"></select>
 
       <div class="tarjeta">
@@ -62,6 +68,8 @@
       <div id="texto-resultado" class="resultado"></div>
       <!-- En el modo examen, aquí aparecen las preguntas falladas y en blanco -->
       <div id="revision"></div>
+      <!-- Solo se ve si el test se empezó desde un tema del temario -->
+      <button id="boton-volver-al-tema" class="secundario oculto">Volver al tema</button>
       <button class="boton-volver">Volver al inicio</button>
     </section>
 
@@ -72,10 +80,31 @@
       <button class="boton-volver">Volver al inicio</button>
       <button id="boton-borrar" class="peligro">Borrar mi progreso</button>
     </section>
+
+    <!-- PANTALLA 5: lista de temas del temario -->
+    <section id="pantalla-temario" class="oculto">
+      <button class="boton-volver enlace">← Inicio</button>
+      <h2>Temario</h2>
+      <div id="lista-temario"></div>
+      <button class="boton-volver secundario">Volver al inicio</button>
+    </section>
+
+    <!-- PANTALLA 6: lectura de un tema -->
+    <section id="pantalla-lectura" class="oculto">
+      <button class="boton-ir-temario enlace">← Temario</button>
+      <p id="lectura-cabecera" class="pequeno"></p>
+      <h2 id="lectura-titulo"></h2>
+      <p id="lectura-tiempo" class="pequeno"></p>
+      <article id="lectura-contenido" class="lectura"></article>
+      <button id="boton-test-tema">Hacer el test de este tema</button>
+      <button id="boton-tema-siguiente" class="secundario">Siguiente tema →</button>
+      <button class="boton-ir-temario secundario">Volver al temario</button>
+    </section>
   </main>
 
-  <!-- Primero se cargan las preguntas y luego la lógica de la app -->
+  <!-- Primero se cargan las preguntas y el temario, y luego la lógica de la app -->
   <script src="preguntas.js"></script>
+  <script src="temario.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

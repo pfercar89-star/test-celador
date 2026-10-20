@@ -104,4 +104,84 @@ table { width: 100%; border-collapse: collapse; margin-bottom: 16px; background:
 th, td { padding: 10px 8px; border-bottom: 1px solid #e0e6ee; text-align: left; }
 td.numero, th.numero { text-align: right; white-space: nowrap; }
 
+/* ---------- Temario ---------- */
+
+/* Botón con aspecto de enlace (por ejemplo "← Temario") */
+button.enlace {
+  width: auto;
+  background: none;
+  color: #0b5cab;
+  padding: 8px 0;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.bloque-titulo {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #5a6878;
+  margin: 20px 0 8px;
+}
+
+/* Cada tema de la lista */
+.tema-item {
+  display: block;
+  text-align: left;
+  background: #fff;
+  color: #1d2733;
+  border: 1px solid #dbe2ea;
+}
+.tema-item span { display: block; }
+.tema-item .numero-tema { font-size: 0.8rem; font-weight: 700; color: #0b5cab; }
+.tema-item .titulo-tema { font-weight: 600; margin: 2px 0; }
+.tema-item .info-tema { font-size: 0.85rem; color: #5a6878; }
+
+/* Texto del tema: letra algo más grande y líneas espaciadas para leer cómodo en el móvil */
+.lectura {
+  background: #fff;
+  border-radius: 12px;
+  padding: 4px 16px 12px;
+  margin: 12px 0 16px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+.lectura h3 {
+  font-size: 1.15rem;
+  color: #0b5cab;
+  margin: 24px 0 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e6ee;
+}
+.lectura h3:first-child { border-top: none; margin-top: 12px; }
+.lectura h4 { font-size: 1.02rem; margin: 16px 0 6px; }
+.lectura p { margin: 8px 0; }
+.lectura ul, .lectura ol { padding-left: 1.3em; margin: 6px 0 12px; }
+.lectura li { margin: 5px 0; }
+.lectura li ul, .lectura li ol { margin: 4px 0; }
+.lectura strong { color: #0f1b28; }
+.lectura blockquote {
+  margin: 12px 0;
+  padding: 10px 12px;
+  background: #eef4fb;
+  border-left: 4px solid #0b5cab;
+  border-radius: 8px;
+}
+
+/* Las tablas anchas se desplazan de lado dentro de su caja, sin mover la página */
+.tabla-scroll { overflow-x: auto; margin: 10px 0 14px; }
+.lectura table { font-size: 0.92rem; line-height: 1.4; margin: 0; }
+.lectura th { background: #eef2f6; }
+
+/* Apartado "Trampas típicas": destacado en rojo */
+.trampas {
+  background: #fdecea;
+  border: 1px solid #f3c0bb;
+  border-left: 6px solid #c62828;
+  border-radius: 10px;
+  padding: 0 14px 8px;
+  margin: 24px 0 8px;
+}
+.lectura .trampas h3 { color: #b3261e; border-top: none; margin-top: 12px; }
+
 .oculto { display: none; }

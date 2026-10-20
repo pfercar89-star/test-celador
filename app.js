@@ -23,6 +23,8 @@ let aciertosDelTest = 0;     // modo estudio
 let respuestasExamen = [];   // modo examen: la letra elegida en cada pregunta, o null si está en blanco
 let inicioExamen = 0;        // modo examen: hora a la que empezó (para el cronómetro)
 let cronometro = null;
+let temaAbierto = -1;        // temario: posición del tema que se está leyendo
+let testDesdeTemario = false; // si el test se empezó desde un tema, al final se ofrece volver a él
 
 // Atajo para buscar un elemento de la página por su id
 function $(id) {
@@ -70,7 +72,8 @@ function comprobarPreguntas() {
 // ---------- Utilidades ----------
 
 function mostrarPantalla(id) {
-  ["pantalla-inicio", "pantalla-pregunta", "pantalla-resultado", "pantalla-estadisticas"].forEach(function (p) {
+  ["pantalla-inicio", "pantalla-pregunta", "pantalla-resultado", "pantalla-estadisticas",
+   "pantalla-temario", "pantalla-lectura"].forEach(function (p) {
     $(p).classList.toggle("oculto", p !== id);
   });
   window.scrollTo(0, 0);
@@ -131,8 +134,10 @@ function actualizarBotonFallos() {
 
 // ---------- El test (los dos modos) ----------
 
-function empezarTest(preguntas, modoElegido, cantidad) {
+function empezarTest(preguntas, modoElegido, cantidad, desdeTemario) {
   modo = modoElegido;
+  testDesdeTemario = Boolean(desdeTemario);
+  $("boton-volver-al-tema").classList.toggle("oculto", !testDesdeTemario);
   preguntasDelTest = barajar(preguntas).slice(0, cantidad);
   posicion = 0;
   aciertosDelTest = 0;
@@ -455,6 +460,168 @@ function borrarProgreso() {
   mostrarEstadisticas();
 }
 
+// ---------- Temario ----------
+
+function hayTemario() {
+  return typeof TEMARIO !== "undefined" && Array.isArray(TEMARIO) && TEMARIO.length > 0;
+}
+
+// Lista de temas agrupada por bloque (Parte específica / Parte común)
+function mostrarListaTemario() {
+  const lista = $("lista-temario");
+  lista.innerHTML = "";
+  const bloques = Array.from(new Set(TEMARIO.map(function (t) { return t.bloque; })));
+  bloques.forEach(function (bloque) {
+    const titulo = document.createElement("h3");
+    titulo.className = "bloque-titulo";
+    titulo.textContent = bloque;
+    lista.appendChild(titulo);
+
+    TEMARIO.forEach(function (t, i) {
+      if (t.bloque !== bloque) return;
+      const boton = document.createElement("button");
+      boton.className = "tema-item";
+      [
+        ["numero-tema", "Tema " + t.numero],
+        ["titulo-tema", t.titulo],
+        ["info-tema", minutosDeLectura(t) + " min de lectura · " + preguntasDeTemaTest(t).length + " preguntas de test"]
+      ].forEach(function (parte) {
+        const span = document.createElement("span");
+        span.className = parte[0];
+        span.textContent = parte[1];
+        boton.appendChild(span);
+      });
+      boton.addEventListener("click", function () { abrirTema(i); });
+      lista.appendChild(boton);
+    });
+  });
+  mostrarPantalla("pantalla-temario");
+}
+
+function minutosDeLectura(t) {
+  return Math.max(1, Math.round((t.palabras || 0) / 200));   // unas 200 palabras por minuto
+}
+
+function preguntasDeTemaTest(t) {
+  return PREGUNTAS.filter(function (p) { return p.tema === t.temaTest; });
+}
+
+function abrirTema(i) {
+  temaAbierto = i;
+  const t = TEMARIO[i];
+  $("lectura-cabecera").textContent = t.bloque + " · Tema " + t.numero;
+  $("lectura-titulo").textContent = t.titulo;
+  $("lectura-tiempo").textContent = "⏱ " + minutosDeLectura(t) + " min de lectura";
+  $("lectura-contenido").innerHTML = markdownAHtml(t.contenido || "");
+
+  const cuantas = preguntasDeTemaTest(t).length;
+  $("boton-test-tema").textContent = "Hacer el test de este tema (" + Math.min(cuantas, PREGUNTAS_POR_TEST) + " preguntas)";
+  $("boton-test-tema").classList.toggle("oculto", cuantas === 0);
+  $("boton-tema-siguiente").classList.toggle("oculto", i === TEMARIO.length - 1);
+  mostrarPantalla("pantalla-lectura");
+}
+
+// ----- Convertir el texto Markdown del temario en HTML -----
+
+// Evita que un < o un & del texto se interprete como código de la página
+function escaparHtml(texto) {
+  return texto.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// **negrita** y *cursiva* dentro de una línea
+function formatoEnLinea(texto) {
+  return escaparHtml(texto)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*\s][^*]*?)\*/g, "<em>$1</em>");
+}
+
+function markdownAHtml(texto) {
+  const lineas = texto.split("\n");
+  let html = "";
+  let listas = [];          // listas abiertas, de fuera a dentro: "ul" o "ol"
+  let enTrampas = false;    // dentro del apartado "Trampas típicas"
+
+  function cerrarListas(hasta) {
+    while (listas.length > hasta) html += "</li></" + listas.pop() + ">";
+  }
+  function cerrarTrampas() {
+    if (enTrampas) { html += "</section>"; enTrampas = false; }
+  }
+
+  for (let i = 0; i < lineas.length; i++) {
+    const linea = lineas[i];
+    const item = linea.match(/^(\s*)(-|\d+\.)\s+(.*)$/);
+
+    if (item) {
+      // Punto de lista. Cada 2 espacios delante = un nivel más de profundidad.
+      let nivel = Math.floor(item[1].length / 2);
+      const tipo = item[2] === "-" ? "ul" : "ol";
+      if (nivel > listas.length) nivel = listas.length;
+      if (nivel === listas.length) {
+        const inicio = tipo === "ol" && parseInt(item[2], 10) !== 1 ? ' start="' + parseInt(item[2], 10) + '"' : "";
+        html += "<" + tipo + inicio + ">";
+        listas.push(tipo);
+      } else {
+        cerrarListas(nivel + 1);
+        if (listas[nivel] !== tipo) {
+          cerrarListas(nivel);
+          html += "<" + tipo + ">";
+          listas.push(tipo);
+        } else {
+          html += "</li>";
+        }
+      }
+      html += "<li>" + formatoEnLinea(item[3]);
+      continue;
+    }
+
+    cerrarListas(0);
+    if (linea.trim() === "") continue;
+
+    if (linea.startsWith("### ")) {
+      html += "<h4>" + formatoEnLinea(linea.slice(4)) + "</h4>";
+    } else if (linea.startsWith("## ")) {
+      cerrarTrampas();
+      const titulo = linea.slice(3);
+      if (/^trampas/i.test(titulo.trim())) {
+        html += '<section class="trampas">';
+        enTrampas = true;
+        html += "<h3>⚠️ " + formatoEnLinea(titulo) + "</h3>";
+      } else {
+        html += "<h3>" + formatoEnLinea(titulo) + "</h3>";
+      }
+    } else if (linea.startsWith(">")) {
+      html += "<blockquote>" + formatoEnLinea(linea.replace(/^>\s?/, "")) + "</blockquote>";
+    } else if (linea.trim().startsWith("|")) {
+      // Tabla: se juntan todas las líneas seguidas que empiezan por |
+      const filas = [];
+      while (i < lineas.length && lineas[i].trim().startsWith("|")) filas.push(lineas[i++].trim());
+      i--;
+      html += tablaAHtml(filas);
+    } else {
+      html += "<p>" + formatoEnLinea(linea) + "</p>";
+    }
+  }
+  cerrarListas(0);
+  cerrarTrampas();
+  return html;
+}
+
+function tablaAHtml(filas) {
+  const celdas = function (fila) {
+    return fila.replace(/^\|/, "").replace(/\|$/, "").split("|").map(function (c) { return c.trim(); });
+  };
+  let html = '<div class="tabla-scroll"><table>';
+  filas.forEach(function (fila, n) {
+    if (/^\|?\s*:?-{2,}/.test(fila)) return;   // la línea |---|---| solo separa la cabecera
+    const etiqueta = n === 0 ? "th" : "td";
+    html += "<tr>" + celdas(fila).map(function (c) {
+      return "<" + etiqueta + ">" + formatoEnLinea(c) + "</" + etiqueta + ">";
+    }).join("") + "</tr>";
+  });
+  return html + "</table></div>";
+}
+
 // ---------- Arranque: conectar los botones ----------
 
 function volverAlInicio() {
@@ -489,6 +656,20 @@ if (problemas.length > 0) {
     empezarTest(preguntasFalladas(), "estudio", PREGUNTAS_POR_TEST);
   });
   $("boton-anterior").addEventListener("click", anterior);
+  if (hayTemario()) {
+    $("boton-temario").addEventListener("click", mostrarListaTemario);
+  } else {
+    $("boton-temario").disabled = true;
+    $("boton-temario").textContent = "Temario no disponible (revisa temario.js)";
+  }
+  document.querySelectorAll(".boton-ir-temario").forEach(function (b) {
+    b.addEventListener("click", mostrarListaTemario);
+  });
+  $("boton-tema-siguiente").addEventListener("click", function () { abrirTema(temaAbierto + 1); });
+  $("boton-test-tema").addEventListener("click", function () {
+    empezarTest(preguntasDeTemaTest(TEMARIO[temaAbierto]), "estudio", PREGUNTAS_POR_TEST, true);
+  });
+  $("boton-volver-al-tema").addEventListener("click", function () { abrirTema(temaAbierto); });
   $("boton-terminar").addEventListener("click", terminarAntes);
   $("boton-estadisticas").addEventListener("click", mostrarEstadisticas);
   $("boton-siguiente").addEventListener("click", siguiente);

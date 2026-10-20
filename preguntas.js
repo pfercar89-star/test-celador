@@ -16,7 +16,7 @@
 //  Ojo: si un texto lleva comillas dobles dentro, usa comillas simples ' '.
 //
 //  Las preguntas están agrupadas por tema, en el orden del temario.
-//  Las que vienen de exámenes oficiales (Sergas 2024, SAS 2025) llevan "origen"
+//  Las que vienen de exámenes oficiales (Sergas 2024, SAS 2023 y 2025) llevan "origen"
 //  y van al final de su tema. De los exámenes de otras comunidades solo se han
 //  copiado las preguntas que valen en toda España.
 //  Las que dependen de la convocatoria 2025 (plazas, fechas, formato) llevan
@@ -25,7 +25,7 @@
 
 const PREGUNTAS = [
   // ===================================================================
-  //  CONSTITUCIÓN ESPAÑOLA (95 preguntas)
+  //  CONSTITUCIÓN ESPAÑOLA (96 preguntas)
   // ===================================================================
   {
     tema: "Constitución Española",
@@ -694,6 +694,14 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "Art. 43 de la Constitución: se reconoce el derecho a la protección de la salud."
   },
+  {
+    tema: "Constitución Española",
+    origen: "Examen SAS 2023 · P1",
+    enunciado: "¿Dónde se hace referencia a la Declaración Universal de Derechos Humanos en la Constitución española?",
+    opciones: ["En el Artículo 9.", "En el Artículo 10.", "En el Artículo 11.", "En el Artículo 12."],
+    correcta: "B",
+    explicacion: "Art. 10.2 de la Constitución: los derechos fundamentales se interpretan conforme a la Declaración Universal de Derechos Humanos."
+  },
   // ===================================================================
   //  ESTATUTO DE AUTONOMÍA DE GALICIA (68 preguntas)
   // ===================================================================
@@ -1175,7 +1183,7 @@ const PREGUNTAS = [
     explicacion: "El Estatuto permite que el Parlamento delegue la potestad legislativa solo en la Xunta de Galicia."
   },
   // ===================================================================
-  //  LEY GENERAL DE SANIDAD (69 preguntas)
+  //  LEY GENERAL DE SANIDAD (70 preguntas)
   // ===================================================================
   {
     tema: "Ley General de Sanidad",
@@ -1661,6 +1669,14 @@ const PREGUNTAS = [
     correcta: "A",
     explicacion: "Según el artículo 15 de la Ley General de Sanidad, los servicios de referencia los acredita el Ministerio de Sanidad."
   },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SAS 2023 · P3",
+    enunciado: "Ley 14/1986, de 25 de abril, General de Sanidad. Serán obligaciones de los ciudadanos con las Instituciones y organismos del sistema sanitario:",
+    opciones: ["Cumplir las prescripciones generales de naturaleza sanitaria comunes a toda la población, así como las específicas determinadas por los Servicios Sanitarios.", "Cuidar las instalaciones y colaborar en el mantenimiento de la habitabilidad de las Instituciones Sanitarias.", "Responsabilizarse del uso adecuado de las prestaciones ofrecidas por el sistema sanitario, fundamentalmente en lo que refiere a la utilización de servicios, procedimientos de baja laboral o incapacidad permanente y prestaciones terapéuticas y sociales.", "Todas las respuestas son correctas."],
+    correcta: "D",
+    explicacion: "Ley General de Sanidad, art. 11: las tres obligaciones de los ciudadanos son las de A, B y C. Por eso son todas."
+  },
   // ===================================================================
   //  LEY DE SALUD DE GALICIA Y SERGAS (68 preguntas)
   // ===================================================================
@@ -2142,7 +2158,7 @@ const PREGUNTAS = [
     explicacion: "La Ley de Salud de Galicia da condición de autoridad sanitaria al Consello da Xunta, a la persona titular de la consellería y a alcaldes y alcaldesas, pero no al gerente de un hospital."
   },
   // ===================================================================
-  //  ESTATUTO MARCO (113 preguntas)
+  //  ESTATUTO MARCO (114 preguntas)
   // ===================================================================
   {
     tema: "Estatuto Marco",
@@ -2940,6 +2956,14 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Estatuto Marco, art. 42: retribuciones básicas = sueldo, trienios y pagas extraordinarias. Los complementos son retribuciones complementarias."
   },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SAS 2023 · P5",
+    enunciado: "Ley 55/2003, de 16 de diciembre, del Estatuto Marco del personal estatutario de los servicios de salud, establece una serie de preceptos en su artículo 21, son causas de extinción de la condición de personal estatutario fijo:",
+    opciones: ["Un permiso sin sueldo.", "Una sanción disciplinaria grave.", "La incapacidad temporal.", "La perdida de la nacionalidad tomada en consideración para el nombramiento."],
+    correcta: "D",
+    explicacion: "Estatuto Marco, art. 21: una de las causas de extinción es perder la nacionalidad que se tuvo en cuenta para el nombramiento. Una sanción solo extingue si es de separación del servicio."
+  },
   // ===================================================================
   //  SELECCIÓN Y PROVISIÓN DE PLAZAS (57 preguntas)
   // ===================================================================
@@ -3351,7 +3375,7 @@ const PREGUNTAS = [
     explicacion: "Estatuto Marco (Ley 55/2003), art. 29: igualdad, mérito, capacidad y publicidad en la selección, promoción y movilidad."
   },
   // ===================================================================
-  //  PROTECCIÓN DE DATOS E HISTORIA CLÍNICA (77 preguntas)
+  //  PROTECCIÓN DE DATOS E HISTORIA CLÍNICA (80 preguntas)
   // ===================================================================
   {
     tema: "Protección de datos e historia clínica",
@@ -3900,8 +3924,32 @@ const PREGUNTAS = [
     correcta: "B",
     explicacion: "La Ley 41/2002 es la ley de autonomía del paciente y de información y documentación clínica."
   },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2023 · P8",
+    enunciado: "Según la Ley 41/2002, la historia clínica es el conjunto de documentos que contienen los datos, valoraciones e informaciones de cualquier índole sobre la situación y la evolución clínica de un paciente a lo largo del proceso asistencial. Según dicho texto legal ¿quién es el propietario de la historia clínica?",
+    opciones: ["El paciente.", "Los profesionales que la generan en la asistencia al paciente.", "El centro sanitario que la almacena y custodia.", "La ley no establece taxativamente la propiedad de la historia clínica."],
+    correcta: "D",
+    explicacion: "La Ley 41/2002 no dice de quién es la historia clínica: regula quién la custodia y quién puede acceder a ella."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2023 · P29",
+    enunciado: "Cualquier profesional sanitario que trabaja con pacientes tiene acceso y es conocedor de información relacionada con su proceso. Mantener el compromiso del silencio, se denomina:",
+    opciones: ["Objeción de conciencia.", "Deber de Custodia.", "Secreto profesional.", "No es obligatorio mantener silencio."],
+    correcta: "C",
+    explicacion: "Guardar silencio sobre lo que se sabe del paciente es el secreto profesional. Lo tienen todos los trabajadores del centro, también el celador."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SAS 2023 · P32",
+    enunciado: "¿Cuál es la respuesta correcta si un paciente desea que determinada información personal quede entre un profesional y él.?",
+    opciones: ["Toda la información del paciente debe figurar en la Historia clínica.", "Toda la información del paciente es compartida por todos los médicos.", "Debe respetarse su criterio siempre que no afecte a valoraciones clínicas.", "El paciente no podrá pedir ese trato de su información personal."],
+    correcta: "C",
+    explicacion: "Si el paciente pide reserva sobre un dato personal, se respeta siempre que no afecte a la valoración clínica."
+  },
   // ===================================================================
-  //  PREVENCIÓN DE RIESGOS, VIOLENCIA DE GÉNERO E IGUALDAD (113 preguntas)
+  //  PREVENCIÓN DE RIESGOS, VIOLENCIA DE GÉNERO E IGUALDAD (122 preguntas)
   // ===================================================================
   {
     tema: "Prevención de riesgos, violencia de género e igualdad",
@@ -4711,8 +4759,80 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Es incorrecta la D: la Ley 31/1995 (art. 29) obliga a cada trabajador a velar por su seguridad y por la de los demás afectados por su trabajo."
   },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P6",
+    enunciado: "¿Cuál es la Ley que regula en España la prevención de riesgos laborales?",
+    opciones: ["Ley 31/1995, de 8 de noviembre.", "Ley 32/1995, de 8 de noviembre.", "Ley 33/1995, de 8 de noviembre.", "Ley 34/1995, de 8 de noviembre."],
+    correcta: "A",
+    explicacion: "La Ley de Prevención de Riesgos Laborales es la Ley 31/1995, de 8 de noviembre."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P7",
+    enunciado: "Según el artículo 4 (Definiciones) de la vigente Ley de Prevención de Riesgos Laborales, ¿cuál sería la definición de \"equipo de protección individual\"?",
+    opciones: ["Cualquier equipo que lleve el trabajador, facilitado por el empresario, destinado a prevenir los riesgos en el trabajo.", "Cualquier instrumento, equipo o accesorio que lleve el trabajador, propio o facilitado por el empresario, que le proteja de los riesgos del trabajo.", "Cualquier equipo, accesorio o complemento homologado que pueda ser utilizado por el trabajador para reducir los riesgos inherentes al desarrollo de su trabajo.", "Cualquier equipo destinado a ser llevado o sujetado por el trabajador para que le proteja de uno o varios riesgos que puedan amenazar su seguridad o su salud en el trabajo, así como cualquier complemento o accesorio destinado a tal fin."],
+    correcta: "D",
+    explicacion: "Ley 31/1995, art. 4: EPI es cualquier equipo que el trabajador lleve o sujete para protegerse de uno o varios riesgos, y sus accesorios."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P31",
+    enunciado: "Las estrategias generales de prevención de los riesgos higiénicos se basan en el establecimiento de una serie de barreras. ¿Cuáles son las barreras?",
+    opciones: ["Barreras físicas y barreras químicas.", "Barreras biológicas y precauciones universales.", "Las respuestas A y B son correctas.", "Las respuestas A y B son falsas."],
+    correcta: "C",
+    explicacion: "Las barreras contra riesgos biológicos son físicas (guantes, mascarilla), químicas (desinfectantes), biológicas (vacunas) y las precauciones universales. A y B son correctas."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P34",
+    enunciado: "Ante un incendio, ¿qué se debe hacer?",
+    opciones: ["Usar ascensores", "Gatear", "Abrir puertas", "Cubrirse las vías respiratorias con un tejido de fibra artificial."],
+    correcta: "B",
+    explicacion: "En un incendio el humo sube: hay que gatear, sin usar ascensores y cubriendo la boca con un paño húmedo de algodón (no de fibra artificial, que arde)."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P35",
+    enunciado: "Golpes o choques con objetos o con equipos de trabajo. Para evitar este riesgo se deberán llevar a cabo una serie de medidas preventivas. Indique la respuesta correcta:",
+    opciones: ["Sobrecargar la parte superior de los archivadores y estanterías.", "Dejar los archivadores, cajones y armarios entreabiertos cuando no se estén usando.", "Almacenar el material en los lugares destinados para tal fin, dejando libres las zonas de paso, salidas y vías de circulación evitando elementos que sobresalgan.", "No señalizar las puertas acristaladas."],
+    correcta: "C",
+    explicacion: "Para evitar golpes: material en su sitio y zonas de paso libres. Las demás opciones aumentan el riesgo."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P36",
+    enunciado: "Se entiende legalmente por daño derivado del trabajo:",
+    opciones: ["Las lesiones sufridas con motivo u ocasión del trabajo.", "Todas las enfermedades, patologías o lesiones sufridas con motivo u ocasión del trabajo.", "Todas las enfermedades, patologías o lesiones sufridas por el trabajador.", "Cualquier enfermedad que sufra el trabajador derivada del desempeño de su trabajo."],
+    correcta: "B",
+    explicacion: "Ley 31/1995, art. 4: daños derivados del trabajo son las enfermedades, patologías o lesiones sufridas con motivo u ocasión del trabajo."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P37",
+    enunciado: "La manipulación manual de cargas está regulada en:",
+    opciones: ["Real Decreto 487/1997, de 14 de abril", "Decreto 485/1996", "Instrucción Técnica de prevención de 8 de septiembre de 2000", "Ley de prevención de riesgos laborales."],
+    correcta: "A",
+    explicacion: "La manipulación manual de cargas está en el Real Decreto 487/1997."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P38",
+    enunciado: "Sobre el Plan de Emergencias ante un posible incendio. Una de las medidas preventivas sería las señales de salvamento o socorro. ¿Cómo serán este tipo de señales?",
+    opciones: ["De forma rectangular o cuadrada, pictograma blanco sobre fondo verde.", "De forma rectangular o cuadrada, pictograma blanco sobre fondo rojo.", "De forma rectangular o redonda, pictograma blanco sobre fondo azul.", "De forma triangular para indicar peligro y tomar las decisiones adecuadas."],
+    correcta: "A",
+    explicacion: "Señales de salvamento o socorro: cuadradas o rectangulares, pictograma blanco sobre fondo verde. Las de incendios llevan fondo rojo."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SAS 2023 · P39",
+    enunciado: "El uso de guantes en materia de higiene del Personal Celador/a:",
+    opciones: ["Evita el lavado de manos antes del contacto con el paciente.", "Evita el lavado de manos después del contacto con el paciente.", "Evita el lavado de manos entre pacientes.", "No sustituye al lavado de manos."],
+    correcta: "D",
+    explicacion: "Los guantes NO sustituyen el lavado de manos: hay que lavarse antes y después."
+  },
   // ===================================================================
-  //  FUNCIONES DEL CELADOR (139 preguntas)
+  //  FUNCIONES DEL CELADOR (149 preguntas)
   // ===================================================================
   {
     tema: "Funciones del celador",
@@ -5726,8 +5846,88 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "Hablar deprisa es una barrera para la comunicación. Las otras opciones la facilitan."
   },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P11",
+    enunciado: "¿Cuál de las siguientes funciones NO es de apoyo interno del celador/a?",
+    opciones: ["Traslado y control interno de los pacientes y familiares.", "Transporte y control de documentos.", "Tramitación y conducción sin tardanza de las comunicaciones verbales.", "Facilitar información administrativa."],
+    correcta: "D",
+    explicacion: "Dar información administrativa es tarea del personal administrativo. Trasladar pacientes y documentos y llevar recados verbales sí es apoyo interno del celador."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P12",
+    enunciado: "¿Cuál de las siguientes afirmaciones es función del celador/a?",
+    opciones: ["Traslado de muebles, equipos y material.", "Traslado de camas para reparar.", "Retirada de colchones en mal estado.", "Todas las respuestas son correctas."],
+    correcta: "D",
+    explicacion: "El celador traslada muebles, equipos, camas para reparar y colchones. Por eso son todas."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P20",
+    enunciado: "El traslado de documentación clínica:",
+    opciones: ["Es función del celador sólo si es acompañado de personal sanitario.", "Es función del personal administrativo.", "Es función del Celador/a.", "Los celadores tienen expresamente prohibido el traslado de documentación clínica."],
+    correcta: "C",
+    explicacion: "Trasladar documentación clínica entre servicios es función del celador (con el debido cuidado de la confidencialidad)."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P24",
+    enunciado: "¿Qué es el feedback en el proceso de la comunicación?",
+    opciones: ["Mensaje", "Respuesta", "Código", "Canal"],
+    correcta: "B",
+    explicacion: "Feedback (retroalimentación) es la respuesta del receptor al emisor."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P41",
+    enunciado: "Si un Celador/a observase alguna anomalía o desperfecto en la limpieza del edificio o material:",
+    opciones: ["Procederá a reparar el desperfecto o anomalía con la mayor brevedad.", "Dará cuenta con la mayor brevedad al servicio de mantenimiento.", "Dará cuenta a sus inmediatos superiores.", "Dará cuenta con la mayor brevedad a su inmediato superior y procederán a reparar el desperfecto o anomalía."],
+    correcta: "C",
+    explicacion: "Estatuto de 1971: el celador da cuenta a sus inmediatos superiores de las anomalías o desperfectos. Él no los repara."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P42",
+    enunciado: "Señale cuál de las siguientes son funciones del Celador/a:",
+    opciones: ["Realizarán labores de limpieza de forma habitual.", "Servirán de técnicos ascensoristas.", "Velarán continuamente por conseguir el mayor orden y silencio posible.", "Ninguna de las respuestas son correctas."],
+    correcta: "C",
+    explicacion: "Velar por el orden y el silencio es función del celador. Limpiar de forma habitual no lo es, y lo de ascensorista es una trampa."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P44",
+    enunciado: "¿Cuál será la función del celador/a en cuanto al acceso y estancia de visitas a las habitaciones de los pacientes?",
+    opciones: ["El Celador/a no está obligado al control de visitas, ya que es misión del vigilante jurado de la empresa de seguridad contratada por el hospital.", "El Celador/a deberá vigilar el acceso de familiares y visitantes a las habitaciones procurando que no haya aglomeración, permitiendo que fumen en las habitaciones.", "El Celador/a deberá vigilar el acceso y estancia de familiares y visitantes a las habitaciones de los enfermos, no permitiendo la entrada más que a las personas autorizadas.", "No es tarea del celador/a vigilar el comportamiento de visitantes y enfermos."],
+    correcta: "C",
+    explicacion: "Estatuto de 1971: el celador vigila el acceso y la estancia de las visitas y solo deja entrar a las personas autorizadas."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P45",
+    enunciado: "El personal sanitario de urgencias, necesita hacer un electrocardiograma al paciente con dolor en el pecho, pide al Celador/a que se encargue de trasladar el aparato portátil de electrocardiograma que se encuentra en la planta de cardiología:",
+    opciones: ["El Celador/a se niega por ser tarea del personal de mantenimiento.", "Al ser un aparato muy delicado, debe ser el enfermero del servicio el que se encargue del traslado del aparato de electros.", "El Celador/a no puede negarse ya que es tarea específica del celador el traslado de aparatos de un servicio a otro.", "El traslado de aparatos delicados es misión del técnico correspondiente."],
+    correcta: "C",
+    explicacion: "Trasladar aparatos de un servicio a otro es tarea propia del celador."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P47",
+    enunciado: "¿Cuál es la Orden que recoge las funciones de los celadores/as?",
+    opciones: ["Orden 5 de junio de 1971.", "Orden 3 de julio de 1971.", "Orden 5 de julio de 1971.", "Orden 5 de julio de 1961."],
+    correcta: "C",
+    explicacion: "Las funciones del celador están en el Estatuto del personal no sanitario, aprobado por Orden de 5 de julio de 1971 (art. 14.2)."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SAS 2023 · P50",
+    enunciado: "¿Cuáles son los elementos que se encuentran en todo proceso de comunicación?",
+    opciones: ["El emisor, el receptor y el mensaje.", "El emisor, el mensaje, el canal, el receptor, el codificador, el decodificador y el feed-back o retroalimentación.", "El emisor, el mensaje, el canal, el receptor, el codificador, el decodificador, el intermediario y el feed-back o retroalimentación.", "Ninguna de las respuestas anteriores es correcta."],
+    correcta: "B",
+    explicacion: "Elementos de la comunicación: emisor, mensaje, canal, receptor, codificador, decodificador y feedback. «Intermediario» no es uno de ellos."
+  },
   // ===================================================================
-  //  MOBILIARIO Y UTENSILIOS (70 preguntas)
+  //  MOBILIARIO Y UTENSILIOS (73 preguntas)
   // ===================================================================
   {
     tema: "Mobiliario y utensilios",
@@ -6229,8 +6429,32 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "La cama de levitación mantiene al paciente suspendido sobre un flujo de aire. Se usa en grandes quemados."
   },
+  {
+    tema: "Mobiliario y utensilios",
+    origen: "Examen SAS 2023 · P22",
+    enunciado: "El Cuadro Balcánico es:",
+    opciones: ["Un conjunto de síntomas de una enfermedad.", "Un armazón que inmoviliza las camas en las habitaciones.", "Un armazón metálico sujeto a los cuatro extremos de la cama, que se eleva formando un cuadro por encima de la superficie total de la cama.", "Un aparato mecánico que utiliza exclusivamente el personal de mantenimiento."],
+    correcta: "C",
+    explicacion: "El cuadro balcánico es un armazón metálico sujeto a la cama, por encima de ella, del que se cuelgan poleas y el triángulo para tracciones y para que el paciente se incorpore."
+  },
+  {
+    tema: "Mobiliario y utensilios",
+    origen: "Examen SAS 2023 · P23",
+    enunciado: "Teniendo en cuenta las características propias de una cama de somier rígido y no utilizando ningún material adicional. ¿Cuál de las siguientes posiciones del paciente NO es posible alcanzar con ella?",
+    opciones: ["Decúbito prono o ventral.", "Decúbito dorsal.", "Fowler.", "Antitrendelemburg."],
+    correcta: "C",
+    explicacion: "Una cama de somier rígido no se articula, así que sin material extra no puede ponerse en Fowler (sentado)."
+  },
+  {
+    tema: "Mobiliario y utensilios",
+    origen: "Examen SAS 2023 · P153",
+    enunciado: "¿En qué tipo de cama se instala un triángulo de Balkan?",
+    opciones: ["Cama articulada.", "Cama de Judet.", "Cama circoeléctrica.", "Cama roto-rest."],
+    correcta: "B",
+    explicacion: "Según la plantilla oficial, el triángulo de Balkan se instala en la cama de Judet. Ojo: el triángulo también se usa en camas articuladas."
+  },
   // ===================================================================
-  //  MOVILIZACIÓN Y TRASLADO DE PACIENTES (132 preguntas)
+  //  MOVILIZACIÓN Y TRASLADO DE PACIENTES (136 preguntas)
   // ===================================================================
   {
     tema: "Movilización y traslado de pacientes",
@@ -7180,8 +7404,40 @@ const PREGUNTAS = [
     correcta: "B",
     explicacion: "Trendelenburg (cabeza más baja que los pies) favorece el retorno de la sangre venosa hacia el corazón."
   },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2023 · P13",
+    enunciado: "¿Cuál NO es una indicación para colocar al paciente en la posición Trendelenburg?.",
+    opciones: ["Lipotimias y sincopes.", "Pacientes con problemas respiratorios.", "Hemorragias.", "Mejora de la circulación cerebral sanguínea."],
+    correcta: "B",
+    explicacion: "Trendelenburg (cabeza abajo) se usa en lipotimias, hemorragias y para llevar sangre al cerebro. En problemas respiratorios NO, porque las vísceras empujan el diafragma."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2023 · P26",
+    enunciado: "Aquella posición del paciente en la que la cabeza está ladeada y el brazo inferior extendido hacia atrás y separado del cuerpo, el brazo superior flexionado próximo a la cabeza, así como la pierna inferior semiflexionada y la superior flexionada por la cadera y la rodilla se denomina:",
+    opciones: ["Fowler.", "Sims", "Trendelenburg", "Morestin"],
+    correcta: "B",
+    explicacion: "Posición de Sims (semiprona): de lado, brazo de abajo hacia atrás, brazo de arriba flexionado y la pierna de arriba muy flexionada."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2023 · P27",
+    enunciado: "En la posición Fowler Alta, la cabecera de la cama con respecto a los pies, forma un ángulo de:",
+    opciones: ["45 grados.", "60 grados.", "90 grado.", "120 grados."],
+    correcta: "C",
+    explicacion: "En Fowler alta el paciente queda casi sentado: unos 90°. Fowler normal ~45° y semi-Fowler ~30°."
+  },
+  {
+    tema: "Movilización y traslado de pacientes",
+    origen: "Examen SAS 2023 · P49",
+    enunciado: "El Celador/a de una planta de Hospitalización, es requerido por la Supervisora para que realice una transferencia de un paciente, al cual van a realizar una prueba, de la cama a la camilla. ¿Qué ocurre con la sonda y el suero?",
+    opciones: ["Serán responsabilidad del médico responsable del paciente.", "Serán retirados del paciente durante la transferencia, procediendo a su colocación una vez que el paciente esté colocado en la camilla.", "Serán responsabilidad del personal de enfermería.", "Serán responsabilidad del celador, pues es el encargado de dicha transferencia."],
+    correcta: "C",
+    explicacion: "Durante la transferencia, sondas y sueros son responsabilidad de enfermería. El celador mueve al paciente con cuidado de no tirar de ellos."
+  },
   // ===================================================================
-  //  QUIRÓFANO, HOSPITALIZACIÓN Y SALUD MENTAL (111 preguntas)
+  //  QUIRÓFANO, HOSPITALIZACIÓN Y SALUD MENTAL (117 preguntas)
   // ===================================================================
   {
     tema: "Quirófano, hospitalización y salud mental",
@@ -7984,6 +8240,54 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Según la plantilla oficial, la contención mecánica es tarea de todo el personal de la unidad, sea cual sea su categoría, siguiendo el protocolo."
   },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2023 · P15",
+    enunciado: "Realizando su tarea en el Bloque Quirúrgico, la cirujana de turno le pide la realización de algunas tareas. ¿Cuáles son las propias del celador/a de quirófano?",
+    opciones: ["Revisar el funcionamiento del aparato de anestesia.", "Elegir los accesorios a utilizar de la mesa quirúrgica para la colocación del paciente.", "Transportar al quirófano el aparato de ecografía.", "Ninguna de las anteriores es función suya."],
+    correcta: "C",
+    explicacion: "El celador traslada aparatos, como el ecógrafo. Revisar el aparato de anestesia o elegir los accesorios de la mesa es del personal sanitario."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2023 · P16",
+    enunciado: "Señale cual es función del celador/a en quirófano.",
+    opciones: ["Auxiliar en todas aquellas labores propias del Celador/a.", "Introducir y sacar a los enfermos del Área Quirúrgica para las intervenciones, colocándolos y retirándolos de la mesa de operaciones.", "Trasladarán el aparataje o mobiliario que se requiera.", "Todas las respuestas son correctas."],
+    correcta: "D",
+    explicacion: "En quirófano el celador entra y saca a los pacientes, los pasa a la mesa y traslada aparatos y mobiliario. Por eso son todas."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2023 · P21",
+    enunciado: "¿En qué circunstancias excepcionales podría el Celador/a destinado en psiquiatría administrar medicación a un paciente?",
+    opciones: ["Cuando se lo ordene el personal facultativo.", "Cuando el paciente deba ser sedado con urgencias, debido a su estado alterado, ante la imposibilidad de ser sedado por el personal sanitario.", "Sólo y exclusivamente bajo la supervisión de la persona responsable o supervisora de planta.", "Nunca."],
+    correcta: "D",
+    explicacion: "El celador nunca administra medicación, ni siquiera en psiquiatría ni en urgencias."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2023 · P40",
+    enunciado: "El Celador/a destinado en Quirófano NO debe:",
+    opciones: ["Ayudar a colocar al enfermo para una intervención.", "Trasladar a los pacientes desde sus respectivas habitaciones hasta el quirófano.", "Rasurar en caso de intervenciones urgentes.", "Permanecer en el interior del quirófano durante la intervención, por si se le necesita."],
+    correcta: "D",
+    explicacion: "El celador no se queda dentro del quirófano durante la intervención: espera fuera por si se le necesita."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2023 · P48",
+    enunciado: "En la unidad de agudos de salud mental de un hospital, el/la celador/a realizará una serie de funciones. De las relacionadas, ¿cuál es la correcta?",
+    opciones: ["Administrar los inyectables y tratamiento de pacientes incapaces que se niegan a colaborar.", "Ofrecer tabaco al paciente ansioso, le ayudará a calmarlo.", "Vigilar a los pacientes ante posibles agresiones o autolesiones.", "Mostrar desinterés por la circulación de personas por la unidad."],
+    correcta: "C",
+    explicacion: "En salud mental el celador vigila para prevenir agresiones y autolesiones. Nunca administra tratamientos."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SAS 2023 · P152",
+    enunciado: "¿El gorro es una prenda que el Celador/a debe utilizar dentro de la zona aséptica del quirófano?",
+    opciones: ["No, sólo deben utilizar los cirujanos.", "Es una prenda obligada para todo el personal que acceda al área quirúrgica.", "Sólo está indicado para el personal sanitario.", "Depende del tipo de operación que se realice, se utilizará o no."],
+    correcta: "B",
+    explicacion: "En el área quirúrgica todo el personal lleva gorro, también el celador."
+  },
   // ===================================================================
   //  FALLECIDOS Y AUTOPSIAS (56 preguntas)
   // ===================================================================
@@ -8391,7 +8695,7 @@ const PREGUNTAS = [
     explicacion: "Según la plantilla oficial, la limpieza de la mesa y de la sala de autopsias corresponde a los celadores."
   },
   // ===================================================================
-  //  SUMINISTROS Y ALMACÉN (68 preguntas)
+  //  SUMINISTROS Y ALMACÉN (69 preguntas)
   // ===================================================================
   {
     tema: "Suministros y almacén",
@@ -8883,8 +9187,16 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "El material fungible (gasas, jeringas…) es material sanitario. Mobiliario, papelería e informática son material no sanitario."
   },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SAS 2023 · P19",
+    enunciado: "¿En qué consiste el criterio FIFO mediante el cual las mercancías han de estar ordenadas en el almacén de un centro sanitario?",
+    opciones: ["Primero en entrar, último en salir.", "Último en entrar, primero en salir.", "Primero en entrar, primero en salir.", "Primero en entrar, primero en registrarse."],
+    correcta: "C",
+    explicacion: "FIFO (First In, First Out): primero en entrar, primero en salir. Así no caduca el material."
+  },
   // ===================================================================
-  //  FARMACIA, ESTERILIZACIÓN Y REPROGRAFÍA (97 preguntas)
+  //  FARMACIA, ESTERILIZACIÓN Y REPROGRAFÍA (99 preguntas)
   // ===================================================================
   {
     tema: "Farmacia, esterilización y reprografía",
@@ -9583,8 +9895,24 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "La gestión de residuos sanitarios protege la salud pública, el medio ambiente y a los trabajadores. Por eso son todas."
   },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SAS 2023 · P17",
+    enunciado: "En el Servicio de Farmacia el celador/a:",
+    opciones: ["Realiza funciones de recepción y transporte de material.", "Prepara las fórmulas magistrales.", "Las respuestas A y la B son correctas", "Ninguna respuesta es correcta."],
+    correcta: "A",
+    explicacion: "En farmacia el celador recibe y transporta material. Las fórmulas magistrales las prepara el farmacéutico."
+  },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SAS 2023 · P18",
+    enunciado: "La supervisora de la planta le ordena que en el desempeño de sus funciones extreme la profilaxis ¿Qué entiende usted con esta medida?",
+    opciones: ["Que es una medida curativa.", "Que es una medida preventiva.", "Que es una medida de Farmacoterapia.", "Ninguna de las respuestas anteriores son correctas."],
+    correcta: "B",
+    explicacion: "Profilaxis = prevención: medidas para evitar que aparezca una enfermedad o infección."
+  },
   // ===================================================================
-  //  URGENCIAS Y AMBULANCIAS (78 preguntas)
+  //  URGENCIAS Y AMBULANCIAS (81 preguntas)
   // ===================================================================
   {
     tema: "Urgencias y ambulancias",
@@ -10145,6 +10473,30 @@ const PREGUNTAS = [
     opciones: ["En quirófano.", "En consultas externas.", "En urgencias.", "En unidades de hospitalización."],
     correcta: "C",
     explicacion: "La sala de triaje está en Urgencias: allí se clasifica a los pacientes según su gravedad."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SAS 2023 · P14",
+    enunciado: "Un paciente está siendo atendido en urgencias, sufre una parada cardiorrespiratoria. El facultativo a cargo le pide que lo coloque de forma adecuada para intubar al paciente. ¿Cómo deberá proceder?",
+    opciones: ["Retirará el cabecero de la cama.", "Colocará al paciente en la posición Roser.", "Colocará al paciente en la posición Fowler.", "Las respuestas A y B son correctas."],
+    correcta: "D",
+    explicacion: "Para intubar, se quita el cabecero de la cama y se pone al paciente en posición de Roser (cabeza colgando, cuello en hiperextensión). A y B son correctas."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SAS 2023 · P43",
+    enunciado: "Los familiares de un paciente, que está siendo atendido en el servicio de urgencias, preguntan al Celador/a información sobre el diagnóstico y exploración del enfermo. ¿Cuál deberá ser su actuación?",
+    opciones: ["Informará sobre el pronóstico, omitiendo cualquier otro dato relativo a la exploración o diagnóstico definitivo.", "Solicitará del médico los datos relativos a la exploración para informar ampliamente a los familiares.", "Se abstendrá de dar ese tipo de información, remitiendo a los familiares ante el Jefe de Personal Subalterno.", "En todo caso, deberá orientar la consulta hacia el médico encargado de la asistencia del enfermo."],
+    correcta: "D",
+    explicacion: "El celador no informa de diagnósticos: orienta a los familiares hacia el médico que atiende al paciente."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SAS 2023 · P151",
+    enunciado: "El facultativo de turno en Urgencias le ordena que vaya a buscar los resultados de una citología de una paciente que permanece en Observación de Urgencias. ¿A qué servicio tendría que ir usted a recoger los resultados?",
+    opciones: ["Al laboratorio de Microbiología.", "Al servicio de Anatomía Patológica.", "Al laboratorio de Urología.", "Al servicio de Hematología."],
+    correcta: "B",
+    explicacion: "Las citologías las estudia Anatomía Patológica."
   },
   // ===================================================================
   //  INFORMÁTICA (94 preguntas)

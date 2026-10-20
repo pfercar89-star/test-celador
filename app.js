@@ -17,6 +17,7 @@ const CLAVE_REPASO = "celador_repaso";             // preguntas que repasar: { c
 const CLAVE_VISTAS = "celador_vistas";             // preguntas respondidas al menos una vez (ver claveDe)
 const CLAVE_LEIDOS = "celador_leidos";             // ids de los temas del temario marcados como leídos
 const CLAVE_ULTIMA_COPIA = "celador_ultima_copia"; // fecha de la última copia de seguridad
+const CLAVE_NOTAS = "celador_notas";               // notas sobre preguntas: { clave: { tipo, texto, fecha, tema, origen, enunciado, correcta } }
 const CLAVE_FALLOS = "celador_fallos";             // versión anterior de la lista de fallos (solo para pasarla al repaso)
 
 // Repaso espaciado: días que pasan hasta volver a preguntar una pregunta según su "caja".
@@ -24,6 +25,7 @@ const CLAVE_FALLOS = "celador_fallos";             // versión anterior de la li
 // si se acierta en la última (a los 30 días), se da por dominada y sale del repaso.
 const DIAS_REPASO = [0, 1, 3, 7, 15, 30];
 const DIAS_AVISO_COPIA = 14;   // días sin copia de seguridad a partir de los que se avisa en el inicio
+const TIPOS_NOTA = { duda: "❓ Duda", error: "⚠️ Posible error", observacion: "💬 Observación" };
 
 // Estado del test que se está haciendo ahora mismo
 let modo = "estudio";        // "estudio" (corrige al momento) o "examen" (corrige al final)
@@ -83,7 +85,7 @@ function comprobarPreguntas() {
 
 function mostrarPantalla(id) {
   ["pantalla-inicio", "pantalla-pregunta", "pantalla-resultado", "pantalla-estadisticas",
-   "pantalla-temario", "pantalla-lectura", "pantalla-conflictivos"].forEach(function (p) {
+   "pantalla-temario", "pantalla-lectura", "pantalla-conflictivos", "pantalla-notas"].forEach(function (p) {
     $(p).classList.toggle("oculto", p !== id);
   });
   window.scrollTo(0, 0);
@@ -122,6 +124,7 @@ function prepararInicio() {
     selector.add(new Option(tema + " (" + cuantas + ")", tema));
   });
   actualizarBotonFallos();
+  actualizarBotonNotas();
 }
 
 // ----- Repaso espaciado de fallos -----
@@ -224,6 +227,9 @@ function mostrarPregunta() {
     });
     contenedor.appendChild(boton);
   });
+
+  $("panel-nota").classList.add("oculto");
+  pintarBotonNota();
 
   if (modo === "examen") {
     marcarElegida();
@@ -592,8 +598,8 @@ function temaLeido(temaPreguntas) {
 }
 
 function borrarProgreso() {
-  if (!confirm("¿Seguro que quieres borrar TODO tu progreso: estadísticas, repaso, preguntas vistas y temas leídos? Si no tienes una copia guardada, no se podrá recuperar.")) return;
-  [CLAVE_ESTADISTICAS, CLAVE_REPASO, CLAVE_VISTAS, CLAVE_LEIDOS, CLAVE_FALLOS].forEach(function (clave) {
+  if (!confirm("¿Seguro que quieres borrar TODO tu progreso: estadísticas, repaso, preguntas vistas, temas leídos y notas? Si no tienes una copia guardada, no se podrá recuperar.")) return;
+  [CLAVE_ESTADISTICAS, CLAVE_REPASO, CLAVE_VISTAS, CLAVE_LEIDOS, CLAVE_NOTAS, CLAVE_FALLOS].forEach(function (clave) {
     try { localStorage.removeItem(clave); } catch (e) { /* sin almacenamiento: nada que borrar */ }
   });
   guardar(CLAVE_REPASO, {});
@@ -602,7 +608,7 @@ function borrarProgreso() {
 
 // ---------- Copia de seguridad ----------
 
-const CLAVES_COPIA = [CLAVE_ESTADISTICAS, CLAVE_REPASO, CLAVE_VISTAS, CLAVE_LEIDOS];
+const CLAVES_COPIA = [CLAVE_ESTADISTICAS, CLAVE_REPASO, CLAVE_VISTAS, CLAVE_LEIDOS, CLAVE_NOTAS];
 
 // Descarga un archivo con todo el progreso
 function guardarCopia() {
@@ -638,6 +644,7 @@ function recuperarCopia(archivo) {
     guardar(CLAVE_ULTIMA_COPIA, copia.fecha);
     alert("Copia recuperada.");
     actualizarBotonFallos();
+    actualizarBotonNotas();
     actualizarAvisoCopia();
     mostrarEstadisticas();
   };
@@ -653,6 +660,151 @@ function actualizarAvisoCopia() {
   $("texto-aviso-copia").textContent = ultima
     ? "💾 Tu última copia de seguridad es del " + fechaLegible(ultima) + ". Guarda otra para no perder tu progreso."
     : "💾 Aún no has guardado ninguna copia de tu progreso. Si cambias de móvil o se borran los datos del navegador, lo perderías.";
+}
+
+// ---------- Notas sobre las preguntas ----------
+
+function notaDe(p) {
+  return leer(CLAVE_NOTAS, {})[claveDe(p)] || null;
+}
+
+function pintarBotonNota() {
+  const abierto = !$("panel-nota").classList.contains("oculto");
+  const nota = notaDe(preguntasDelTest[posicion]);
+  $("boton-nota").textContent = abierto ? "✕ Cerrar nota"
+    : nota ? "📝 Ver o cambiar mi nota (" + TIPOS_NOTA[nota.tipo] + ")" : "📝 Añadir nota";
+}
+
+// Abre o cierra el cuadro de la nota de la pregunta que se está viendo
+function abrirCerrarNota() {
+  const panel = $("panel-nota");
+  panel.classList.toggle("oculto");
+  if (!panel.classList.contains("oculto")) {
+    const nota = notaDe(preguntasDelTest[posicion]);
+    $("texto-nota").value = nota ? nota.texto : "";
+    document.querySelector('input[name="tipo-nota"][value="' + (nota ? nota.tipo : "duda") + '"]').checked = true;
+    $("boton-borrar-nota").classList.toggle("oculto", !nota);
+    $("texto-nota").focus();
+  }
+  pintarBotonNota();
+}
+
+function guardarNota() {
+  const p = preguntasDelTest[posicion];
+  const texto = $("texto-nota").value.trim();
+  if (!texto) { borrarNota(); return; }
+  const notas = leer(CLAVE_NOTAS, {});
+  // Se guarda también el texto de la pregunta, por si luego se corrige y cambia
+  notas[claveDe(p)] = {
+    tipo: document.querySelector('input[name="tipo-nota"]:checked').value,
+    texto: texto,
+    fecha: fecha(),
+    tema: p.tema,
+    origen: p.origen || "",
+    enunciado: p.enunciado,
+    correcta: p.correcta + ") " + p.opciones[LETRAS.indexOf(p.correcta)]
+  };
+  guardar(CLAVE_NOTAS, notas);
+  $("panel-nota").classList.add("oculto");
+  pintarBotonNota();
+}
+
+function borrarNota() {
+  const notas = leer(CLAVE_NOTAS, {});
+  delete notas[claveDe(preguntasDelTest[posicion])];
+  guardar(CLAVE_NOTAS, notas);
+  $("panel-nota").classList.add("oculto");
+  pintarBotonNota();
+}
+
+function actualizarBotonNotas() {
+  const cuantas = Object.keys(leer(CLAVE_NOTAS, {})).length;
+  $("boton-notas").textContent = "📝 Mis notas" + (cuantas ? " (" + cuantas + ")" : "");
+}
+
+// Notas que se ven con el filtro elegido, de la más reciente a la más antigua
+function notasFiltradas() {
+  const notas = leer(CLAVE_NOTAS, {});
+  const tipo = $("filtro-notas").value;
+  return Object.keys(notas)
+    .map(function (clave) { return Object.assign({ clave: clave }, notas[clave]); })
+    .filter(function (n) { return !tipo || n.tipo === tipo; })
+    .sort(function (a, b) { return a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0; });
+}
+
+// Preguntas del banco que tienen nota (las que se hayan corregido ya no coinciden)
+function preguntasConNota(lista) {
+  const claves = new Set(lista.map(function (n) { return n.clave; }));
+  return PREGUNTAS.filter(function (p) { return claves.has(claveDe(p)); });
+}
+
+function mostrarNotas() {
+  const lista = notasFiltradas();
+  const contenedor = $("lista-notas");
+  contenedor.innerHTML = "";
+  $("texto-copiar-notas").classList.add("oculto");
+  if (lista.length === 0) {
+    parrafo(contenedor, $("filtro-notas").value
+      ? "No tienes notas de este tipo."
+      : "Aún no tienes notas. Mientras haces un test, toca «📝 Añadir nota» debajo de la pregunta.").className = "pequeno";
+  }
+  const existentes = new Set(PREGUNTAS.map(claveDe));
+  lista.forEach(function (n) {
+    const item = document.createElement("div");
+    item.className = "nota-item";
+    const cabecera = parrafo(item, TIPOS_NOTA[n.tipo] + " · " + fechaLegible(n.fecha));
+    cabecera.className = "nota-tipo";
+    parrafo(item, n.tema + (n.origen ? " · " + n.origen : "")).className = "pequeno";
+    const enunciado = document.createElement("h3");
+    enunciado.textContent = n.enunciado;
+    item.appendChild(enunciado);
+    parrafo(item, "Respuesta de la app: " + n.correcta).className = "pequeno";
+    if (!existentes.has(n.clave)) parrafo(item, "✓ Esta pregunta ya se ha cambiado o corregido en la app.").className = "pequeno";
+    parrafo(item, n.texto).className = "nota-texto";
+    const borrar = document.createElement("button");
+    borrar.className = "peligro";
+    borrar.textContent = "Borrar esta nota";
+    borrar.addEventListener("click", function () {
+      if (!confirm("¿Borrar esta nota?")) return;
+      const notas = leer(CLAVE_NOTAS, {});
+      delete notas[n.clave];
+      guardar(CLAVE_NOTAS, notas);
+      actualizarBotonNotas();
+      mostrarNotas();
+    });
+    item.appendChild(borrar);
+    contenedor.appendChild(item);
+  });
+  const practicables = preguntasConNota(lista).length;
+  $("boton-practicar-notas").classList.toggle("oculto", practicables === 0);
+  $("boton-practicar-notas").textContent = "Practicar estas preguntas (" + practicables + ")";
+  $("boton-copiar-notas").classList.toggle("oculto", lista.length === 0);
+  mostrarPantalla("pantalla-notas");
+}
+
+// Copia las notas como texto para pegarlas en un chat o un correo
+function copiarNotas() {
+  const texto = "MIS NOTAS · Test Celador Sergas\n\n" + notasFiltradas().map(function (n, i) {
+    return (i + 1) + ". [" + TIPOS_NOTA[n.tipo].replace(/^\S+ /, "") + "] " + n.tema + (n.origen ? " · " + n.origen : "") + "\n" +
+      "Pregunta: " + n.enunciado + "\n" +
+      "Respuesta de la app: " + n.correcta + "\n" +
+      "Mi nota: " + n.texto;
+  }).join("\n\n");
+  const aMano = function () {
+    const caja = $("texto-copiar-notas");
+    caja.value = texto;
+    caja.classList.remove("oculto");
+    caja.focus();
+    caja.select();
+    alert("No se ha podido copiar solo. El texto está seleccionado en el cuadro: mantén pulsado y elige «Copiar».");
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function () {
+      alert("Notas copiadas. Ahora pégalas donde quieras (mantén pulsado y «Pegar»).");
+    }, aMano);
+  } else {
+    aMano();
+  }
 }
 
 // ---------- Temario ----------
@@ -925,6 +1077,7 @@ function volverAlInicio() {
   if (cronometro && !confirm("¿Salir del examen? No se guardará nada de este examen.")) return;
   pararCronometro();
   actualizarBotonFallos();
+  actualizarBotonNotas();
   actualizarAvisoCopia();
   mostrarPantalla("pantalla-inicio");
 }
@@ -989,6 +1142,18 @@ if (problemas.length > 0) {
   }
   $("boton-terminar").addEventListener("click", terminarAntes);
   $("boton-estadisticas").addEventListener("click", mostrarEstadisticas);
+  $("boton-notas").addEventListener("click", mostrarNotas);
+  $("filtro-notas").addEventListener("change", mostrarNotas);
+  $("boton-nota").addEventListener("click", abrirCerrarNota);
+  $("boton-guardar-nota").addEventListener("click", guardarNota);
+  $("boton-borrar-nota").addEventListener("click", function () {
+    if (confirm("¿Borrar la nota de esta pregunta?")) borrarNota();
+  });
+  $("boton-practicar-notas").addEventListener("click", function () {
+    const preguntas = preguntasConNota(notasFiltradas());
+    empezarTest(preguntas, "estudio", preguntas.length, { texto: "Volver a mis notas", accion: mostrarNotas });
+  });
+  $("boton-copiar-notas").addEventListener("click", copiarNotas);
   $("boton-siguiente").addEventListener("click", siguiente);
   $("boton-borrar").addEventListener("click", borrarProgreso);
   document.querySelectorAll(".boton-volver").forEach(function (b) {

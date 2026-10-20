@@ -37,6 +37,8 @@ En `preguntas.js` cada tema empieza con una cabecera en mayúsculas. Para añadi
 
 - **Mi progreso**: cuántas preguntas has visto, cuántos temas has leído (en el temario hay un botón "Marcar como leído"), tu porcentaje de aciertos, tus 3 temas más flojos (con un botón para practicarlos) y una tabla por tema.
 
+- **Notas**: debajo de cada pregunta (en cualquier modo) hay un botón «📝 Añadir nota» para apuntar una duda, un posible error o una observación. En «📝 Mis notas» están todas, con un filtro por tipo, un botón para practicar esas preguntas y otro para copiarlas y enviarlas (por ejemplo, para que se corrijan los errores).
+
 ## Cómo abrirla
 
 Descarga la carpeta y haz doble clic en `index.html`. Se abre en el navegador; no hace falta instalar nada ni tener internet.
@@ -65,7 +67,7 @@ En el propio navegador. Si borras los datos del navegador o cambias de móvil, s
 En "Mi progreso y copia de seguridad":
 
 - **Guardar copia de mi progreso** descarga un archivo `progreso-celador-AAAA-MM-DD.json`. En el iPhone se guarda en la app Archivos, en Descargas.
-- **Recuperar una copia** te deja elegir ese archivo y devuelve el progreso tal como estaba.
+- **Recuperar una copia** te deja elegir ese archivo y devuelve el progreso tal como estaba. La copia incluye también tus notas.
 
 Si llevas más de 14 días sin guardar una copia, la pantalla de inicio te lo recuerda.
 

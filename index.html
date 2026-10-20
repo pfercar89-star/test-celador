@@ -58,6 +58,7 @@
         <button id="boton-examen">Empezar examen</button>
       </div>
 
+      <button id="boton-notas" class="secundario">📝 Mis notas</button>
       <button id="boton-estadisticas" class="secundario">📊 Mi progreso y copia de seguridad</button>
     </section>
 
@@ -73,6 +74,20 @@
       <!-- Estos dos botones solo se ven en el modo examen -->
       <button id="boton-anterior" class="secundario oculto">Anterior</button>
       <button id="boton-terminar" class="peligro oculto">Terminar examen ahora</button>
+
+      <!-- Nota personal sobre la pregunta: duda, posible error u observación -->
+      <button id="boton-nota" class="enlace">📝 Añadir nota</button>
+      <div id="panel-nota" class="panel-nota oculto">
+        <p class="pequeno">Tu nota sobre esta pregunta. Solo la ves tú; la encontrarás en «Mis notas».</p>
+        <div class="tipos-nota">
+          <label><input type="radio" name="tipo-nota" value="duda" checked> ❓ Duda</label>
+          <label><input type="radio" name="tipo-nota" value="error"> ⚠️ Posible error</label>
+          <label><input type="radio" name="tipo-nota" value="observacion"> 💬 Observación</label>
+        </div>
+        <textarea id="texto-nota" rows="4" placeholder="Escribe aquí tu duda, el error que ves o lo que quieras recordar…"></textarea>
+        <button id="boton-guardar-nota">Guardar nota</button>
+        <button id="boton-borrar-nota" class="peligro oculto">Borrar nota</button>
+      </div>
     </section>
 
     <!-- PANTALLA 3: resultado final del test -->
@@ -107,6 +122,25 @@
 
       <button class="boton-volver secundario">Volver al inicio</button>
       <button id="boton-borrar" class="peligro">Borrar todo mi progreso</button>
+    </section>
+
+    <!-- PANTALLA: mis notas -->
+    <section id="pantalla-notas" class="oculto">
+      <button class="boton-volver enlace">← Inicio</button>
+      <h2>📝 Mis notas</h2>
+      <p class="pequeno">Las notas que has escrito en las preguntas. Si crees que hay un error, toca «Copiar mis notas» y pégalas en el chat de Claude (o envíaselas a tu academia) para revisarlo.</p>
+      <select id="filtro-notas">
+        <option value="">Todas</option>
+        <option value="duda">❓ Dudas</option>
+        <option value="error">⚠️ Posibles errores</option>
+        <option value="observacion">💬 Observaciones</option>
+      </select>
+      <div id="lista-notas"></div>
+      <button id="boton-practicar-notas">Practicar estas preguntas</button>
+      <button id="boton-copiar-notas" class="secundario">📋 Copiar mis notas</button>
+      <!-- Si el navegador no deja copiar solo, el texto aparece aquí para copiarlo a mano -->
+      <textarea id="texto-copiar-notas" class="oculto" rows="8" readonly></textarea>
+      <button class="boton-volver secundario">Volver al inicio</button>
     </section>
 
     <!-- PANTALLA 5: lista de temas del temario -->

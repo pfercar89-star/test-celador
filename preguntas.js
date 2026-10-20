@@ -7827,7 +7827,7 @@ const PREGUNTAS = [
     enunciado: "A.S.V. trabaja como celadora en la sala de autopsias. De las siguientes tareas, indique cuál no realizará:",
     opciones: ["Instrumentar al médico durante la realización de la autopsia.", "Colocar el cadáver en la mesa y quitarle la mortaja si fuese necesario.", "Introducir en botes herméticos los restos cadavéricos que le indiquen.", "Realizará todas las anteriores."],
     correcta: "D",
-    explicacion: "Según la respuesta oficial, el celador de autopsias realiza todas esas tareas."
+    explicacion: "Según la respuesta oficial, el celador de autopsias realiza todas esas tareas. Ojo: el art. 14.2 le prohíbe usar instrumental sobre el cadáver. Pasarle el instrumental al médico (instrumentar) no es usarlo él, pero la pregunta es discutible."
   },
   {
     tema: "Fallecidos y autopsias",
@@ -7851,7 +7851,7 @@ const PREGUNTAS = [
     enunciado: "Al finalizar una autopsia clínica, el médico le indica que amortaje el cadáver. ¿Cuál será su forma correcta de proceder?",
     opciones: ["Avisará al encargado de turno para que localice al enfermero encargado.", "El celador ayudará a los enfermeros o personas encargadas a amortajar a los enfermos fallecidos. Por lo tanto, no es función del celador.", "En el mortuorio amortaja el anatomopatólogo. El celador ayudaría en la movilización.", "Todas son incorrectas."],
     correcta: "D",
-    explicacion: "En la sala de autopsias, amortajar al cadáver después de la autopsia sí es función del celador, así que todas las opciones son incorrectas."
+    explicacion: "Fíjate en el lugar. En la planta, enfermería amortaja y el celador ayuda (art. 14.2 del Estatuto de 1971). Pero aquí la escena es la sala de autopsias: al terminar la autopsia, el celador recompone el cadáver y lo vuelve a amortajar. Por eso todas las opciones son incorrectas; la B es la trampa, porque aplica la regla de la planta."
   },
   {
     tema: "Fallecidos y autopsias",

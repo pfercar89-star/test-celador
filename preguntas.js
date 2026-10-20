@@ -1433,9 +1433,9 @@ const PREGUNTAS = [
   {
     tema: "Ley General de Sanidad",
     enunciado: "Los menores de edad mayores de 16 años o emancipados, en general:",
-    opciones: ["Consienten solo con presencia del celador", "Prestan por sí mismos el consentimiento, salvo en actuaciones de grave riesgo, en que los padres son informados y su opinión tenida en cuenta", "Necesitan autorización judicial", "No pueden consentir nunca"],
+    opciones: ["Consienten solo con presencia del celador", "Prestan por sí mismos el consentimiento, salvo en actuaciones de grave riesgo para su vida o salud, en que consiente su representante legal después de oír su opinión", "Necesitan autorización judicial", "No pueden consentir nunca"],
     correcta: "B",
-    explicacion: "Mayoría de edad sanitaria a los 16 años, con excepciones. (Ley 41/2002, art. 9.4)"
+    explicacion: "Mayoría de edad sanitaria a los 16 años. Desde la Ley 26/2015, en las actuaciones de grave riesgo consiente el representante legal, después de oír y tener en cuenta la opinión del menor. Ojo con los temarios antiguos, que dicen que los padres solo son informados. (Ley 41/2002, art. 9.4)"
   },
   {
     tema: "Ley General de Sanidad",
@@ -3540,7 +3540,7 @@ const PREGUNTAS = [
     enunciado: "Los mayores de 16 años o menores emancipados, en general:",
     opciones: ["Pueden prestar el consentimiento por sí mismos, salvo actuaciones de grave riesgo", "No pueden consentir nada", "Necesitan autorización judicial", "Necesitan siempre a sus padres"],
     correcta: "A",
-    explicacion: "En actuaciones de grave riesgo, los padres son informados y su opinión se tiene en cuenta. (Ley 41/2002, art. 9.4)"
+    explicacion: "En actuaciones de grave riesgo para su vida o salud, consiente el representante legal, después de oír la opinión del menor (redacción vigente desde la Ley 26/2015). (Ley 41/2002, art. 9.4)"
   },
   {
     tema: "Protección de datos e historia clínica",
@@ -6175,7 +6175,7 @@ const PREGUNTAS = [
     enunciado: "Al ayudar a caminar a un paciente con debilidad en un lado del cuerpo, el celador se coloca:",
     opciones: ["Detrás sin tocarle", "En el lado sano", "Delante del paciente", "En el lado afectado (débil)"],
     correcta: "D",
-    explicacion: "Así puede sujetarle si cede el lado débil. (Deambulación)"
+    explicacion: "Así puede sujetarle si cede el lado débil. (Deambulación) ⚠️ Ojo: en el examen del Sergas de 2024 (E76) el tribunal dio por buena la contraria: ponerse en el lado sano (en una hemiplejía derecha, el izquierdo). Las fuentes no se ponen de acuerdo; si vuelve a salir, la respuesta oficial es el lado sano."
   },
   {
     tema: "Movilización y traslado de pacientes",
@@ -7773,7 +7773,7 @@ const PREGUNTAS = [
     enunciado: "Tras una autopsia, el celador puede colaborar en:",
     opciones: ["La firma del certificado", "La redacción del informe", "El traslado del cadáver de vuelta al mortuorio", "El cierre de las incisiones"],
     correcta: "C",
-    explicacion: "Traslados, sin instrumental. (Funciones del celador en autopsias)"
+    explicacion: "Traslados, sin instrumental. Ojo: en el examen del Sergas de 2024 (E105) también se dio por función del celador volver a amortajar el cadáver al terminar la autopsia. (Funciones del celador en autopsias)"
   },
   {
     tema: "Fallecidos y autopsias",
@@ -10870,7 +10870,7 @@ const PREGUNTAS = [
     enunciado: "Va a ayudar a caminar por el pasillo a un paciente con hemiplejia derecha. ¿Dónde se coloca?",
     opciones: ["Delante de él", "A su lado derecho (el lado afectado)", "Detrás de él", "A su lado izquierdo"],
     correcta: "B",
-    explicacion: "Para sujetarle si cede el lado débil. (Supuesto · deambulación)"
+    explicacion: "Para sujetarle si cede el lado débil. (Supuesto · deambulación) ⚠️ Ojo: en el examen del Sergas de 2024 (E76) el tribunal dio por buena la contraria: ponerse en el lado sano (en una hemiplejía derecha, el izquierdo). Las fuentes no se ponen de acuerdo; si vuelve a salir, la respuesta oficial es el lado sano."
   },
   {
     tema: "Supuestos prácticos",

@@ -124,6 +124,17 @@ const CONFLICTIVOS = [
     ]
   },
   {
+    grupo: "La norma ha cambiado",
+    estado: "Norma cambiada",
+    titulo: "Consentimiento de los mayores de 16 años en actuaciones de grave riesgo",
+    tema: "Ley General de Sanidad",
+    preguntas: [],
+    contenido: "- **Regla:** a partir de los **16 años** (o emancipado), el menor consiente por sí mismo (Ley 41/2002, art. 9.4).\n- **Excepción, redacción vigente desde la Ley 26/2015:** en una actuación de **grave riesgo para su vida o salud**, consiente el **representante legal**, después de oír y tener en cuenta la opinión del menor.\n- **Redacción antigua (ya no vale):** *los padres serán informados y su opinión será tenida en cuenta*. Muchos temarios y tests la siguen copiando.\n- **Ya corregido en la app:** dos preguntas del banco usaban la redacción antigua, y el temario (temas 3 y 7 de la parte común) lo explica ahora completo.",
+    fuentes: [
+      { titulo: "BOE: Ley 41/2002, texto consolidado (art. 9.4)", url: "https://www.boe.es/buscar/act.php?id=BOE-A-2002-22188" }
+    ]
+  },
+  {
     grupo: "Respuestas oficiales raras que sí se pueden explicar",
     estado: "Comprobado",
     titulo: "Temperatura de la cámara de cadáveres: entre −2 °C y 5 °C",

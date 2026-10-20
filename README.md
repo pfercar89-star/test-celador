@@ -15,12 +15,13 @@ App web sencilla para practicar tests de la oposición de celador del Sergas.
 
 ## Preguntas incluidas
 
-1.744 preguntas repartidas en 19 temas, en el orden del temario:
+1.795 preguntas repartidas en 19 temas, en el orden del temario:
 
 - 1.504 preguntas de práctica.
 - 120 preguntas del examen oficial de celador/a del Sergas (OPE 2022, examen de 2024), traducidas al castellano desde el original en gallego: 11 de la parte común y 109 de la específica. Llevan el campo `origen` y van al final de su tema. Las respuestas son las de la plantilla definitiva. No están las anuladas (C9 y E53). Los PDF originales están en la carpeta `examenes/`.
 - 76 preguntas de los exámenes oficiales de celador/a del Servicio Andaluz de Salud (SAS) de 2025: 38 del examen de acceso libre (abril de 2025) y 38 de la prueba aplazada. Las respuestas son las de las plantillas definitivas. Se han quitado las anuladas (24 y 40 del examen de abril) y las preguntas de normas y planes propios de Andalucía, que no valen para el Sergas. Su origen dice "Examen SAS 2025" y el número de pregunta.
 - 44 preguntas del examen oficial de celador/a del SAS del 11/11/2023 (el mismo examen se hizo en los centros del SAS y en las Agencias Públicas Empresariales Sanitarias), con la plantilla definitiva. También sin las preguntas propias de Andalucía. Su origen dice "Examen SAS 2023".
+- 51 preguntas del examen oficial de celador del Servicio Madrileño de Salud (SERMAS) del 25/05/2025. Madrid solo publicó la plantilla provisional; se han revisado una a una contra las leyes y ninguna respuesta parece dudosa. Sin las preguntas de normas y organización propias de Madrid. Su origen dice "Examen SERMAS 2025".
 
 Cinco preguntas del tema "Selección y provisión de plazas" dependen de la convocatoria 2025 (plazas, turnos, formato del examen y fecha). Llevan el origen "Convocatoria 2025 (dato que cambiará)" y hay que revisarlas cuando salga la convocatoria siguiente.
 

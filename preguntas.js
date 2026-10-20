@@ -16,7 +16,7 @@
 //  Ojo: si un texto lleva comillas dobles dentro, usa comillas simples ' '.
 //
 //  Las preguntas están agrupadas por tema, en el orden del temario.
-//  Las que vienen de exámenes oficiales (Sergas 2024, SAS 2023 y 2025) llevan "origen"
+//  Las que vienen de exámenes oficiales (Sergas 2024, SAS 2023 y 2025, SERMAS 2025) llevan "origen"
 //  y van al final de su tema. De los exámenes de otras comunidades solo se han
 //  copiado las preguntas que valen en toda España.
 //  Las que dependen de la convocatoria 2025 (plazas, fechas, formato) llevan
@@ -25,7 +25,7 @@
 
 const PREGUNTAS = [
   // ===================================================================
-  //  CONSTITUCIÓN ESPAÑOLA (96 preguntas)
+  //  CONSTITUCIÓN ESPAÑOLA (97 preguntas)
   // ===================================================================
   {
     tema: "Constitución Española",
@@ -702,6 +702,14 @@ const PREGUNTAS = [
     correcta: "B",
     explicacion: "Art. 10.2 de la Constitución: los derechos fundamentales se interpretan conforme a la Declaración Universal de Derechos Humanos."
   },
+  {
+    tema: "Constitución Española",
+    origen: "Examen SERMAS 2025 · P1",
+    enunciado: "A tenor de lo dispuesto en la Constitución española de 1978, compete a los poderes públicos organizar y tutelar la salud pública a través de:",
+    opciones: ["La prestación de los servicios mínimos indispensables.", "Medidas preventivas.", "Políticas de inversión en los sectores sanitarios más necesitados.", "La prestación de los servicios mínimos indispensables y de las políticas de inversión en los sectores sanitarios más necesitados."],
+    correcta: "B",
+    explicacion: "Art. 43.2 de la Constitución: los poderes públicos organizan y tutelan la salud pública mediante medidas preventivas y las prestaciones y servicios necesarios."
+  },
   // ===================================================================
   //  ESTATUTO DE AUTONOMÍA DE GALICIA (68 preguntas)
   // ===================================================================
@@ -1183,7 +1191,7 @@ const PREGUNTAS = [
     explicacion: "El Estatuto permite que el Parlamento delegue la potestad legislativa solo en la Xunta de Galicia."
   },
   // ===================================================================
-  //  LEY GENERAL DE SANIDAD (70 preguntas)
+  //  LEY GENERAL DE SANIDAD (77 preguntas)
   // ===================================================================
   {
     tema: "Ley General de Sanidad",
@@ -1677,6 +1685,62 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Ley General de Sanidad, art. 11: las tres obligaciones de los ciudadanos son las de A, B y C. Por eso son todas."
   },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P5",
+    enunciado: "Para el funcionamiento del Sistema de Salud, los servicios sanitarios, adecuarán su organización y funcionamiento siguiendo los principios de:",
+    opciones: ["Eficacia, celeridad, economía y flexibilidad.", "Eficacia, unidad, solidaridad e igualdad.", "Universalidad, eficiencia, publicidad activa e igualdad.", "Universalidad, unidad, economía e igualdad."],
+    correcta: "A",
+    explicacion: "Ley General de Sanidad, art. 7: los servicios sanitarios se organizan según los principios de eficacia, celeridad, economía y flexibilidad."
+  },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P6",
+    enunciado: "Las normas precisas para evitar el intrusismo profesional y la mala práctica serán aprobadas por:",
+    opciones: ["Las Comunidades Autónomas.", "El Ministerio de Sanidad.", "Las Instituciones Sanitarias.", "El Gobierno."],
+    correcta: "D",
+    explicacion: "Ley General de Sanidad, art. 40: corresponde al Gobierno (Administración del Estado) aprobar las normas para evitar el intrusismo y la mala práctica."
+  },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P7",
+    enunciado: "Las Comunidades Autónomas deberán organizar sus Servicios de Salud de acuerdo con:",
+    opciones: ["Los principios básicos de la ley 14/1986, de 25 de abril, General de Sanidad.", "La Ley 11/2017, de 22 de diciembre, de Buen gobierno y Profesionalización de la gestión de los centros.", "La Ley 55/2003, de 16 de diciembre del Estatuto Marco del personal estatutario.", "Los principios básicos establecidos por la Consejería de Sanidad."],
+    correcta: "A",
+    explicacion: "Ley General de Sanidad, art. 50: cada comunidad organiza su Servicio de Salud según los principios básicos de esta ley (Ley 14/1986)."
+  },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P8",
+    enunciado: "En materia sanitaria, las Comunidades Autónomas ajustarán el ejercicio de sus competencias a criterios de:",
+    opciones: ["Participación preferente del Consejero de Sanidad", "Participación minoritaria del Poder Legislativo.", "Participación Estatal de todos los interesados.", "Participación democrática de todos los interesados, así como de los representantes sindicales y organizaciones empresariales."],
+    correcta: "D",
+    explicacion: "Ley General de Sanidad, art. 5.2: participación democrática de todos los interesados, de los sindicatos y de las organizaciones empresariales."
+  },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P17",
+    enunciado: "Indique cuál es la definición correcta de áreas de salud:",
+    opciones: ["Son las estructuras fundamentales del sistema sanitario, responsabilizadas de la gestión unitaria de los centros y establecimientos del Servicio de Salud de la Comunidad Autónoma en su demarcación territorial y de las prestaciones sanitarias y programas sanitarios a desarrollar por ellos.", "Son las estructuras básicas del sistema sanitario, responsabilizadas de la gestión unitaria de los centros y establecimientos del Servicio de Salud de la Comunidad Autónoma en su demarcación territorial y de las prestaciones sanitarias y programas sanitarios a desarrollar por ellos.", "Son las estructuras fundamentales del sistema sanitario, responsabilizadas de la gestión del Servicio de Salud de la Comunidad Autónoma en su demarcación territorial y de las prestaciones sanitarias y programas sanitarios a desarrollar por ellos.", "Son las estructuras fundamentales del sistema sanitario, responsabilizadas de la gestión unitaria de los centros y establecimientos del Sistema Nacional de Salud en su demarcación territorial y de las prestaciones sanitarias y programas sanitarios a desarrollar por ellos."],
+    correcta: "A",
+    explicacion: "Ley General de Sanidad, art. 56: las Áreas de Salud son las estructuras fundamentales del sistema sanitario, con gestión unitaria de los centros del Servicio de Salud de su comunidad."
+  },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P62",
+    enunciado: "Los usuarios sin derecho a la asistencia de los Servicios de Salud:",
+    opciones: ["No podrán acceder a los servicios sanitarios públicos.", "Podrán acceder a los servicios sanitarios públicos con un sistema de acceso diferenciado.", "Podrán acceder a los servicios sanitarios con la consideración de pacientes privados y la facturación por la atención de estos pacientes será efectuada por las administraciones de los Centros", "Podrán acceder a los servicios sanitarios con la consideración de pacientes privados y la facturación por la atención podrá revertir en aquellos que intervienen en la atención."],
+    correcta: "C",
+    explicacion: "Ley General de Sanidad, art. 16: quien no tiene derecho a la asistencia puede ser atendido como paciente privado; factura la administración del centro."
+  },
+  {
+    tema: "Ley General de Sanidad",
+    origen: "Examen SERMAS 2025 · P65",
+    enunciado: "La población protegida por la Seguridad Social a atender en cada Zona de Salud",
+    opciones: ["Extenderá su acción a una población no inferior a 200.000 habitantes ni superior a 250.000.", "Podrá oscilar entre 5.000 y 10.000 habitantes en el medio rural, y entre 20.000 y 25.000 habitantes, en el medio urbano.", "Podrá oscilar entre 5.000 y 25.000 habitantes, tanto en el medio rural como en el medio urbano.", "Extenderá su acción a una población no inferior a 25.000 habitantes ni superior a 250.000."],
+    correcta: "C",
+    explicacion: "Cada zona básica de salud atiende entre 5.000 y 25.000 habitantes, en el medio rural y en el urbano (el área de salud, entre 200.000 y 250.000)."
+  },
   // ===================================================================
   //  LEY DE SALUD DE GALICIA Y SERGAS (68 preguntas)
   // ===================================================================
@@ -2158,7 +2222,7 @@ const PREGUNTAS = [
     explicacion: "La Ley de Salud de Galicia da condición de autoridad sanitaria al Consello da Xunta, a la persona titular de la consellería y a alcaldes y alcaldesas, pero no al gerente de un hospital."
   },
   // ===================================================================
-  //  ESTATUTO MARCO (114 preguntas)
+  //  ESTATUTO MARCO (119 preguntas)
   // ===================================================================
   {
     tema: "Estatuto Marco",
@@ -2964,6 +3028,46 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Estatuto Marco, art. 21: una de las causas de extinción es perder la nacionalidad que se tuvo en cuenta para el nombramiento. Una sanción solo extingue si es de separación del servicio."
   },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SERMAS 2025 · P29",
+    enunciado: "En base a la modificación del artículo 9 de la ley 55/2003 Estatuto Marco del personal estatutario de los servicios de salud, como regla general, el tipo de nombramiento que se otorga cuando se realiza un contrato para ocupar un puesto como personal estatutario temporal y no permanente es:",
+    opciones: ["Nombramiento eventual.", "Nombramiento provisional.", "Nombramiento interino.", "Nombramiento de carácter definitivo."],
+    correcta: "C",
+    explicacion: "Tras la reforma de 2022 (RDL 12/2022), la regla general para el personal estatutario temporal es el nombramiento de interino."
+  },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SERMAS 2025 · P30",
+    enunciado: "La utilización de los locales, instalaciones o equipamiento de las instituciones, centros o servicios de salud para la realización de actividades o funciones ajenas a dichos servicios, se considera en el ámbito del Estatuto Marco del personal estatutario de los servicios de salud:",
+    opciones: ["Falta leve.", "Falta grave.", "Falta muy grave.", "No se podrá exigir responsabilidad disciplinaria."],
+    correcta: "C",
+    explicacion: "Estatuto Marco, art. 72.2.r: usar locales, instalaciones o equipos del centro para actividades ajenas al servicio es falta muy grave."
+  },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SERMAS 2025 · P31",
+    enunciado: "El personal estatutario de los servicios de salud se clasifica:",
+    opciones: ["Atendiendo a la función desarrollada, al nivel del título exigido para el ingreso y al tiempo de su nombramiento.", "Atendiendo a la responsabilidad asumida, al nivel del título exigido para el ingreso y al tipo de su nombramiento.", "Atendiendo a la responsabilidad asumida, al nivel del título exigido para el ingreso y al tiempo de su nombramiento.", "Atendiendo a la función desarrollada, al nivel del título exigido para el ingreso y al tipo de su nombramiento."],
+    correcta: "D",
+    explicacion: "Estatuto Marco, art. 5: se clasifica por la función que desarrolla, el nivel del título exigido y el tipo de nombramiento."
+  },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SERMAS 2025 · P32",
+    enunciado: "En relación a los principios de la potestad disciplinaria, y de acuerdo con lo previsto en la Ley 55/2003, de 16 de diciembre, del Estatuto Marco del personal estatutario de los servicios de salud, señale la afirmación correcta:",
+    opciones: ["El régimen disciplinario responderá a los principios de tipicidad, eficacia y proporcionalidad en todo el Sistema Nacional de Salud.", "La potestad disciplinaria corresponde al servicio de salud donde el interesado obtuvo su nombramiento, con independencia del servicio de salud en el que el interesado se encuentre prestando servicios en el momento de comisión de la falta.", "Cuando de la instrucción de un expediente disciplinario resulte la existencia de indicios fundados de criminalidad, se continuará con su tramitación y se pondrá en conocimiento del Juez.", "Las normas definidoras de infracciones y sanciones serán susceptibles de aplicación analógica."],
+    correcta: "A",
+    explicacion: "Estatuto Marco, art. 70: tipicidad, eficacia y proporcionalidad. La potestad es del servicio donde se presta servicio al cometer la falta, y si hay indicios de delito se suspende el expediente."
+  },
+  {
+    tema: "Estatuto Marco",
+    origen: "Examen SERMAS 2025 · P68",
+    enunciado: "¿Cuáles de los siguientes son derechos colectivos del personal estatutario de los servicios de salud?",
+    opciones: ["Al encuadramiento en el Régimen General de la Seguridad Social, con los derechos y obligaciones que de ello se derivan.", "Disponer de servicios de prevención y de órganos representativos en materia de seguridad laboral.", "A la movilidad voluntaria, promoción interna y desarrollo profesional, en la forma en que prevean las disposiciones en cada caso aplicables.", "A la estabilidad en el empleo y al ejercicio o desempeño efectivo de la profesión o funciones que correspondan a su nombramiento."],
+    correcta: "B",
+    explicacion: "Estatuto Marco, art. 18: los servicios de prevención y los órganos de seguridad laboral son un derecho colectivo. Las otras tres son derechos individuales (art. 17)."
+  },
   // ===================================================================
   //  SELECCIÓN Y PROVISIÓN DE PLAZAS (57 preguntas)
   // ===================================================================
@@ -3375,7 +3479,7 @@ const PREGUNTAS = [
     explicacion: "Estatuto Marco (Ley 55/2003), art. 29: igualdad, mérito, capacidad y publicidad en la selección, promoción y movilidad."
   },
   // ===================================================================
-  //  PROTECCIÓN DE DATOS E HISTORIA CLÍNICA (80 preguntas)
+  //  PROTECCIÓN DE DATOS E HISTORIA CLÍNICA (85 preguntas)
   // ===================================================================
   {
     tema: "Protección de datos e historia clínica",
@@ -3948,8 +4052,48 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "Si el paciente pide reserva sobre un dato personal, se respeta siempre que no afecte a la valoración clínica."
   },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SERMAS 2025 · P25",
+    enunciado: "El titular del derecho a la información asistencial, según la Ley 41/2002, de 14 de noviembre, es el paciente. Indique la respuesta correcta:",
+    opciones: ["Siempre, aunque también serán informadas las personas vinculadas a él, por razones familiares o de hecho, en la medida que el paciente lo permita de manera expresa o tácita.", "Siempre, aunque también serán informadas las personas vinculadas a él, por razones familiares o de hecho, ya que sus familiares tienen siempre derecho a conocer la información asistencial del paciente.", "Solamente se informará al paciente si el diagnóstico es grave o pone en riesgo su vida.", "El médico que le asiste tiene capacidad para decidir si informa al paciente o los familiares dependiendo de la patología."],
+    correcta: "A",
+    explicacion: "Ley 41/2002, art. 5: el titular es el paciente. Su familia o allegados se informan solo en la medida en que él lo permita, de forma expresa o tácita."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SERMAS 2025 · P26",
+    enunciado: "El consentimiento informado se prestará por escrito en los casos siguientes:",
+    opciones: ["Intervención quirúrgica, procedimientos diagnósticos y terapéuticos invasores y, en general, aplicación de procedimientos que suponen riesgos o inconvenientes de notoria y previsible repercusión negativa sobre la salud del paciente.", "Intervención quirúrgica, procedimientos diagnósticos y terapéuticos no invasores y, en general, aplicación de procedimientos que suponen riesgos o inconvenientes de notoria y previsible repercusión negativa sobre la salud del paciente.", "El consentimiento informado será verbal por regla general.", "Intervención quirúrgica, procedimientos diagnósticos y terapéuticos invasores y, en general, aplicación de procedimientos que no suponen riesgos o inconvenientes de notoria y previsible repercusión negativa sobre la salud del paciente."],
+    correcta: "A",
+    explicacion: "Ley 41/2002, art. 8.2: el consentimiento es por escrito en intervenciones quirúrgicas, procedimientos invasores y los que tienen riesgos notorios. La regla general es verbal, pero C no responde a la pregunta."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SERMAS 2025 · P27",
+    enunciado: "La historia clínica se llevará con dos criterios, como mínimo, en cada institución asistencial. Indique cuáles son estos criterios:",
+    opciones: ["Criterio de centro y especialidad.", "Criterio de arbitrariedad y decisión.", "Criterio de unidad y de integración.", "Criterio de igualdad y cohesión."],
+    correcta: "C",
+    explicacion: "Ley 41/2002, art. 15.4: la historia clínica se lleva con criterios de unidad y de integración en cada institución."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SERMAS 2025 · P28",
+    enunciado: "El acceso a la historia clínica con fines judiciales, epidemiológicos, de salud pública, de investigación o de docencia, se rige por lo dispuesto en la legislación vigente en materia de protección de datos personales y en la siguiente ley, entre otras:",
+    opciones: ["Ley 14/1986, de 25 de abril, General de Sanidad.", "Ley 55/2003, de 16 de diciembre, del Estatuto Marco del personal estatutario de los servicios de salud.", "Real Decreto Legislativo 5/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto Básico del Empleado Público.", "Orden de 26 de abril de 1973, por la que se aprueba el Estatuto de Personal Sanitario no Facultativo de las Instituciones Sanitarias de la Seguridad Social."],
+    correcta: "A",
+    explicacion: "Ley 41/2002, art. 16.3: el acceso con fines judiciales, epidemiológicos, de investigación o docencia se rige por la ley de protección de datos y la Ley General de Sanidad, entre otras."
+  },
+  {
+    tema: "Protección de datos e historia clínica",
+    origen: "Examen SERMAS 2025 · P67",
+    enunciado: "Los facultativos podrán llevar a cabo las intervenciones clínicas indispensables en favor de la salud del paciente, sin necesidad de contar con su consentimiento, en uno de los siguientes casos:",
+    opciones: ["En todo caso cuando lo permitan sus familiares o a las personas vinculadas de hecho a él.", "Cuando no existe riesgo inmediato grave para la integridad física o psíquica del enfermo y no es posible conseguir su autorización, consultando, cuando las circunstancias lo permitan, a sus familiares o a las personas vinculadas de hecho a él.", "Los facultativos no tienen la potestad de llevar a cabo intervenciones en el paciente si no existe un consentimiento expreso firmado por el interesado.", "Cuando existe riesgo inmediato grave para la integridad física o psíquica del enfermo y no es posible conseguir su autorización, consultando, cuando las circunstancias lo permitan, a sus familiares o a las personas vinculadas de hecho a él."],
+    correcta: "D",
+    explicacion: "Ley 41/2002, art. 9.2: se puede intervenir sin consentimiento si hay riesgo inmediato grave y no es posible conseguir la autorización, consultando a la familia si se puede."
+  },
   // ===================================================================
-  //  PREVENCIÓN DE RIESGOS, VIOLENCIA DE GÉNERO E IGUALDAD (122 preguntas)
+  //  PREVENCIÓN DE RIESGOS, VIOLENCIA DE GÉNERO E IGUALDAD (130 preguntas)
   // ===================================================================
   {
     tema: "Prevención de riesgos, violencia de género e igualdad",
@@ -4831,8 +4975,72 @@ const PREGUNTAS = [
     correcta: "D",
     explicacion: "Los guantes NO sustituyen el lavado de manos: hay que lavarse antes y después."
   },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P13",
+    enunciado: "La funcionaria víctima de violencia de género tendrá derecho a:",
+    opciones: ["La reducción o a la reorganización de su tiempo de trabajo, a la movilidad dentro de su propio centro de trabajo y a la excedencia en los términos que se determinen en su legislación específica.", "La reducción de su tiempo de trabajo, a la movilidad geográfica de centro de trabajo y a la excedencia en los términos que se determinen en su legislación específica.", "La reducción o a la reordenación de su tiempo de trabajo, a la movilidad geográfica de centro de trabajo y a la excedencia en los términos que se determinen en su legislación específica.", "La reducción o a la reorganización de su trabajo, a la movilidad geográfica de centro de trabajo y a la excedencia en los términos que se determinen en su legislación específica."],
+    correcta: "C",
+    explicacion: "LO 1/2004 (art. 24) y EBEP (art. 49): la funcionaria víctima de violencia de género tiene derecho a reducir o reordenar su jornada, a la movilidad geográfica y a la excedencia. Ojo a las palabras exactas."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P14",
+    enunciado: "La ley 3/2007, para la igualdad efectiva de mujeres y hombres modifica la Ley General de Sanidad, añadiendo un nuevo apartado 4 al artículo 3, que queda redactado en los siguientes términos:",
+    opciones: ["Las políticas, estrategias, objetivos y programas de salud integrarán activamente en sus objetivos y actuaciones el principio de igualdad entre mujeres y hombres, evitando que, por sus diferencias físicas o por los estereotipos sociales asociados, se produzcan discriminaciones entre ellos en los objetivos y actuaciones sanitarias.", "Las políticas, estrategias, planes, planteamientos y programas de salud integrarán activamente en sus objetivos y actuaciones el principio de igualdad entre mujeres y hombres, evitando que, por sus diferencias físicas o por los estereotipos sociales asociados, se produzcan discriminaciones entre ellos en los objetivos y actuaciones sanitarias.", "Las políticas, estrategias y programas de salud integrarán activamente en sus objetivos y actuaciones el principio de igualdad entre mujeres y hombres, evitando que, por sus diferencias físicas o por los estereotipos sociales asociados, se produzcan discriminaciones entre ellos en los objetivos y actuaciones sanitarias.", "Las políticas, estrategias, planes y planteamientos de salud integrarán activamente en sus objetivos y actuaciones el principio de igualdad, evitando que, por sus diferencias físicas o por los estereotipos sociales asociados, se produzcan discriminaciones entre ellos en los objetivos y actuaciones sanitarias."],
+    correcta: "C",
+    explicacion: "Ley General de Sanidad, art. 3.4 (añadido por la LO 3/2007): «Las políticas, estrategias y programas de salud…». Las demás añaden o quitan palabras."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P33",
+    enunciado: "De acuerdo con la escala establecida en el artículo 35 de la Ley de Prevención de Riesgos Laborales, en una empresa con 40 trabajadores el número de delegados de prevención a designar serán:",
+    opciones: ["1 delegado de prevención.", "2 delegados de prevención.", "3 delegados de prevención.", "4 delegados de prevención."],
+    correcta: "A",
+    explicacion: "Ley 31/1995, art. 35: de 31 a 49 trabajadores, 1 delegado de prevención (de 50 a 100, 2)."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P34",
+    enunciado: "De acuerdo con lo establecido en el artículo 17 de la Ley de Prevención de Riesgos Laborales, ¿Quién debe de proporcionar a los trabajadores los equipos de protección individual adecuados para el desempeño de sus funciones?",
+    opciones: ["La Junta de Personal.", "El empresario", "Los delegados de prevención.", "Comité de Seguridad y Salud."],
+    correcta: "B",
+    explicacion: "Ley 31/1995, art. 17.2: el empresario debe proporcionar a los trabajadores los EPI adecuados."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P35",
+    enunciado: "De acuerdo con lo establecido en el artículo 26 de la Ley de Prevención de Riesgos Laborales, las trabajadoras embarazadas tendrán derecho a ausentarse del trabajo, con derecho a remuneración, para:",
+    opciones: ["Compensar los días por lactancia.", "La realización de exámenes prenatales y técnicas de preparación al parto.", "No realizar un turno nocturno.", "Todas son falsas."],
+    correcta: "B",
+    explicacion: "Ley 31/1995, art. 26.5: la embarazada puede ausentarse, cobrando, para exámenes prenatales y preparación al parto, avisando antes y justificando que debe ser en horario de trabajo."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P36",
+    enunciado: "De acuerdo con lo establecido en el artículo 28 de la Ley de Prevención de Riesgos Laborales, Cooperar con el empresario para que este pueda garantizar unas condiciones de trabajo que sean seguras y no entrañen riesgos para la seguridad y la salud de los trabajadores, es una obligación en materia de prevención de riesgos que le corresponde a:",
+    opciones: ["Al Comité de Seguridad y Salud.", "A los Delegados de Prevención.", "A los trabajadores.", "A los representantes de los trabajadores."],
+    correcta: "C",
+    explicacion: "Ley 31/1995, art. 29: cooperar con el empresario para garantizar condiciones de trabajo seguras es una obligación de los trabajadores."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P64",
+    enunciado: "Las obligaciones establecidas en la Ley 3/2007 para la igualdad efectiva de mujeres y hombres serán de aplicación a:",
+    opciones: ["Toda persona física, que se encuentre o actúe en territorio del Espacio Común Europeo, cualquiera que fuese su nacionalidad, domicilio o residencia.", "Toda persona física o jurídica, que se encuentre o actúe en territorio español, cualquiera que fuese su nacionalidad, domicilio o residencia.", "Toda persona física o jurídica, que se encuentre o actúe en territorio del Espacio Común Europeo, cualquiera que fuese su nacionalidad, domicilio, residencia y condición.", "Toda persona física o jurídica, que se encuentre y nazca en territorio español, cualquiera que fuese su nacionalidad, domicilio o residencia."],
+    correcta: "B",
+    explicacion: "LO 3/2007, art. 2.2: se aplica a toda persona física o jurídica que se encuentre o actúe en territorio español."
+  },
+  {
+    tema: "Prevención de riesgos, violencia de género e igualdad",
+    origen: "Examen SERMAS 2025 · P69",
+    enunciado: "De acuerdo con la escala establecida en el artículo 35 de la Ley de Prevención de Riesgos Laborales, en una empresa con 85 trabajadores el número de delegados de prevención a designar serán:",
+    opciones: ["1 delegado de prevención.", "2 delegados de prevención.", "3 delegados de prevención.", "4 delegados de prevención."],
+    correcta: "B",
+    explicacion: "Ley 31/1995, art. 35: de 50 a 100 trabajadores, 2 delegados de prevención."
+  },
   // ===================================================================
-  //  FUNCIONES DEL CELADOR (149 preguntas)
+  //  FUNCIONES DEL CELADOR (156 preguntas)
   // ===================================================================
   {
     tema: "Funciones del celador",
@@ -5925,6 +6133,62 @@ const PREGUNTAS = [
     opciones: ["El emisor, el receptor y el mensaje.", "El emisor, el mensaje, el canal, el receptor, el codificador, el decodificador y el feed-back o retroalimentación.", "El emisor, el mensaje, el canal, el receptor, el codificador, el decodificador, el intermediario y el feed-back o retroalimentación.", "Ninguna de las respuestas anteriores es correcta."],
     correcta: "B",
     explicacion: "Elementos de la comunicación: emisor, mensaje, canal, receptor, codificador, decodificador y feedback. «Intermediario» no es uno de ellos."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P37",
+    enunciado: "¿Cuál es la normativa que recoge las funciones propias del celador/a?",
+    opciones: ["El Estatuto de Personal no Sanitario al servicio de las Instituciones sanitarias de la Seguridad Social.", "El Estatuto de Personal no facultativo al servicio de las Instituciones Sanitarias de la Seguridad Social.", "El Estatuto Jurídico del Personal Médico de la Seguridad Social.", "El Estatuto de Personal Subalterno al servicio de las Instituciones Sanitarias de la Seguridad Social."],
+    correcta: "A",
+    explicacion: "Las funciones del celador están en el Estatuto de Personal no Sanitario de las Instituciones Sanitarias de la Seguridad Social (Orden de 5 de julio de 1971)."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P38",
+    enunciado: "¿De quién es la responsabilidad de la vigilancia nocturna de la Institución, tanto del interior como exterior?",
+    opciones: ["Del celador/a.", "Del jefe de servicio.", "De la supervisora de guardia.", "Del Director de Servicios Generales."],
+    correcta: "A",
+    explicacion: "Estatuto de 1971, art. 14.2: el celador tiene a su cargo la vigilancia nocturna, dentro y fuera del edificio."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P39",
+    enunciado: "¿Cuál de las siguientes funciones NO corresponde al Jefe de Personal Subalterno?",
+    opciones: ["Ocupar la posición de Director Gerente en su ausencia.", "Cuidará de la compostura y aseo del personal a su orden, revisando y exigiendo que vistan el uniforme reglamentario.", "Vigilará personalmente la limpieza de la Institución.", "Constatará que el personal de oficio y subalterno cumplen el horario establecido en la Institución y permanecen en su puesto de trabajo."],
+    correcta: "A",
+    explicacion: "Sustituir al Director Gerente no es función del Jefe de Personal Subalterno. Las otras tres sí lo son (Estatuto de 1971)."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P40",
+    enunciado: "En relación a las funciones de asistencia al personal sanitario facultativo y no facultativo, el celador:",
+    opciones: ["Trasladará, en su caso, de unos servicios a otros los aparatos o mobiliario que se requiera.", "En los quirófanos, ayudarán en las intervenciones utilizando instrumental quirúrgico básico.", "Tramitarán y conducirán sin tardanza, solamente, las comunicaciones verbales que les sean confiadas por sus superiores.", "En ausencia del peluquero, rasurarán a todos los enfermos que lo requieran para ser intervenidos quirúrgicamente."],
+    correcta: "A",
+    explicacion: "El celador traslada aparatos y mobiliario entre servicios. B es falsa (no usa instrumental), C también («solamente» sobra) y D también (no rasura a «todos»)."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P41",
+    enunciado: "¿Cómo debe el celador distribuir la documentación y correspondencia, según la normativa en vigor?",
+    opciones: ["La documentación y correspondencia debe distribuirse por el camino más corto hasta el destino.", "No es responsabilidad del Celador distribuir la documentación y correspondencia.", "La documentación y correspondencia se distribuye teniendo en cuenta el circuito de tramitación establecido para que llegue a su destinatario.", "La documentación y correspondencia debe distribuirse usando los vehículos disponibles, y en su defecto, debe almacenarse hasta que sea posible su distribución."],
+    correcta: "C",
+    explicacion: "La documentación y la correspondencia se reparten siguiendo el circuito de tramitación establecido."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P57",
+    enunciado: "Los aparatos sanitarios, maquinaria y ayudas técnicas, se trasladarán teniendo en cuenta:",
+    opciones: ["Su ubicación.", "El centro sanitario.", "Sus características.", "Que sean eléctricos o mecánicos."],
+    correcta: "C",
+    explicacion: "Los aparatos, la maquinaria y las ayudas técnicas se trasladan teniendo en cuenta sus características."
+  },
+  {
+    tema: "Funciones del celador",
+    origen: "Examen SERMAS 2025 · P70",
+    enunciado: "¿En qué articulo del Estatuto del Pernonal no sanitario vienen recogidas las funciones del celador/a?",
+    opciones: ["Artículo 12.1", "Artículo 13.2", "Artículo 14.3", "Artículo 14.2"],
+    correcta: "D",
+    explicacion: "Las funciones del celador están en el art. 14.2 del Estatuto de Personal no Sanitario (Orden de 5 de julio de 1971)."
   },
   // ===================================================================
   //  MOBILIARIO Y UTENSILIOS (73 preguntas)
@@ -7437,7 +7701,7 @@ const PREGUNTAS = [
     explicacion: "Durante la transferencia, sondas y sueros son responsabilidad de enfermería. El celador mueve al paciente con cuidado de no tirar de ellos."
   },
   // ===================================================================
-  //  QUIRÓFANO, HOSPITALIZACIÓN Y SALUD MENTAL (117 preguntas)
+  //  QUIRÓFANO, HOSPITALIZACIÓN Y SALUD MENTAL (121 preguntas)
   // ===================================================================
   {
     tema: "Quirófano, hospitalización y salud mental",
@@ -8288,8 +8552,40 @@ const PREGUNTAS = [
     correcta: "B",
     explicacion: "En el área quirúrgica todo el personal lleva gorro, también el celador."
   },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SERMAS 2025 · P42",
+    enunciado: "¿Cómo debe el celador movilizar a los pacientes durante la intervención quirúrgica?",
+    opciones: ["Una vez que el paciente se coloca en la mesa quirúrgica no se moviliza para asegurar que el campo estéril no se contamina.", "Los pacientes se movilizan en colaboración con el personal responsable, durante la intervención quirúrgica, bajo la supervisión del profesional destinado a tal fin, salvaguardando las condiciones de asepsia del centro sanitario.", "Los pacientes se movilizan en colaboración con el personal responsable, solo antes de la intervención quirúrgica, para que el personal sanitario que está realizando la operación pueda seguir operando.", "El celador es responsable de determinar cuándo y cómo debe movilizarse al paciente, para facilitar la actuación del facultativo."],
+    correcta: "B",
+    explicacion: "Durante la intervención el celador moviliza al paciente si se le pide, en colaboración con el personal responsable, bajo supervisión y respetando la asepsia."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SERMAS 2025 · P43",
+    enunciado: "¿Cómo debe el celador movilizar al paciente en la UCI, la UVI y la unidad de quemados?",
+    opciones: ["Los pacientes se movilizan en colaboración con el personal responsable en la UCI, UVI y en la unidad de grandes quemados, teniendo en cuenta los aparatos a los que están conectados, para ayudar a desarrollar los cuidados de los pacientes en dichas unidades, extremando las medidas de seguridad y evitando agravar lasituación del mismo.", "Los pacientes se movilizan bajo la responsabilidad del celador, extremando las medidas de seguridad y evitando agravar la situación del mismo.", "Los pacientes en la UCI, UVI y unidad de quemados no deben movilizarse salvo casos de extremada urgencia, en los que el celador debe tomar las medidas adecuadas para garantizar la seguridad.", "El celador moviliza a los pacientes en la UCI, UVI o unidad de quemados en colaboración con el personal de gestión y servicios."],
+    correcta: "A",
+    explicacion: "En UCI, UVI y quemados se moviliza en colaboración con el personal responsable, con cuidado de los aparatos conectados y extremando la seguridad."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SERMAS 2025 · P44",
+    enunciado: "El personal necesario que se integra en la UCI es el siguiente:",
+    opciones: ["Director/responsable de la unidad, enfermero/a, supervisor/a de la unidad, médicos y enfermeras.", "Director/responsable de la unidad, médicos/as y personal sanitario.", "Director/responsable de la unidad, enfermero/a supervisor de la unidad, médicos de la unidad, celadores/personal de transporte interno y gestión auxiliar.", "Director/responsable de la unidad, enfermera/o supervisor de la unidad, médicos/as, enfermeros/as, celadores/personal de transporte interno y gestión auxiliar, personal auxiliar administrativo y otras profesiones que colaboran con la unidad."],
+    correcta: "D",
+    explicacion: "En la UCI trabajan director, supervisora, médicos, enfermería, celadores, administrativos y otros profesionales. La D es la lista completa."
+  },
+  {
+    tema: "Quirófano, hospitalización y salud mental",
+    origen: "Examen SERMAS 2025 · P45",
+    enunciado: "¿Cómo actuará el celador, ante un enfermo agitado que requiera ser inmovilizado?",
+    opciones: ["Proporcionará la medicación necesaria para tranquilizarlo y procederá a su inmovilización.", "Esperará a que se tranquilice y procederá a su inmovilización.", "Sin identificar las características del paciente, iniciará su inmovilización.", "Identificará las características del paciente, previa información del personal sanitario, para su sujeción o inmovilización."],
+    correcta: "D",
+    explicacion: "Antes de sujetar a un paciente agitado, el celador se informa por el personal sanitario de sus características. Nunca le da medicación."
+  },
   // ===================================================================
-  //  FALLECIDOS Y AUTOPSIAS (56 preguntas)
+  //  FALLECIDOS Y AUTOPSIAS (59 preguntas)
   // ===================================================================
   {
     tema: "Fallecidos y autopsias",
@@ -8694,8 +8990,32 @@ const PREGUNTAS = [
     correcta: "A",
     explicacion: "Según la plantilla oficial, la limpieza de la mesa y de la sala de autopsias corresponde a los celadores."
   },
+  {
+    tema: "Fallecidos y autopsias",
+    origen: "Examen SERMAS 2025 · P46",
+    enunciado: "¿Qué competencia corresponde a los celadores en la sala de autopsias según la normativa vigente?",
+    opciones: ["Realizarán las necropsias clínicas siguiendo las instrucciones del patólogo forense, al mismo tiempo que sigue los acuerdos establecidos.", "Colaborarán en la realización de las necropsias clínicas o médico legales, bajo la supervisión del facultativo.", "Efectuará la colocación del cadáver en la mesa de autopsias, preservando la integridad del mismo, para que el personal destinado a tal fin, lleve a cabo la autopsia.", "Realizará el registro fotográfico de las piezas, bajo la supervisión del facultativo."],
+    correcta: "C",
+    explicacion: "En la sala de autopsias el celador coloca el cadáver en la mesa, respetando su integridad. La necropsia la hace el personal facultativo."
+  },
+  {
+    tema: "Fallecidos y autopsias",
+    origen: "Examen SERMAS 2025 · P47",
+    enunciado: "Según la normativa vigente, los cadáveres se reciben y desnudan",
+    opciones: ["Antes de llegar al mortuorio.", "En las salas de autopsias.", "En la unidad donde fallecen.", "En los tanatorios."],
+    correcta: "B",
+    explicacion: "Según la plantilla, los cadáveres se reciben y desnudan en la sala de autopsias."
+  },
+  {
+    tema: "Fallecidos y autopsias",
+    origen: "Examen SERMAS 2025 · P48",
+    enunciado: "¿Qué profesionales trasladarán los \"éxitus\" al mortuorio?",
+    opciones: ["Las enfermeras o personas encargadas de amortajar.", "Los servicios funerarios encargados del enterramiento del cadáver.", "Los celadores.", "El personal facultativo encargado de hacer la autopsia al cadáver."],
+    correcta: "C",
+    explicacion: "Estatuto de 1971, art. 14.2: el traslado de los cadáveres al mortuorio corre a cargo de los celadores."
+  },
   // ===================================================================
-  //  SUMINISTROS Y ALMACÉN (69 preguntas)
+  //  SUMINISTROS Y ALMACÉN (74 preguntas)
   // ===================================================================
   {
     tema: "Suministros y almacén",
@@ -9195,8 +9515,48 @@ const PREGUNTAS = [
     correcta: "C",
     explicacion: "FIFO (First In, First Out): primero en entrar, primero en salir. Así no caduca el material."
   },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SERMAS 2025 · P53",
+    enunciado: "Según la normativa estatal vigente, es competencia del celador el recuento y la distribución del material, en colaboración con el personal del almacén:",
+    opciones: ["No, el recuento es una competencia exclusiva del personal de función administrativa.", "No, es competencia del celador exclusivamente el reparto de carros desde el almacén.", "No, esto no es una competencia del celador según la normativa vigente.", "Sí, según la organización del almacén, para su posterior entrega al servicio que lo solicite y para comprobar el stock."],
+    correcta: "D",
+    explicacion: "Sí: el celador colabora con el almacén en el recuento y reparto del material, según cómo esté organizado."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SERMAS 2025 · P55",
+    enunciado: "¿Es competencia del celador, según la normativa estatal vigente, reponer los artículos de almacén cuando observa que en una unidad existe deficiencia del mismo?",
+    opciones: ["Sí, cuando observa que un artículo falta en el almacén de una unidad de hospitalización debe reponerlo inmediatamente.", "Sí, siempre.", "No, los pedidos se distribuyen según la solicitud y demanda realizadas por los supervisores/as de los servicios, por medio de vales de pedido para entregarlos en su destino.", "Sí, una unidad de hospitalización no debe quedarse sin ese artículo en su almacén."],
+    correcta: "C",
+    explicacion: "El celador no repone por su cuenta: los pedidos se reparten según los vales firmados por los supervisores."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SERMAS 2025 · P56",
+    enunciado: "En el almacén de lencería de los centros sanitarios se deposita la ropa de cama que posteriormente se usará en las distintas unidades, indique la respuesta correcta según la normativa vigente:",
+    opciones: ["Según la normativa vigente, es competencia del celador trasladar la lencería en los carros destinados a tal fin para depositarlos en el lugar correspondiente.", "Según la normativa vigente, es competencia de la planchadora trasladar la lencería en los carros destinados a tal fin para depositarlos en el lugar correspondiente.", "Según la normativa vigente, es competencia de la pinche trasladar la lencería en los carros destinados a tal fin para depositarlos en el lugar correspondiente.", "Según la normativa vigente, es competencia de la costurera trasladar la lencería en los carros destinados a tal fin para depositarlos en el lugar correspondiente."],
+    correcta: "A",
+    explicacion: "Trasladar la lencería en sus carros al lugar que corresponda es competencia del celador."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SERMAS 2025 · P58",
+    enunciado: "El material de almacén y farmacia de un centro hospitalario se almacena y se recuenta con el fin de comprobar el stock, en colaboración con el personal destinado en estos servicios y teniendo en cuenta,",
+    opciones: ["El doble cajetín.", "Los pactos de consumo.", "Los códigos de barras.", "La organización de los servicios de almacén y farmacia."],
+    correcta: "D",
+    explicacion: "El material se almacena y recuenta según cómo estén organizados los servicios de almacén y farmacia."
+  },
+  {
+    tema: "Suministros y almacén",
+    origen: "Examen SERMAS 2025 · P60",
+    enunciado: "En el traslado de un carro de lencería hacia el servicio de destino, el celador observa que una rueda no gira. Señale la actuación correcta que debe realizar el celador.",
+    opciones: ["Le notificará al supervisor de la unidad de destino la anomalía.", "Procederá a reparar la rueda con el fin de agilizar el traslado.", "Pondrá la anomalía en conocimiento del responsable de la lencería.", "Hablará con el servicio de mantenimiento para que le den una solución."],
+    correcta: "C",
+    explicacion: "El celador no repara: comunica la anomalía al responsable de lencería."
+  },
   // ===================================================================
-  //  FARMACIA, ESTERILIZACIÓN Y REPROGRAFÍA (99 preguntas)
+  //  FARMACIA, ESTERILIZACIÓN Y REPROGRAFÍA (101 preguntas)
   // ===================================================================
   {
     tema: "Farmacia, esterilización y reprografía",
@@ -9911,8 +10271,24 @@ const PREGUNTAS = [
     correcta: "B",
     explicacion: "Profilaxis = prevención: medidas para evitar que aparezca una enfermedad o infección."
   },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SERMAS 2025 · P54",
+    enunciado: "Según la normativa estatal vigente, ¿Cómo deben trasladarse los productos y materiales desde la farmacia del hospital?",
+    opciones: ["La documentación y correspondencia se distribuye teniendo en cuenta el circuito de tramitación establecido para que llegue a su destinatario.", "Los impresos, la documentación y la correspondencia se clasifican de acuerdo a las normas internas establecidas, para distribuirlas posteriormente a los departamentos.", "Los preparados, sueros y unidosis se trasladan en los carros destinados a tal fin, a cada una de los servicios o plantas, para ser utilizados por el servicio que lo solicite.", "Las comunicaciones verbales y la documentación se trasladan, con la mayor brevedad posible, a sus puntos de destino para la utilización por parte del personal que lo requiera."],
+    correcta: "C",
+    explicacion: "Los preparados, sueros y unidosis de farmacia se trasladan en sus carros a cada planta o servicio. Las demás opciones hablan de documentación."
+  },
+  {
+    tema: "Farmacia, esterilización y reprografía",
+    origen: "Examen SERMAS 2025 · P59",
+    enunciado: "La unidosis que se distribuye desde la farmacia de un hospital se trasladará en los carros destinados a tal fin.",
+    opciones: ["Dependiendo de la cantidad de principio activo de la especialidad.", "Siempre.", "Cuando son EFG.", "Cuando el celador conozca el número de pacientes hospitalizados."],
+    correcta: "B",
+    explicacion: "La unidosis siempre se traslada en los carros destinados a ello."
+  },
   // ===================================================================
-  //  URGENCIAS Y AMBULANCIAS (81 preguntas)
+  //  URGENCIAS Y AMBULANCIAS (85 preguntas)
   // ===================================================================
   {
     tema: "Urgencias y ambulancias",
@@ -10497,6 +10873,38 @@ const PREGUNTAS = [
     opciones: ["Al laboratorio de Microbiología.", "Al servicio de Anatomía Patológica.", "Al laboratorio de Urología.", "Al servicio de Hematología."],
     correcta: "B",
     explicacion: "Las citologías las estudia Anatomía Patológica."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SERMAS 2025 · P49",
+    enunciado: "En un Servicio de Urgencia Hospitalaria, ¿Dónde se recibe el primer contacto con personal sanitario especializado?",
+    opciones: ["En el P.A.C.", "En la Puerta de Urgencias cuando le recibe el celador.", "En el Servicio de Admisión de Urgencias.", "En la clasificación o triaje."],
+    correcta: "D",
+    explicacion: "En urgencias, el primer contacto con personal sanitario es la clasificación o triaje. El celador y admisión no son personal sanitario."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SERMAS 2025 · P50",
+    enunciado: "Según la normativa estatal en vigor, es competencia del celador trasladar a los pacientes desde el Servicio de Urgencias para la realización de las pruebas técnicas solicitadas por los facultativos. ¿Qué debe hacer el celador antes de trasladar al paciente?",
+    opciones: ["Las medidas de radioprotección personal y del paciente/usuario o de la paciente/usuaria se aplican durante todo el proceso, para garantizar la seguridad requerida.", "Las barreras de protección, tales como baberos plásticos o servilletas de papel, se colocan para evitar salpicaduras que puedan deteriorar la vestimenta al paciente/usuario o a la paciente/usuaria.", "La identificación del paciente se comprueba para evitar posibles equivocaciones en la ubicación del mismo, cotejando la identidad del paciente con la solicitud del servicio.", "Las alteraciones de conducta y/o de hábitos de los pacientes o usuarios se reconocen y comunican al responsable del plan de cuidados o del servicio."],
+    correcta: "C",
+    explicacion: "Antes de trasladar al paciente a una prueba, el celador comprueba su identidad comparándola con la petición."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SERMAS 2025 · P51",
+    enunciado: "La organización física de la Unidad de Urgencia Hospitalaria se adapta al proceso de atención de pacientes urgentes, por lo que dispone de una estructura secuencial, formada por:",
+    opciones: ["La zona exterior, tras la que se encuentra la zona de clasificación o triaje y, por último, en el área más interna de la Unidad de Urgencias, la zona de observación.", "La zona de acceso exterior, tras la que se encuentra la zona de consultas, exploración, diagnóstico, tratamiento y, por último, la zona de observación.", "La zona de acceso exterior, tras la que se encuentra la zona de recepción, con sus espacios para admisión y clasificación o triaje, luego se dispone la zona de consultas, exploración, diagnóstico y tratamiento. En el área más interna de la Unidad de Urgencias, se localiza la zona de observación.", "La zona de clasificación o triaje, tras la cual estaría la zona de consultas y exploración, luego iría la zona de diagnóstico y tratamiento, y, por último, en el área más interna la zona de observación."],
+    correcta: "C",
+    explicacion: "Orden de la urgencia hospitalaria: acceso exterior → recepción (admisión y triaje) → consultas, exploración y tratamiento → observación (lo más interno)."
+  },
+  {
+    tema: "Urgencias y ambulancias",
+    origen: "Examen SERMAS 2025 · P52",
+    enunciado: "¿Cuál de las siguientes actividades se identifican en la Unidad de Urgencia Hospitalaria, para la atención al paciente?",
+    opciones: ["La reanimación postquirúrgica.", "La URPA.", "La Observación Clínica", "El área de consultas externas."],
+    correcta: "C",
+    explicacion: "La observación clínica es una actividad de urgencias. La URPA y la reanimación postquirúrgica son del bloque quirúrgico."
   },
   // ===================================================================
   //  INFORMÁTICA (94 preguntas)

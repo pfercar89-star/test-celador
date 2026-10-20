@@ -8,6 +8,7 @@ App web sencilla para practicar tests de la oposición de celador del Sergas.
 |---|---|---|
 | `preguntas.js` | Las preguntas | **Sí, aquí añades las tuyas** |
 | `temario.js` | El texto de los temas (en Markdown) | Sí, si quieres corregir o ampliar un tema |
+| `conflictivos.js` | Los puntos conflictivos (en Markdown, con fuentes) | Sí, para añadir o actualizar puntos |
 | `index.html` | La estructura de la página | No hace falta |
 | `estilos.css` | Colores y tamaños | No hace falta |
 | `app.js` | La lógica (test, fallos, estadísticas) | No hace falta |
@@ -23,6 +24,7 @@ En `preguntas.js` cada tema empieza con una cabecera en mayúsculas. Para añadi
 
 ## Modos de práctica
 
+- **Puntos conflictivos**: 24 puntos revisados en octubre de 2026. Muestran dónde chocan el examen oficial, el temario y las preguntas, qué respuestas oficiales son raras y qué normas han cambiado. Cada punto lleva una etiqueta (Comprobado, Probable, Dudoso o Norma cambiada), sus fuentes y un botón para practicar las preguntas del examen relacionadas.
 - **Temario**: los 18 temas resumidos (10 de la parte específica y 8 de la común), agrupados por bloque. Al tocar un tema se abre para leerlo, con el apartado "Trampas típicas" destacado en rojo. Al final hay un botón para hacer el test de ese tema en modo estudio. El campo `temaTest` de cada tema en `temario.js` dice qué preguntas usa ese test.
 - **Modo estudio**: 10 preguntas al azar del tema elegido. Te corrige cada respuesta al momento: verde si aciertas, rojo si fallas, y la explicación en un cuadro beige. "Estudiar mis fallos" usa este modo con las preguntas que has fallado o dejado en blanco.
 - **Modo examen**: eliges 10, 25, 50 o 100 preguntas. No corrige hasta el final. Puedes dejar preguntas en blanco, volver atrás y cambiar la respuesta. Al terminar te da la nota con la puntuación del Sergas (+0,50 por acierto, −0,125 por fallo, 0 en blanco), el tiempo que has tardado y la lista de preguntas falladas o en blanco con su explicación.

@@ -22,6 +22,12 @@
         <button id="boton-temario">Leer el temario</button>
       </div>
 
+      <div class="tarjeta">
+        <h2>⚠️ Puntos conflictivos</h2>
+        <p class="pequeno">Dónde chocan el examen oficial, tu temario y tus preguntas, respuestas oficiales raras y normas que han cambiado.</p>
+        <button id="boton-conflictivos" class="secundario">Ver puntos conflictivos</button>
+      </div>
+
       <label for="selector-tema">Elige un tema para los tests:</label>
       <select id="selector-tema"></select>
 
@@ -68,7 +74,7 @@
       <div id="texto-resultado" class="resultado"></div>
       <!-- En el modo examen, aquí aparecen las preguntas falladas y en blanco -->
       <div id="revision"></div>
-      <!-- Solo se ve si el test se empezó desde un tema del temario -->
+      <!-- Solo se ve si el test se empezó desde el temario o desde los puntos conflictivos -->
       <button id="boton-volver-al-tema" class="secundario oculto">Volver al tema</button>
       <button class="boton-volver">Volver al inicio</button>
     </section>
@@ -100,11 +106,27 @@
       <button id="boton-tema-siguiente" class="secundario">Siguiente tema →</button>
       <button class="boton-ir-temario secundario">Volver al temario</button>
     </section>
+
+    <!-- PANTALLA 7: puntos conflictivos -->
+    <section id="pantalla-conflictivos" class="oculto">
+      <button class="boton-volver enlace">← Inicio</button>
+      <h2>⚠️ Puntos conflictivos</h2>
+      <p class="pequeno">Revisado en octubre de 2026. Cada punto lleva una etiqueta según lo seguro que es:</p>
+      <ul class="leyenda">
+        <li><span class="estado estado-comprobado">Comprobado</span> las fuentes coinciden.</li>
+        <li><span class="estado estado-probable">Probable</span> hay una explicación razonable, pero no una norma literal.</li>
+        <li><span class="estado estado-dudoso">Dudoso</span> sin explicación clara: consúltalo con tu academia.</li>
+        <li><span class="estado estado-norma">Norma cambiada</span> la ley ha cambiado.</li>
+      </ul>
+      <div id="lista-conflictivos"></div>
+      <button class="boton-volver secundario">Volver al inicio</button>
+    </section>
   </main>
 
   <!-- Primero se cargan las preguntas y el temario, y luego la lógica de la app -->
   <script src="preguntas.js"></script>
   <script src="temario.js"></script>
+  <script src="conflictivos.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

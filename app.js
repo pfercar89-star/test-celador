@@ -24,7 +24,7 @@ let respuestasExamen = [];   // modo examen: la letra elegida en cada pregunta, 
 let inicioExamen = 0;        // modo examen: hora a la que empezó (para el cronómetro)
 let cronometro = null;
 let temaAbierto = -1;        // temario: posición del tema que se está leyendo
-let testDesdeTemario = false; // si el test se empezó desde un tema, al final se ofrece volver a él
+let volverTrasTest = null;   // si el test se empezó desde el temario o los puntos conflictivos: { texto, accion }
 
 // Atajo para buscar un elemento de la página por su id
 function $(id) {
@@ -73,7 +73,7 @@ function comprobarPreguntas() {
 
 function mostrarPantalla(id) {
   ["pantalla-inicio", "pantalla-pregunta", "pantalla-resultado", "pantalla-estadisticas",
-   "pantalla-temario", "pantalla-lectura"].forEach(function (p) {
+   "pantalla-temario", "pantalla-lectura", "pantalla-conflictivos"].forEach(function (p) {
     $(p).classList.toggle("oculto", p !== id);
   });
   window.scrollTo(0, 0);
@@ -134,10 +134,11 @@ function actualizarBotonFallos() {
 
 // ---------- El test (los dos modos) ----------
 
-function empezarTest(preguntas, modoElegido, cantidad, desdeTemario) {
+function empezarTest(preguntas, modoElegido, cantidad, volverA) {
   modo = modoElegido;
-  testDesdeTemario = Boolean(desdeTemario);
-  $("boton-volver-al-tema").classList.toggle("oculto", !testDesdeTemario);
+  volverTrasTest = volverA || null;
+  $("boton-volver-al-tema").classList.toggle("oculto", !volverTrasTest);
+  if (volverTrasTest) $("boton-volver-al-tema").textContent = volverTrasTest.texto;
   preguntasDelTest = barajar(preguntas).slice(0, cantidad);
   posicion = 0;
   aciertosDelTest = 0;
@@ -622,6 +623,93 @@ function tablaAHtml(filas) {
   return html + "</table></div>";
 }
 
+// ---------- Puntos conflictivos ----------
+
+const CLASE_ESTADO = {
+  "Comprobado": "estado-comprobado",
+  "Probable": "estado-probable",
+  "Dudoso": "estado-dudoso",
+  "Norma cambiada": "estado-norma"
+};
+
+// Código de una pregunta del examen (por ejemplo "E105") a partir de su origen
+function codigoExamen(p) {
+  const encontrado = (p.origen || "").match(/\b[CE]\d+\b/);
+  return encontrado ? encontrado[0] : null;
+}
+
+function mostrarConflictivos(posicionScroll) {
+  const lista = $("lista-conflictivos");
+  lista.innerHTML = "";
+  const grupos = Array.from(new Set(CONFLICTIVOS.map(function (c) { return c.grupo; })));
+  grupos.forEach(function (grupo) {
+    const titulo = document.createElement("h3");
+    titulo.className = "bloque-titulo";
+    titulo.textContent = grupo;
+    lista.appendChild(titulo);
+    CONFLICTIVOS.forEach(function (c) {
+      if (c.grupo === grupo) lista.appendChild(tarjetaConflicto(c));
+    });
+  });
+  mostrarPantalla("pantalla-conflictivos");
+  if (posicionScroll) window.scrollTo(0, posicionScroll);
+}
+
+function tarjetaConflicto(c) {
+  const tarjeta = document.createElement("div");
+  tarjeta.className = "conflicto";
+
+  const etiqueta = document.createElement("span");
+  etiqueta.className = "estado " + (CLASE_ESTADO[c.estado] || "");
+  etiqueta.textContent = c.estado;
+  const titulo = document.createElement("h3");
+  titulo.textContent = c.titulo;
+  const info = document.createElement("p");
+  info.className = "pequeno";
+  info.textContent = c.tema + (c.preguntas.length ? " · Examen 2024: " + c.preguntas.join(", ") : "");
+  const texto = document.createElement("div");
+  texto.className = "lectura";
+  texto.innerHTML = markdownAHtml(c.contenido || "");
+  tarjeta.append(etiqueta, titulo, info, texto);
+
+  if (c.fuentes && c.fuentes.length) {
+    const fuentes = document.createElement("div");
+    fuentes.className = "fuentes";
+    fuentes.textContent = "Fuentes consultadas:";
+    const ul = document.createElement("ul");
+    c.fuentes.forEach(function (f) {
+      if (!/^https:\/\//.test(f.url)) return;   // solo enlaces seguros
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = f.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = f.titulo;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    fuentes.appendChild(ul);
+    tarjeta.appendChild(fuentes);
+  }
+
+  // Botón para practicar las preguntas del examen relacionadas
+  const relacionadas = PREGUNTAS.filter(function (p) { return c.preguntas.includes(codigoExamen(p)); });
+  if (relacionadas.length) {
+    const boton = document.createElement("button");
+    boton.className = "secundario";
+    boton.textContent = relacionadas.length === 1 ? "Practicar esta pregunta" : "Practicar estas " + relacionadas.length + " preguntas";
+    boton.addEventListener("click", function () {
+      const scroll = window.scrollY;
+      empezarTest(relacionadas, "estudio", relacionadas.length, {
+        texto: "Volver a puntos conflictivos",
+        accion: function () { mostrarConflictivos(scroll); }
+      });
+    });
+    tarjeta.appendChild(boton);
+  }
+  return tarjeta;
+}
+
 // ---------- Arranque: conectar los botones ----------
 
 function volverAlInicio() {
@@ -667,9 +755,19 @@ if (problemas.length > 0) {
   });
   $("boton-tema-siguiente").addEventListener("click", function () { abrirTema(temaAbierto + 1); });
   $("boton-test-tema").addEventListener("click", function () {
-    empezarTest(preguntasDeTemaTest(TEMARIO[temaAbierto]), "estudio", PREGUNTAS_POR_TEST, true);
+    empezarTest(preguntasDeTemaTest(TEMARIO[temaAbierto]), "estudio", PREGUNTAS_POR_TEST, {
+      texto: "Volver al tema",
+      accion: function () { abrirTema(temaAbierto); }
+    });
   });
-  $("boton-volver-al-tema").addEventListener("click", function () { abrirTema(temaAbierto); });
+  $("boton-volver-al-tema").addEventListener("click", function () { volverTrasTest.accion(); });
+  if (typeof CONFLICTIVOS !== "undefined" && Array.isArray(CONFLICTIVOS)) {
+    $("boton-conflictivos").textContent = "Ver puntos conflictivos (" + CONFLICTIVOS.length + ")";
+    $("boton-conflictivos").addEventListener("click", function () { mostrarConflictivos(); });
+  } else {
+    $("boton-conflictivos").disabled = true;
+    $("boton-conflictivos").textContent = "No disponible (revisa conflictivos.js)";
+  }
   $("boton-terminar").addEventListener("click", terminarAntes);
   $("boton-estadisticas").addEventListener("click", mostrarEstadisticas);
   $("boton-siguiente").addEventListener("click", siguiente);

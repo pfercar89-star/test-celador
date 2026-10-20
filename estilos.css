@@ -184,4 +184,38 @@ button.enlace {
 }
 .lectura .trampas h3 { color: #b3261e; border-top: none; margin-top: 12px; }
 
+/* ---------- Puntos conflictivos ---------- */
+
+.leyenda { list-style: none; padding: 0; margin: 8px 0 4px; font-size: 0.9rem; color: #3c4855; }
+.leyenda li { margin: 6px 0; }
+
+/* Etiqueta de color con el estado de cada punto */
+.estado {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.estado-comprobado { background: #d4f0d9; color: #1b4d20; }
+.estado-probable { background: #dce9f9; color: #0b4a8a; }
+.estado-dudoso { background: #fde7c4; color: #7a4a00; }
+.estado-norma { background: #fbd9d6; color: #7a1a14; }
+
+.conflicto {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.conflicto h3 { font-size: 1.05rem; margin: 8px 0 2px; }
+.conflicto .lectura { padding: 0; margin: 8px 0; font-size: 1rem; box-shadow: none; }
+.fuentes { font-size: 0.85rem; color: #5a6878; margin: 8px 0; }
+.fuentes ul { padding-left: 1.2em; margin: 4px 0; }
+.fuentes li { margin: 4px 0; overflow-wrap: anywhere; }
+.fuentes a { color: #0b5cab; }
+
 .oculto { display: none; }
